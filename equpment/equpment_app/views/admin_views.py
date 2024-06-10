@@ -1,8 +1,9 @@
-from django.shortcuts import render
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from user_views import UserViews
+from .user_views import UserViews
+from ..models import *
+from ..serializer import *
 
 class AdminViews(UserViews):
     def __init__(self) -> None:
@@ -44,8 +45,14 @@ class AdminViews(UserViews):
         pass   
     
     
-    def add_branch(self,request):
-        pass
+    @api_view(['POST'])
+    def add_branch(request):
+        serializer = BranchSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)    
     
     
     def update_branch(self,request):
@@ -55,9 +62,14 @@ class AdminViews(UserViews):
     def delete_branch(self,request):
         pass  
     
-    
-    def add_area(self,request):
-        pass
+    @api_view(['POST'])
+    def add_area(request):
+        serializer = AreaSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     
     def update_area(self,request):

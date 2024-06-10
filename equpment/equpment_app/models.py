@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
 # Create your models here.  
 class Area(models.Model):
@@ -11,32 +12,46 @@ class Area(models.Model):
 class Branch(models.Model):
     name = models.CharField(max_length=50)
     area_id = models.ForeignKey(Area, on_delete=models.CASCADE)
-    next_order = models.DateField()
+    next_order = models.DateField(null=True, blank=True)
     
     def __str__(self):
         return self.name  
-    
+   
+ 
+class CustomUserManager(BaseUserManager):
+    def create_user(self, username, email, password=None, **extra_fields):
+        email = self.normalize_email(email)
+        user = self.model(username=username, email=email, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
 
-class User(models.Model):
+    def create_admin_user(self, username, email, password=None, **extra_fields):
+        extra_fields.setdefault('is_admin', True)
+
+        return self.create_user(username, email, password, **extra_fields)
+
+
+class User(AbstractBaseUser, PermissionsMixin):
     name = models.CharField(max_length=100)
     username = models.CharField(max_length=100, unique=True)
-    password = models.CharField(max_length=100)
     email = models.EmailField(unique=True, null=False)
-    deault_branch = models.ForeignKey(Branch, on_delete=models.CASCADE)
-    is_admin = models.BinaryField()
-    
+    password = models.CharField(max_length=100)
+    default_branch = models.ForeignKey('Branch', on_delete=models.CASCADE)
+    is_admin = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+
+    objects = CustomUserManager()
+
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email']
+
     def __str__(self):
-        return self.name   
-    
-    
-class Token(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    token = models.CharField(max_length=200)
-    created = models.DateTimeField(auto_now_add=True)
-    expires = models.DateTimeField()
-    
-    def __str__(self):
-        return self.name  
+        return self.name
+
+    @property
+    def is_admin(self):
+        return self.is_admin
     
     
 class EqupmentCategory(models.Model):
