@@ -4,7 +4,7 @@ from datetime import datetime
 
 class Logger(object):
     _instance = None
-    _log_file = './log/log.json'
+    _log_file = './equpment_app/log/log.json'
     
     def __new__(cls, log_file=_log_file):
         if cls._instance is None:

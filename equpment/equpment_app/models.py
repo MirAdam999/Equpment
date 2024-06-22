@@ -11,7 +11,7 @@ class Area(models.Model):
     
 class Branch(models.Model):
     name = models.CharField(max_length=50)
-    area_id = models.ForeignKey(Area, on_delete=models.CASCADE)
+    area = models.ForeignKey(Area, on_delete=models.CASCADE)
     next_order = models.DateField(null=True, blank=True)
     
     def __str__(self):
@@ -28,6 +28,7 @@ class CustomUserManager(BaseUserManager):
 
     def create_admin_user(self, username, email, password=None, **extra_fields):
         extra_fields.setdefault('is_admin', True)
+        extra_fields.setdefault('is_superuser', True)
 
         return self.create_user(username, email, password, **extra_fields)
 
@@ -39,11 +40,13 @@ class User(AbstractBaseUser, PermissionsMixin):
     password = models.CharField(max_length=100)
     default_branch = models.ForeignKey('Branch', on_delete=models.CASCADE)
     is_admin = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
 
     objects = CustomUserManager()
 
     USERNAME_FIELD = 'username'
+    EMAIL_FIELD = 'email'
     REQUIRED_FIELDS = ['email']
 
     def __str__(self):
@@ -88,15 +91,15 @@ class Order(models.Model):
     sent_to_supplier = models.BinaryField(default=False)
     
     def __str__(self):
-        return self.name  
+        return str(self.branch)
     
     
-class Order_Details(models.Model):
-    order_id = models.ForeignKey(Order, on_delete=models.CASCADE)
+class OrderDetails(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
     item = models.ForeignKey(Equpment, on_delete=models.CASCADE)
     quantity = models.IntegerField()
     approved_to_ship = models.BinaryField(default=False)
     recived = models.BinaryField(default=False)
     
     def __str__(self):
-        return self.name    
+        return str(self.item)    

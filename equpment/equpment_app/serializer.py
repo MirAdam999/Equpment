@@ -9,11 +9,11 @@ class AreaSerializer(serializers.ModelSerializer):
         
         
 class BranchSerializer(serializers.ModelSerializer):
-    area_id = serializers.PrimaryKeyRelatedField(queryset = Area.objects.all()) 
+    area = serializers.PrimaryKeyRelatedField(queryset = Area.objects.all()) 
     
     class Meta:
         model = Branch
-        fields = ['id', 'name', 'area_id', 'next_order']              
+        fields = ['id', 'name', 'area', 'next_order']              
         
 
 class UserSerializer(serializers.ModelSerializer):
@@ -21,13 +21,14 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id', 'name', 'username', 'email', 'default_branch', 'is_admin', 'is_active']
+        fields = ['id', 'name', 'username', 'email', 'default_branch', 'is_superuser', 'is_active']
 
-# signup and login seri        
+# add user seri        
 User = get_user_model()
 
-class UserSignUpSerializer(serializers.ModelSerializer):
+class AddUserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
+    default_branch = serializers.PrimaryKeyRelatedField(queryset = Branch.objects.all()) 
 
     class Meta:
         model = User
@@ -53,12 +54,7 @@ class UserSignUpSerializer(serializers.ModelSerializer):
         user.set_password(validated_data['password'])
         user.save()
         return user
-
-
-class UserLoginSerializer(serializers.Serializer):
-    username = serializers.CharField()
-    password = serializers.CharField(write_only=True)
-        
+         
 
 class EqupmentCategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -66,7 +62,7 @@ class EqupmentCategorySerializer(serializers.ModelSerializer):
         fields = ['id', 'name']
         
         
-class SupplierCategorySerializer(serializers.ModelSerializer):
+class SupplierSerializer(serializers.ModelSerializer):
     class Meta:
         model = Supplier
         fields = ['id', 'name','contact']
@@ -91,9 +87,9 @@ class OrderSerializer(serializers.ModelSerializer):
         
         
 class OrderDetailSerializer(serializers.ModelSerializer):
-    order_id = serializers.PrimaryKeyRelatedField(queryset = Order.objects.all())
+    order = serializers.PrimaryKeyRelatedField(queryset = Order.objects.all())
     item = serializers.PrimaryKeyRelatedField(queryset = Equpment.objects.all())
     
     class Meta:
-        model = Order_Details
-        fields = ['id', 'order_id', 'item', 'quantity', 'approved_to_ship', 'recived']
+        model = OrderDetails
+        fields = ['id', 'order', 'item', 'quantity', 'approved_to_ship', 'recived']
