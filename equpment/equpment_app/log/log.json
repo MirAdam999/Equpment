@@ -1558,5 +1558,733 @@
     "func_name": "revoke_admin",
     "func_input": "2",
     "func_output": "{'revoked_admin': 2}"
+  },
+  {
+    "id": 196,
+    "datetime": "2024-06-23 16:34:57.623171",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "True"
+  },
+  {
+    "id": 197,
+    "datetime": "2024-06-23 16:45:12.648696",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "True"
+  },
+  {
+    "id": 198,
+    "datetime": "2024-06-23 16:48:11.719562",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "True"
+  },
+  {
+    "id": 199,
+    "datetime": "2024-06-23 16:49:12.237807",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "True"
+  },
+  {
+    "id": 200,
+    "datetime": "2024-06-23 16:51:43.385743",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "'QuerySet' object has no attribute 'name'"
+  },
+  {
+    "id": 201,
+    "datetime": "2024-06-23 16:52:55.426279",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "'BranchSerializer' object has no attribute 'get'"
+  },
+  {
+    "id": 202,
+    "datetime": "2024-06-23 16:53:19.701301",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "Got AttributeError when attempting to get a value for field `name` on serializer `BranchSerializer`.\nThe serializer field might be named incorrectly and not match any attribute or key on the `QuerySet` instance.\nOriginal exception text was: 'QuerySet' object has no attribute 'name'."
+  },
+  {
+    "id": 203,
+    "datetime": "2024-06-23 16:53:49.008211",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "Got AttributeError when attempting to get a value for field `name` on serializer `BranchSerializer`.\nThe serializer field might be named incorrectly and not match any attribute or key on the `QuerySet` instance.\nOriginal exception text was: 'QuerySet' object has no attribute 'name'."
+  },
+  {
+    "id": 204,
+    "datetime": "2024-06-23 16:54:22.607870",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "Got AttributeError when attempting to get a value for field `name` on serializer `BranchSerializer`.\nThe serializer field might be named incorrectly and not match any attribute or key on the `QuerySet` instance.\nOriginal exception text was: 'QuerySet' object has no attribute 'name'."
+  },
+  {
+    "id": 205,
+    "datetime": "2024-06-23 16:54:45.731406",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "Got AttributeError when attempting to get a value for field `name` on serializer `BranchSerializer`.\nThe serializer field might be named incorrectly and not match any attribute or key on the `QuerySet` instance.\nOriginal exception text was: 'QuerySet' object has no attribute 'name'."
+  },
+  {
+    "id": 206,
+    "datetime": "2024-06-23 16:55:27.440898",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "Got AttributeError when attempting to get a value for field `name` on serializer `BranchSerializer`.\nThe serializer field might be named incorrectly and not match any attribute or key on the `QuerySet` instance.\nOriginal exception text was: 'QuerySet' object has no attribute 'name'."
+  },
+  {
+    "id": 207,
+    "datetime": "2024-06-23 16:56:05.763947",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "Got AttributeError when attempting to get a value for field `name` on serializer `BranchSerializer`.\nThe serializer field might be named incorrectly and not match any attribute or key on the `QuerySet` instance.\nOriginal exception text was: 'QuerySet' object has no attribute 'name'."
+  },
+  {
+    "id": 208,
+    "datetime": "2024-06-23 16:56:57.052874",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "Got AttributeError when attempting to get a value for field `name` on serializer `BranchSerializer`.\nThe serializer field might be named incorrectly and not match any attribute or key on the `QuerySet` instance.\nOriginal exception text was: 'QuerySet' object has no attribute 'name'."
+  },
+  {
+    "id": 209,
+    "datetime": "2024-06-23 16:57:13.725097",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "Got AttributeError when attempting to get a value for field `name` on serializer `BranchSerializer`.\nThe serializer field might be named incorrectly and not match any attribute or key on the `QuerySet` instance.\nOriginal exception text was: 'QuerySet' object has no attribute 'name'."
+  },
+  {
+    "id": 210,
+    "datetime": "2024-06-23 16:59:42.381706",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "True"
+  },
+  {
+    "id": 211,
+    "datetime": "2024-06-23 17:09:11.285453",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "True"
+  },
+  {
+    "id": 212,
+    "datetime": "2024-06-23 17:13:56.638275",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "True"
+  },
+  {
+    "id": 213,
+    "datetime": "2024-06-23 17:58:48.940481",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "True"
+  },
+  {
+    "id": 214,
+    "datetime": "2024-06-23 18:00:04.604204",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "True"
+  },
+  {
+    "id": 215,
+    "datetime": "2024-06-23 18:00:15.136915",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "True"
+  },
+  {
+    "id": 216,
+    "datetime": "2024-06-23 18:04:39.442060",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "True"
+  },
+  {
+    "id": 217,
+    "datetime": "2024-06-23 18:09:24.778911",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "True"
+  },
+  {
+    "id": 218,
+    "datetime": "2024-06-23 18:13:10.482446",
+    "class_name": "UserViews",
+    "func_name": "get_all_branches",
+    "func_input": "None",
+    "func_output": "[{'id': 1, 'name': '\u05d4\u05e0\u05d4\u05dc\u05d4', 'area': 5, 'next_order': None}, {'id': 2, 'name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area': 3, 'next_order': None}, {'id': 3, 'name': '\u05e9\u05d3\u05e8\u05d5\u05ea', 'area': 3, 'next_order': None}, {'id': 4, 'name': '\u05e0\u05ea\u05e0\u05d9\u05d4', 'area': 4, 'next_order': None}, {'id': 5, 'name': '\u05e7\u05e8\u05d9\u05ea \u05d1\u05d9\u05d0\u05dc\u05d9\u05e7', 'area': 4, 'next_order': None}, {'id': 6, 'name': '\u05d1\u05e0\u05d9 \u05d1\u05e8\u05e7', 'area': 2, 'next_order': None}, {'id': 7, 'name': '\u05e8\u05d5\u05de\u05de\u05d4', 'area': 1, 'next_order': None}, {'id': 8, 'name': '\u05d1\u05d9\u05ea \u05e9\u05de\u05e9', 'area': 1, 'next_order': None}, {'id': 9, 'name': '\u05d8\u05d9\u05d9\u05dc\u05ea', 'area': 1, 'next_order': None}, {'id': 10, 'name': '\u05e4\u05e1\u05d2\u05ea \u05d6\u05d0\u05d1', 'area': 1, 'next_order': None}]"
+  },
+  {
+    "id": 219,
+    "datetime": "2024-06-23 18:13:12.469863",
+    "class_name": "UserViews",
+    "func_name": "get_all_branches",
+    "func_input": "None",
+    "func_output": "[{'id': 1, 'name': '\u05d4\u05e0\u05d4\u05dc\u05d4', 'area': 5, 'next_order': None}, {'id': 2, 'name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area': 3, 'next_order': None}, {'id': 3, 'name': '\u05e9\u05d3\u05e8\u05d5\u05ea', 'area': 3, 'next_order': None}, {'id': 4, 'name': '\u05e0\u05ea\u05e0\u05d9\u05d4', 'area': 4, 'next_order': None}, {'id': 5, 'name': '\u05e7\u05e8\u05d9\u05ea \u05d1\u05d9\u05d0\u05dc\u05d9\u05e7', 'area': 4, 'next_order': None}, {'id': 6, 'name': '\u05d1\u05e0\u05d9 \u05d1\u05e8\u05e7', 'area': 2, 'next_order': None}, {'id': 7, 'name': '\u05e8\u05d5\u05de\u05de\u05d4', 'area': 1, 'next_order': None}, {'id': 8, 'name': '\u05d1\u05d9\u05ea \u05e9\u05de\u05e9', 'area': 1, 'next_order': None}, {'id': 9, 'name': '\u05d8\u05d9\u05d9\u05dc\u05ea', 'area': 1, 'next_order': None}, {'id': 10, 'name': '\u05e4\u05e1\u05d2\u05ea \u05d6\u05d0\u05d1', 'area': 1, 'next_order': None}]"
+  },
+  {
+    "id": 220,
+    "datetime": "2024-06-23 18:13:45.380373",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "True"
+  },
+  {
+    "id": 221,
+    "datetime": "2024-06-23 18:13:45.537169",
+    "class_name": "UserViews",
+    "func_name": "get_all_branches",
+    "func_input": "None",
+    "func_output": "[{'id': 1, 'name': '\u05d4\u05e0\u05d4\u05dc\u05d4', 'area': 5, 'next_order': None}, {'id': 2, 'name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area': 3, 'next_order': None}, {'id': 3, 'name': '\u05e9\u05d3\u05e8\u05d5\u05ea', 'area': 3, 'next_order': None}, {'id': 4, 'name': '\u05e0\u05ea\u05e0\u05d9\u05d4', 'area': 4, 'next_order': None}, {'id': 5, 'name': '\u05e7\u05e8\u05d9\u05ea \u05d1\u05d9\u05d0\u05dc\u05d9\u05e7', 'area': 4, 'next_order': None}, {'id': 6, 'name': '\u05d1\u05e0\u05d9 \u05d1\u05e8\u05e7', 'area': 2, 'next_order': None}, {'id': 7, 'name': '\u05e8\u05d5\u05de\u05de\u05d4', 'area': 1, 'next_order': None}, {'id': 8, 'name': '\u05d1\u05d9\u05ea \u05e9\u05de\u05e9', 'area': 1, 'next_order': None}, {'id': 9, 'name': '\u05d8\u05d9\u05d9\u05dc\u05ea', 'area': 1, 'next_order': None}, {'id': 10, 'name': '\u05e4\u05e1\u05d2\u05ea \u05d6\u05d0\u05d1', 'area': 1, 'next_order': None}]"
+  },
+  {
+    "id": 222,
+    "datetime": "2024-06-23 18:16:17.471972",
+    "class_name": "UserViews",
+    "func_name": "get_all_branches",
+    "func_input": "None",
+    "func_output": "[{'id': 1, 'name': '\u05d4\u05e0\u05d4\u05dc\u05d4', 'area': 5, 'next_order': None}, {'id': 2, 'name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area': 3, 'next_order': None}, {'id': 3, 'name': '\u05e9\u05d3\u05e8\u05d5\u05ea', 'area': 3, 'next_order': None}, {'id': 4, 'name': '\u05e0\u05ea\u05e0\u05d9\u05d4', 'area': 4, 'next_order': None}, {'id': 5, 'name': '\u05e7\u05e8\u05d9\u05ea \u05d1\u05d9\u05d0\u05dc\u05d9\u05e7', 'area': 4, 'next_order': None}, {'id': 6, 'name': '\u05d1\u05e0\u05d9 \u05d1\u05e8\u05e7', 'area': 2, 'next_order': None}, {'id': 7, 'name': '\u05e8\u05d5\u05de\u05de\u05d4', 'area': 1, 'next_order': None}, {'id': 8, 'name': '\u05d1\u05d9\u05ea \u05e9\u05de\u05e9', 'area': 1, 'next_order': None}, {'id': 9, 'name': '\u05d8\u05d9\u05d9\u05dc\u05ea', 'area': 1, 'next_order': None}, {'id': 10, 'name': '\u05e4\u05e1\u05d2\u05ea \u05d6\u05d0\u05d1', 'area': 1, 'next_order': None}]"
+  },
+  {
+    "id": 223,
+    "datetime": "2024-06-23 18:16:48.888218",
+    "class_name": "UserViews",
+    "func_name": "get_all_branches",
+    "func_input": "None",
+    "func_output": "[{'id': 1, 'name': '\u05d4\u05e0\u05d4\u05dc\u05d4', 'area': 5, 'next_order': None}, {'id': 2, 'name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area': 3, 'next_order': None}, {'id': 3, 'name': '\u05e9\u05d3\u05e8\u05d5\u05ea', 'area': 3, 'next_order': None}, {'id': 4, 'name': '\u05e0\u05ea\u05e0\u05d9\u05d4', 'area': 4, 'next_order': None}, {'id': 5, 'name': '\u05e7\u05e8\u05d9\u05ea \u05d1\u05d9\u05d0\u05dc\u05d9\u05e7', 'area': 4, 'next_order': None}, {'id': 6, 'name': '\u05d1\u05e0\u05d9 \u05d1\u05e8\u05e7', 'area': 2, 'next_order': None}, {'id': 7, 'name': '\u05e8\u05d5\u05de\u05de\u05d4', 'area': 1, 'next_order': None}, {'id': 8, 'name': '\u05d1\u05d9\u05ea \u05e9\u05de\u05e9', 'area': 1, 'next_order': None}, {'id': 9, 'name': '\u05d8\u05d9\u05d9\u05dc\u05ea', 'area': 1, 'next_order': None}, {'id': 10, 'name': '\u05e4\u05e1\u05d2\u05ea \u05d6\u05d0\u05d1', 'area': 1, 'next_order': None}]"
+  },
+  {
+    "id": 224,
+    "datetime": "2024-06-23 18:17:22.100525",
+    "class_name": "UserViews",
+    "func_name": "get_all_branches",
+    "func_input": "None",
+    "func_output": "[{'id': 1, 'name': '\u05d4\u05e0\u05d4\u05dc\u05d4', 'area': 5, 'next_order': None}, {'id': 2, 'name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area': 3, 'next_order': None}, {'id': 3, 'name': '\u05e9\u05d3\u05e8\u05d5\u05ea', 'area': 3, 'next_order': None}, {'id': 4, 'name': '\u05e0\u05ea\u05e0\u05d9\u05d4', 'area': 4, 'next_order': None}, {'id': 5, 'name': '\u05e7\u05e8\u05d9\u05ea \u05d1\u05d9\u05d0\u05dc\u05d9\u05e7', 'area': 4, 'next_order': None}, {'id': 6, 'name': '\u05d1\u05e0\u05d9 \u05d1\u05e8\u05e7', 'area': 2, 'next_order': None}, {'id': 7, 'name': '\u05e8\u05d5\u05de\u05de\u05d4', 'area': 1, 'next_order': None}, {'id': 8, 'name': '\u05d1\u05d9\u05ea \u05e9\u05de\u05e9', 'area': 1, 'next_order': None}, {'id': 9, 'name': '\u05d8\u05d9\u05d9\u05dc\u05ea', 'area': 1, 'next_order': None}, {'id': 10, 'name': '\u05e4\u05e1\u05d2\u05ea \u05d6\u05d0\u05d1', 'area': 1, 'next_order': None}]"
+  },
+  {
+    "id": 225,
+    "datetime": "2024-06-23 18:18:10.323474",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "True"
+  },
+  {
+    "id": 226,
+    "datetime": "2024-06-23 18:18:10.452661",
+    "class_name": "UserViews",
+    "func_name": "get_all_branches",
+    "func_input": "None",
+    "func_output": "[{'id': 1, 'name': '\u05d4\u05e0\u05d4\u05dc\u05d4', 'area': 5, 'next_order': None}, {'id': 2, 'name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area': 3, 'next_order': None}, {'id': 3, 'name': '\u05e9\u05d3\u05e8\u05d5\u05ea', 'area': 3, 'next_order': None}, {'id': 4, 'name': '\u05e0\u05ea\u05e0\u05d9\u05d4', 'area': 4, 'next_order': None}, {'id': 5, 'name': '\u05e7\u05e8\u05d9\u05ea \u05d1\u05d9\u05d0\u05dc\u05d9\u05e7', 'area': 4, 'next_order': None}, {'id': 6, 'name': '\u05d1\u05e0\u05d9 \u05d1\u05e8\u05e7', 'area': 2, 'next_order': None}, {'id': 7, 'name': '\u05e8\u05d5\u05de\u05de\u05d4', 'area': 1, 'next_order': None}, {'id': 8, 'name': '\u05d1\u05d9\u05ea \u05e9\u05de\u05e9', 'area': 1, 'next_order': None}, {'id': 9, 'name': '\u05d8\u05d9\u05d9\u05dc\u05ea', 'area': 1, 'next_order': None}, {'id': 10, 'name': '\u05e4\u05e1\u05d2\u05ea \u05d6\u05d0\u05d1', 'area': 1, 'next_order': None}]"
+  },
+  {
+    "id": 227,
+    "datetime": "2024-06-23 18:19:17.490764",
+    "class_name": "UserViews",
+    "func_name": "get_all_branches",
+    "func_input": "None",
+    "func_output": "[{'id': 1, 'name': '\u05d4\u05e0\u05d4\u05dc\u05d4', 'area': 5, 'next_order': None}, {'id': 2, 'name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area': 3, 'next_order': None}, {'id': 3, 'name': '\u05e9\u05d3\u05e8\u05d5\u05ea', 'area': 3, 'next_order': None}, {'id': 4, 'name': '\u05e0\u05ea\u05e0\u05d9\u05d4', 'area': 4, 'next_order': None}, {'id': 5, 'name': '\u05e7\u05e8\u05d9\u05ea \u05d1\u05d9\u05d0\u05dc\u05d9\u05e7', 'area': 4, 'next_order': None}, {'id': 6, 'name': '\u05d1\u05e0\u05d9 \u05d1\u05e8\u05e7', 'area': 2, 'next_order': None}, {'id': 7, 'name': '\u05e8\u05d5\u05de\u05de\u05d4', 'area': 1, 'next_order': None}, {'id': 8, 'name': '\u05d1\u05d9\u05ea \u05e9\u05de\u05e9', 'area': 1, 'next_order': None}, {'id': 9, 'name': '\u05d8\u05d9\u05d9\u05dc\u05ea', 'area': 1, 'next_order': None}, {'id': 10, 'name': '\u05e4\u05e1\u05d2\u05ea \u05d6\u05d0\u05d1', 'area': 1, 'next_order': None}]"
+  },
+  {
+    "id": 228,
+    "datetime": "2024-06-23 18:19:34.985186",
+    "class_name": "UserViews",
+    "func_name": "get_all_branches",
+    "func_input": "None",
+    "func_output": "[{'id': 1, 'name': '\u05d4\u05e0\u05d4\u05dc\u05d4', 'area': 5, 'next_order': None}, {'id': 2, 'name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area': 3, 'next_order': None}, {'id': 3, 'name': '\u05e9\u05d3\u05e8\u05d5\u05ea', 'area': 3, 'next_order': None}, {'id': 4, 'name': '\u05e0\u05ea\u05e0\u05d9\u05d4', 'area': 4, 'next_order': None}, {'id': 5, 'name': '\u05e7\u05e8\u05d9\u05ea \u05d1\u05d9\u05d0\u05dc\u05d9\u05e7', 'area': 4, 'next_order': None}, {'id': 6, 'name': '\u05d1\u05e0\u05d9 \u05d1\u05e8\u05e7', 'area': 2, 'next_order': None}, {'id': 7, 'name': '\u05e8\u05d5\u05de\u05de\u05d4', 'area': 1, 'next_order': None}, {'id': 8, 'name': '\u05d1\u05d9\u05ea \u05e9\u05de\u05e9', 'area': 1, 'next_order': None}, {'id': 9, 'name': '\u05d8\u05d9\u05d9\u05dc\u05ea', 'area': 1, 'next_order': None}, {'id': 10, 'name': '\u05e4\u05e1\u05d2\u05ea \u05d6\u05d0\u05d1', 'area': 1, 'next_order': None}]"
+  },
+  {
+    "id": 229,
+    "datetime": "2024-06-23 18:23:05.377872",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "True"
+  },
+  {
+    "id": 230,
+    "datetime": "2024-06-23 18:23:05.493704",
+    "class_name": "UserViews",
+    "func_name": "get_all_branches",
+    "func_input": "None",
+    "func_output": "[{'id': 1, 'name': '\u05d4\u05e0\u05d4\u05dc\u05d4', 'area': 5, 'next_order': None}, {'id': 2, 'name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area': 3, 'next_order': None}, {'id': 3, 'name': '\u05e9\u05d3\u05e8\u05d5\u05ea', 'area': 3, 'next_order': None}, {'id': 4, 'name': '\u05e0\u05ea\u05e0\u05d9\u05d4', 'area': 4, 'next_order': None}, {'id': 5, 'name': '\u05e7\u05e8\u05d9\u05ea \u05d1\u05d9\u05d0\u05dc\u05d9\u05e7', 'area': 4, 'next_order': None}, {'id': 6, 'name': '\u05d1\u05e0\u05d9 \u05d1\u05e8\u05e7', 'area': 2, 'next_order': None}, {'id': 7, 'name': '\u05e8\u05d5\u05de\u05de\u05d4', 'area': 1, 'next_order': None}, {'id': 8, 'name': '\u05d1\u05d9\u05ea \u05e9\u05de\u05e9', 'area': 1, 'next_order': None}, {'id': 9, 'name': '\u05d8\u05d9\u05d9\u05dc\u05ea', 'area': 1, 'next_order': None}, {'id': 10, 'name': '\u05e4\u05e1\u05d2\u05ea \u05d6\u05d0\u05d1', 'area': 1, 'next_order': None}]"
+  },
+  {
+    "id": 231,
+    "datetime": "2024-06-23 18:24:07.814743",
+    "class_name": "UserViews",
+    "func_name": "get_all_branches",
+    "func_input": "None",
+    "func_output": "[{'id': 1, 'name': '\u05d4\u05e0\u05d4\u05dc\u05d4', 'area': 5, 'next_order': None}, {'id': 2, 'name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area': 3, 'next_order': None}, {'id': 3, 'name': '\u05e9\u05d3\u05e8\u05d5\u05ea', 'area': 3, 'next_order': None}, {'id': 4, 'name': '\u05e0\u05ea\u05e0\u05d9\u05d4', 'area': 4, 'next_order': None}, {'id': 5, 'name': '\u05e7\u05e8\u05d9\u05ea \u05d1\u05d9\u05d0\u05dc\u05d9\u05e7', 'area': 4, 'next_order': None}, {'id': 6, 'name': '\u05d1\u05e0\u05d9 \u05d1\u05e8\u05e7', 'area': 2, 'next_order': None}, {'id': 7, 'name': '\u05e8\u05d5\u05de\u05de\u05d4', 'area': 1, 'next_order': None}, {'id': 8, 'name': '\u05d1\u05d9\u05ea \u05e9\u05de\u05e9', 'area': 1, 'next_order': None}, {'id': 9, 'name': '\u05d8\u05d9\u05d9\u05dc\u05ea', 'area': 1, 'next_order': None}, {'id': 10, 'name': '\u05e4\u05e1\u05d2\u05ea \u05d6\u05d0\u05d1', 'area': 1, 'next_order': None}]"
+  },
+  {
+    "id": 232,
+    "datetime": "2024-06-23 18:27:03.499723",
+    "class_name": "UserViews",
+    "func_name": "get_all_branches",
+    "func_input": "None",
+    "func_output": "[{'id': 1, 'name': '\u05d4\u05e0\u05d4\u05dc\u05d4', 'area': 5, 'next_order': None}, {'id': 2, 'name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area': 3, 'next_order': None}, {'id': 3, 'name': '\u05e9\u05d3\u05e8\u05d5\u05ea', 'area': 3, 'next_order': None}, {'id': 4, 'name': '\u05e0\u05ea\u05e0\u05d9\u05d4', 'area': 4, 'next_order': None}, {'id': 5, 'name': '\u05e7\u05e8\u05d9\u05ea \u05d1\u05d9\u05d0\u05dc\u05d9\u05e7', 'area': 4, 'next_order': None}, {'id': 6, 'name': '\u05d1\u05e0\u05d9 \u05d1\u05e8\u05e7', 'area': 2, 'next_order': None}, {'id': 7, 'name': '\u05e8\u05d5\u05de\u05de\u05d4', 'area': 1, 'next_order': None}, {'id': 8, 'name': '\u05d1\u05d9\u05ea \u05e9\u05de\u05e9', 'area': 1, 'next_order': None}, {'id': 9, 'name': '\u05d8\u05d9\u05d9\u05dc\u05ea', 'area': 1, 'next_order': None}, {'id': 10, 'name': '\u05e4\u05e1\u05d2\u05ea \u05d6\u05d0\u05d1', 'area': 1, 'next_order': None}]"
+  },
+  {
+    "id": 233,
+    "datetime": "2024-06-23 18:27:14.453405",
+    "class_name": "UserViews",
+    "func_name": "get_all_branches",
+    "func_input": "None",
+    "func_output": "[{'id': 1, 'name': '\u05d4\u05e0\u05d4\u05dc\u05d4', 'area': 5, 'next_order': None}, {'id': 2, 'name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area': 3, 'next_order': None}, {'id': 3, 'name': '\u05e9\u05d3\u05e8\u05d5\u05ea', 'area': 3, 'next_order': None}, {'id': 4, 'name': '\u05e0\u05ea\u05e0\u05d9\u05d4', 'area': 4, 'next_order': None}, {'id': 5, 'name': '\u05e7\u05e8\u05d9\u05ea \u05d1\u05d9\u05d0\u05dc\u05d9\u05e7', 'area': 4, 'next_order': None}, {'id': 6, 'name': '\u05d1\u05e0\u05d9 \u05d1\u05e8\u05e7', 'area': 2, 'next_order': None}, {'id': 7, 'name': '\u05e8\u05d5\u05de\u05de\u05d4', 'area': 1, 'next_order': None}, {'id': 8, 'name': '\u05d1\u05d9\u05ea \u05e9\u05de\u05e9', 'area': 1, 'next_order': None}, {'id': 9, 'name': '\u05d8\u05d9\u05d9\u05dc\u05ea', 'area': 1, 'next_order': None}, {'id': 10, 'name': '\u05e4\u05e1\u05d2\u05ea \u05d6\u05d0\u05d1', 'area': 1, 'next_order': None}]"
+  },
+  {
+    "id": 234,
+    "datetime": "2024-06-23 18:29:14.506512",
+    "class_name": "UserViews",
+    "func_name": "get_all_branches",
+    "func_input": "None",
+    "func_output": "[{'id': 1, 'name': '\u05d4\u05e0\u05d4\u05dc\u05d4', 'area': 5, 'next_order': None}, {'id': 2, 'name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area': 3, 'next_order': None}, {'id': 3, 'name': '\u05e9\u05d3\u05e8\u05d5\u05ea', 'area': 3, 'next_order': None}, {'id': 4, 'name': '\u05e0\u05ea\u05e0\u05d9\u05d4', 'area': 4, 'next_order': None}, {'id': 5, 'name': '\u05e7\u05e8\u05d9\u05ea \u05d1\u05d9\u05d0\u05dc\u05d9\u05e7', 'area': 4, 'next_order': None}, {'id': 6, 'name': '\u05d1\u05e0\u05d9 \u05d1\u05e8\u05e7', 'area': 2, 'next_order': None}, {'id': 7, 'name': '\u05e8\u05d5\u05de\u05de\u05d4', 'area': 1, 'next_order': None}, {'id': 8, 'name': '\u05d1\u05d9\u05ea \u05e9\u05de\u05e9', 'area': 1, 'next_order': None}, {'id': 9, 'name': '\u05d8\u05d9\u05d9\u05dc\u05ea', 'area': 1, 'next_order': None}, {'id': 10, 'name': '\u05e4\u05e1\u05d2\u05ea \u05d6\u05d0\u05d1', 'area': 1, 'next_order': None}]"
+  },
+  {
+    "id": 235,
+    "datetime": "2024-06-23 18:29:41.707468",
+    "class_name": "UserViews",
+    "func_name": "get_all_branches",
+    "func_input": "None",
+    "func_output": "[{'id': 1, 'name': '\u05d4\u05e0\u05d4\u05dc\u05d4', 'area': 5, 'next_order': None}, {'id': 2, 'name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area': 3, 'next_order': None}, {'id': 3, 'name': '\u05e9\u05d3\u05e8\u05d5\u05ea', 'area': 3, 'next_order': None}, {'id': 4, 'name': '\u05e0\u05ea\u05e0\u05d9\u05d4', 'area': 4, 'next_order': None}, {'id': 5, 'name': '\u05e7\u05e8\u05d9\u05ea \u05d1\u05d9\u05d0\u05dc\u05d9\u05e7', 'area': 4, 'next_order': None}, {'id': 6, 'name': '\u05d1\u05e0\u05d9 \u05d1\u05e8\u05e7', 'area': 2, 'next_order': None}, {'id': 7, 'name': '\u05e8\u05d5\u05de\u05de\u05d4', 'area': 1, 'next_order': None}, {'id': 8, 'name': '\u05d1\u05d9\u05ea \u05e9\u05de\u05e9', 'area': 1, 'next_order': None}, {'id': 9, 'name': '\u05d8\u05d9\u05d9\u05dc\u05ea', 'area': 1, 'next_order': None}, {'id': 10, 'name': '\u05e4\u05e1\u05d2\u05ea \u05d6\u05d0\u05d1', 'area': 1, 'next_order': None}]"
+  },
+  {
+    "id": 236,
+    "datetime": "2024-06-23 18:40:52.549177",
+    "class_name": "UserViews",
+    "func_name": "get_all_branches",
+    "func_input": "None",
+    "func_output": "[{'id': 1, 'name': '\u05d4\u05e0\u05d4\u05dc\u05d4', 'area': 5, 'next_order': None}, {'id': 2, 'name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area': 3, 'next_order': None}, {'id': 3, 'name': '\u05e9\u05d3\u05e8\u05d5\u05ea', 'area': 3, 'next_order': None}, {'id': 4, 'name': '\u05e0\u05ea\u05e0\u05d9\u05d4', 'area': 4, 'next_order': None}, {'id': 5, 'name': '\u05e7\u05e8\u05d9\u05ea \u05d1\u05d9\u05d0\u05dc\u05d9\u05e7', 'area': 4, 'next_order': None}, {'id': 6, 'name': '\u05d1\u05e0\u05d9 \u05d1\u05e8\u05e7', 'area': 2, 'next_order': None}, {'id': 7, 'name': '\u05e8\u05d5\u05de\u05de\u05d4', 'area': 1, 'next_order': None}, {'id': 8, 'name': '\u05d1\u05d9\u05ea \u05e9\u05de\u05e9', 'area': 1, 'next_order': None}, {'id': 9, 'name': '\u05d8\u05d9\u05d9\u05dc\u05ea', 'area': 1, 'next_order': None}, {'id': 10, 'name': '\u05e4\u05e1\u05d2\u05ea \u05d6\u05d0\u05d1', 'area': 1, 'next_order': None}]"
+  },
+  {
+    "id": 237,
+    "datetime": "2024-06-23 18:46:18.412650",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "True"
+  },
+  {
+    "id": 238,
+    "datetime": "2024-06-23 18:46:37.138092",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "betty123",
+    "func_output": "True"
+  },
+  {
+    "id": 239,
+    "datetime": "2024-06-23 19:04:32.419044",
+    "class_name": "UserViews",
+    "func_name": "get_all_branches",
+    "func_input": "None",
+    "func_output": "[{'id': 1, 'name': '\u05d4\u05e0\u05d4\u05dc\u05d4', 'area': 5, 'next_order': None}, {'id': 2, 'name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area': 3, 'next_order': None}, {'id': 3, 'name': '\u05e9\u05d3\u05e8\u05d5\u05ea', 'area': 3, 'next_order': None}, {'id': 4, 'name': '\u05e0\u05ea\u05e0\u05d9\u05d4', 'area': 4, 'next_order': None}, {'id': 5, 'name': '\u05e7\u05e8\u05d9\u05ea \u05d1\u05d9\u05d0\u05dc\u05d9\u05e7', 'area': 4, 'next_order': None}, {'id': 6, 'name': '\u05d1\u05e0\u05d9 \u05d1\u05e8\u05e7', 'area': 2, 'next_order': None}, {'id': 7, 'name': '\u05e8\u05d5\u05de\u05de\u05d4', 'area': 1, 'next_order': None}, {'id': 8, 'name': '\u05d1\u05d9\u05ea \u05e9\u05de\u05e9', 'area': 1, 'next_order': None}, {'id': 9, 'name': '\u05d8\u05d9\u05d9\u05dc\u05ea', 'area': 1, 'next_order': None}, {'id': 10, 'name': '\u05e4\u05e1\u05d2\u05ea \u05d6\u05d0\u05d1', 'area': 1, 'next_order': None}]"
+  },
+  {
+    "id": 240,
+    "datetime": "2024-06-23 19:04:36.332570",
+    "class_name": "UserViews",
+    "func_name": "get_all_branches",
+    "func_input": "None",
+    "func_output": "[{'id': 1, 'name': '\u05d4\u05e0\u05d4\u05dc\u05d4', 'area': 5, 'next_order': None}, {'id': 2, 'name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area': 3, 'next_order': None}, {'id': 3, 'name': '\u05e9\u05d3\u05e8\u05d5\u05ea', 'area': 3, 'next_order': None}, {'id': 4, 'name': '\u05e0\u05ea\u05e0\u05d9\u05d4', 'area': 4, 'next_order': None}, {'id': 5, 'name': '\u05e7\u05e8\u05d9\u05ea \u05d1\u05d9\u05d0\u05dc\u05d9\u05e7', 'area': 4, 'next_order': None}, {'id': 6, 'name': '\u05d1\u05e0\u05d9 \u05d1\u05e8\u05e7', 'area': 2, 'next_order': None}, {'id': 7, 'name': '\u05e8\u05d5\u05de\u05de\u05d4', 'area': 1, 'next_order': None}, {'id': 8, 'name': '\u05d1\u05d9\u05ea \u05e9\u05de\u05e9', 'area': 1, 'next_order': None}, {'id': 9, 'name': '\u05d8\u05d9\u05d9\u05dc\u05ea', 'area': 1, 'next_order': None}, {'id': 10, 'name': '\u05e4\u05e1\u05d2\u05ea \u05d6\u05d0\u05d1', 'area': 1, 'next_order': None}]"
+  },
+  {
+    "id": 241,
+    "datetime": "2024-06-23 19:11:57.116698",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "betty123",
+    "func_output": "True"
+  },
+  {
+    "id": 242,
+    "datetime": "2024-06-23 19:14:02.039389",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "betty123",
+    "func_output": "True"
+  },
+  {
+    "id": 243,
+    "datetime": "2024-06-23 19:21:08.028756",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "[{'order': {'id': 2, 'datetime': '2024-06-19T21:08:12.858609Z', 'branch': 2, 'user': 3, 'sent_to_supplier': ''}, 'details': [{'id': 1, 'order': 2, 'item': 13, 'quantity': 3, 'approved_to_ship': '', 'recived': ''}, {'id': 2, 'order': 2, 'item': 22, 'quantity': 2, 'approved_to_ship': '', 'recived': ''}]}]"
+  },
+  {
+    "id": 244,
+    "datetime": "2024-06-23 19:22:35.608841",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "[{'order': {'id': 2, 'datetime': '2024-06-19T21:08:12.858609Z', 'branch': 2, 'user': 3, 'sent_to_supplier': ''}, 'details': [{'id': 1, 'order': 2, 'item': 13, 'quantity': 3, 'approved_to_ship': '', 'recived': ''}, {'id': 2, 'order': 2, 'item': 22, 'quantity': 2, 'approved_to_ship': '', 'recived': ''}]}]"
+  },
+  {
+    "id": 245,
+    "datetime": "2024-06-23 20:09:03.189433",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "[{'order': {'id': 2, 'datetime': '2024-06-19T21:08:12.858609Z', 'branch': 2, 'user': 3, 'sent_to_supplier': ''}, 'details': [{'id': 1, 'order': 2, 'item': 13, 'quantity': 3, 'approved_to_ship': '', 'recived': ''}, {'id': 2, 'order': 2, 'item': 22, 'quantity': 2, 'approved_to_ship': '', 'recived': ''}]}]"
+  },
+  {
+    "id": 246,
+    "datetime": "2024-06-23 20:11:18.779353",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "[{'order': {'id': 2, 'datetime': '2024-06-19T21:08:12.858609Z', 'branch': 2, 'user': 3, 'sent_to_supplier': ''}, 'details': [{'id': 1, 'order': 2, 'item': 13, 'quantity': 3, 'approved_to_ship': '', 'recived': ''}, {'id': 2, 'order': 2, 'item': 22, 'quantity': 2, 'approved_to_ship': '', 'recived': ''}]}]"
+  },
+  {
+    "id": 247,
+    "datetime": "2024-06-23 20:12:33.863224",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "'ReturnDict' object has no attribute 'branch'"
+  },
+  {
+    "id": 248,
+    "datetime": "2024-06-23 20:14:10.509582",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "'ReturnDict' object has no attribute 'name'"
+  },
+  {
+    "id": 249,
+    "datetime": "2024-06-23 20:14:44.682226",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "too many values to unpack (expected 2)"
+  },
+  {
+    "id": 250,
+    "datetime": "2024-06-23 20:17:00.421745",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "'branch_name'"
+  },
+  {
+    "id": 251,
+    "datetime": "2024-06-23 20:17:07.685313",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "'branch_name'"
+  },
+  {
+    "id": 252,
+    "datetime": "2024-06-23 20:18:42.119570",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "'branch_name'"
+  },
+  {
+    "id": 253,
+    "datetime": "2024-06-23 20:19:58.771618",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "too many values to unpack (expected 2)"
+  },
+  {
+    "id": 254,
+    "datetime": "2024-06-23 20:21:17.457913",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "'all_order_approved_to_ship'"
+  },
+  {
+    "id": 255,
+    "datetime": "2024-06-23 20:21:32.009495",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "[{'order': {'id': 2, 'datetime': '2024-06-19T21:08:12.858609Z', 'branch': 2, 'user': 3, 'sent_to_supplier': ''}, 'details': [{'id': 1, 'order': 2, 'item': 13, 'quantity': 3, 'approved_to_ship': '', 'recived': ''}, {'id': 2, 'order': 2, 'item': 22, 'quantity': 2, 'approved_to_ship': '', 'recived': ''}]}]"
+  },
+  {
+    "id": 256,
+    "datetime": "2024-06-23 20:22:27.086140",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "[{'order': {'id': 2, 'datetime': '2024-06-19T21:08:12.858609Z', 'branch': 2, 'user': 3, 'sent_to_supplier': '', 'branch_name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area_name': '\u05d3\u05e8\u05d5\u05dd', 'users_name': 'Betty Linn', 'all_order_approved_to_ship': False, 'all_order_recived': False}, 'details': [{'id': 1, 'order': 2, 'item': 13, 'quantity': 3, 'approved_to_ship': '', 'recived': ''}, {'id': 2, 'order': 2, 'item': 22, 'quantity': 2, 'approved_to_ship': '', 'recived': ''}]}]"
+  },
+  {
+    "id": 257,
+    "datetime": "2024-06-23 20:31:00.488203",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "[{'order': {'id': 2, 'datetime': '2024-06-19T21:08:12.858609Z', 'branch': 2, 'user': 3, 'sent_to_supplier': '', 'branch_name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area_name': '\u05d3\u05e8\u05d5\u05dd', 'users_name': 'Betty Linn', 'all_order_approved_to_ship': False, 'all_order_recived': False}, 'details': [{'id': 1, 'order': 2, 'item': 13, 'quantity': 3, 'approved_to_ship': '', 'recived': ''}, {'id': 2, 'order': 2, 'item': 22, 'quantity': 2, 'approved_to_ship': '', 'recived': ''}]}]"
+  },
+  {
+    "id": 258,
+    "datetime": "2024-06-23 20:32:01.839340",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "True"
+  },
+  {
+    "id": 259,
+    "datetime": "2024-06-23 20:32:02.014739",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "[{'order': {'id': 2, 'datetime': '2024-06-19T21:08:12.858609Z', 'branch': 2, 'user': 3, 'sent_to_supplier': '', 'branch_name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area_name': '\u05d3\u05e8\u05d5\u05dd', 'users_name': 'Betty Linn', 'all_order_approved_to_ship': False, 'all_order_recived': False}, 'details': [{'id': 1, 'order': 2, 'item': 13, 'quantity': 3, 'approved_to_ship': '', 'recived': ''}, {'id': 2, 'order': 2, 'item': 22, 'quantity': 2, 'approved_to_ship': '', 'recived': ''}]}]"
+  },
+  {
+    "id": 260,
+    "datetime": "2024-06-23 20:34:48.069501",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "True"
+  },
+  {
+    "id": 261,
+    "datetime": "2024-06-23 20:34:48.247301",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "[{'order': {'id': 2, 'datetime': '19-06-24 21:08', 'branch': 2, 'user': 3, 'sent_to_supplier': '', 'branch_name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area_name': '\u05d3\u05e8\u05d5\u05dd', 'users_name': 'Betty Linn', 'all_order_approved_to_ship': False, 'all_order_recived': False}, 'details': [{'id': 1, 'order': 2, 'item': 13, 'quantity': 3, 'approved_to_ship': '', 'recived': ''}, {'id': 2, 'order': 2, 'item': 22, 'quantity': 2, 'approved_to_ship': '', 'recived': ''}]}]"
+  },
+  {
+    "id": 262,
+    "datetime": "2024-06-23 20:54:59.032685",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "[{'order': {'id': 2, 'datetime': '19-06-24 21:08', 'branch': 2, 'user': 3, 'sent_to_supplier': '', 'branch_name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area_name': '\u05d3\u05e8\u05d5\u05dd', 'users_name': 'Betty Linn', 'all_order_approved_to_ship': True, 'all_order_recived': False}, 'details': [{'id': 1, 'order': 2, 'item': 13, 'quantity': 3, 'approved_to_ship': 'MQ==', 'recived': ''}, {'id': 2, 'order': 2, 'item': 22, 'quantity': 2, 'approved_to_ship': 'MQ==', 'recived': ''}]}]"
+  },
+  {
+    "id": 263,
+    "datetime": "2024-06-23 20:55:34.776502",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "True"
+  },
+  {
+    "id": 264,
+    "datetime": "2024-06-23 20:55:34.911270",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "[{'order': {'id': 2, 'datetime': '19-06-24 21:08', 'branch': 2, 'user': 3, 'sent_to_supplier': '', 'branch_name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area_name': '\u05d3\u05e8\u05d5\u05dd', 'users_name': 'Betty Linn', 'all_order_approved_to_ship': True, 'all_order_recived': False}, 'details': [{'id': 1, 'order': 2, 'item': 13, 'quantity': 3, 'approved_to_ship': 'MQ==', 'recived': ''}, {'id': 2, 'order': 2, 'item': 22, 'quantity': 2, 'approved_to_ship': 'MQ==', 'recived': ''}]}]"
+  },
+  {
+    "id": 265,
+    "datetime": "2024-06-23 21:08:28.018276",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "[{'order': {'id': 2, 'datetime': '19-06-24 21:08', 'branch': 2, 'user': 3, 'sent_to_supplier': '', 'branch_name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area_name': '\u05d3\u05e8\u05d5\u05dd', 'users_name': 'Betty Linn', 'all_order_approved_to_ship': True, 'all_order_recived': False}, 'details': [{'id': 1, 'order': 2, 'item': 13, 'quantity': 3, 'approved_to_ship': 'MQ==', 'recived': ''}, {'id': 2, 'order': 2, 'item': 22, 'quantity': 2, 'approved_to_ship': 'MQ==', 'recived': ''}]}]"
+  },
+  {
+    "id": 266,
+    "datetime": "2024-06-23 21:14:48.154104",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "True"
+  },
+  {
+    "id": 267,
+    "datetime": "2024-06-23 21:14:48.331047",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "[{'order': {'id': 2, 'datetime': '19-06-24 21:08', 'branch': 2, 'user': 3, 'sent_to_supplier': '', 'branch_name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area_name': '\u05d3\u05e8\u05d5\u05dd', 'users_name': 'Betty Linn', 'all_order_approved_to_ship': True, 'all_order_recived': False}, 'details': [{'id': 1, 'order': 2, 'item': 13, 'quantity': 3, 'approved_to_ship': 'MQ==', 'recived': ''}, {'id': 2, 'order': 2, 'item': 22, 'quantity': 2, 'approved_to_ship': 'MQ==', 'recived': ''}]}]"
+  },
+  {
+    "id": 268,
+    "datetime": "2024-06-23 21:15:49.369227",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "True"
+  },
+  {
+    "id": 269,
+    "datetime": "2024-06-23 21:15:49.482445",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "[{'order': {'id': 2, 'datetime': '19-06-24 21:08', 'branch': 2, 'user': 3, 'sent_to_supplier': '', 'branch_name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area_name': '\u05d3\u05e8\u05d5\u05dd', 'users_name': 'Betty Linn', 'all_order_approved_to_ship': True, 'all_order_recived': False}, 'details': [{'id': 1, 'order': 2, 'item': 13, 'quantity': 3, 'approved_to_ship': 'MQ==', 'recived': ''}, {'id': 2, 'order': 2, 'item': 22, 'quantity': 2, 'approved_to_ship': 'MQ==', 'recived': ''}]}]"
+  },
+  {
+    "id": 270,
+    "datetime": "2024-06-23 21:17:21.703902",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "True"
+  },
+  {
+    "id": 271,
+    "datetime": "2024-06-23 21:17:21.851374",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "[{'order': {'id': 2, 'datetime': '19-06-24 21:08', 'branch': 2, 'user': 3, 'sent_to_supplier': '', 'branch_name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area_name': '\u05d3\u05e8\u05d5\u05dd', 'users_name': 'Betty Linn', 'all_order_approved_to_ship': True, 'all_order_recived': False}, 'details': [{'id': 1, 'order': 2, 'item': 13, 'quantity': 3, 'approved_to_ship': 'MQ==', 'recived': ''}, {'id': 2, 'order': 2, 'item': 22, 'quantity': 2, 'approved_to_ship': 'MQ==', 'recived': ''}]}]"
+  },
+  {
+    "id": 272,
+    "datetime": "2024-06-23 21:18:12.054377",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "True"
+  },
+  {
+    "id": 273,
+    "datetime": "2024-06-23 21:18:12.211091",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "[{'order': {'id': 2, 'datetime': '19-06-24 21:08', 'branch': 2, 'user': 3, 'sent_to_supplier': '', 'branch_name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area_name': '\u05d3\u05e8\u05d5\u05dd', 'users_name': 'Betty Linn', 'all_order_approved_to_ship': True, 'all_order_recived': False}, 'details': [{'id': 1, 'order': 2, 'item': 13, 'quantity': 3, 'approved_to_ship': 'MQ==', 'recived': ''}, {'id': 2, 'order': 2, 'item': 22, 'quantity': 2, 'approved_to_ship': 'MQ==', 'recived': ''}]}]"
+  },
+  {
+    "id": 274,
+    "datetime": "2024-06-23 21:24:18.994392",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "True"
+  },
+  {
+    "id": 275,
+    "datetime": "2024-06-23 21:24:19.137174",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "[{'order': {'id': 2, 'datetime': '19-06-24 21:08', 'branch': 2, 'user': 3, 'sent_to_supplier': '', 'branch_name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area_name': '\u05d3\u05e8\u05d5\u05dd', 'users_name': 'Betty Linn', 'all_order_approved_to_ship': True, 'all_order_recived': False}, 'details': [{'id': 1, 'order': 2, 'item': 13, 'quantity': 3, 'approved_to_ship': 'MQ==', 'recived': ''}, {'id': 2, 'order': 2, 'item': 22, 'quantity': 2, 'approved_to_ship': 'MQ==', 'recived': ''}]}]"
+  },
+  {
+    "id": 276,
+    "datetime": "2024-06-23 21:24:52.184528",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "True"
+  },
+  {
+    "id": 277,
+    "datetime": "2024-06-23 21:24:52.321212",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "[{'order': {'id': 2, 'datetime': '19-06-24 21:08', 'branch': 2, 'user': 3, 'sent_to_supplier': '', 'branch_name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area_name': '\u05d3\u05e8\u05d5\u05dd', 'users_name': 'Betty Linn', 'all_order_approved_to_ship': True, 'all_order_recived': False}, 'details': [{'id': 1, 'order': 2, 'item': 13, 'quantity': 3, 'approved_to_ship': 'MQ==', 'recived': ''}, {'id': 2, 'order': 2, 'item': 22, 'quantity': 2, 'approved_to_ship': 'MQ==', 'recived': ''}]}]"
+  },
+  {
+    "id": 278,
+    "datetime": "2024-06-23 21:35:35.332848",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "too many values to unpack (expected 2)"
+  },
+  {
+    "id": 279,
+    "datetime": "2024-06-23 21:37:20.974521",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "invalid literal for int() with base 10: '120.00'"
+  },
+  {
+    "id": 280,
+    "datetime": "2024-06-23 21:38:12.064656",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "unsupported operand type(s) for +: 'int' and 'str'"
+  },
+  {
+    "id": 281,
+    "datetime": "2024-06-23 21:39:12.331866",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "[{'order': {'id': 2, 'datetime': '19-06-24 21:08', 'branch': 2, 'user': 3, 'sent_to_supplier': '', 'branch_name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area_name': '\u05d3\u05e8\u05d5\u05dd', 'users_name': 'Betty Linn', 'all_order_approved_to_ship': True, 'all_order_recived': False, 'order_total': 660.0}, 'details': [{'id': 1, 'order': 2, 'item': 13, 'quantity': 3, 'approved_to_ship': 'MQ==', 'recived': '', 'detail_name': '\u05d2\u05d1\u05e1 15', 'detail_price': '120.00', 'detail_unit_measure': '\u05e7\u05d5\u05e4\u05e1\u05d0', 'detail_supplier': 1, 'detail_price_for_order': 360.0}, {'id': 2, 'order': 2, 'item': 22, 'quantity': 2, 'approved_to_ship': 'MQ==', 'recived': '', 'detail_name': '\u05d0\u05d2\u05d3 \u05d7\u05d1\u05d9\u05e9\u05d4 \u05e7\u05d8\u05df 5 \u05e1\u05de', 'detail_price': '150.00', 'detail_unit_measure': '\u05d0\u05e8\u05d2\u05d6', 'detail_supplier': 1, 'detail_price_for_order': 300.0}]}]"
+  },
+  {
+    "id": 282,
+    "datetime": "2024-06-23 21:43:47.085741",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "'supplier'"
+  },
+  {
+    "id": 283,
+    "datetime": "2024-06-23 21:44:16.344886",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "Field 'id' expected a number but got <BoundField value=1 errors=None>."
+  },
+  {
+    "id": 284,
+    "datetime": "2024-06-23 21:46:32.760506",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "[{'order': {'id': 2, 'datetime': '19-06-24 21:08', 'branch': 2, 'user': 3, 'sent_to_supplier': '', 'branch_name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area_name': '\u05d3\u05e8\u05d5\u05dd', 'users_name': 'Betty Linn', 'all_order_approved_to_ship': True, 'all_order_recived': False, 'order_total': 660.0}, 'details': [{'id': 1, 'order': 2, 'item': 13, 'quantity': 3, 'approved_to_ship': 'MQ==', 'recived': '', 'detail_name': '\u05d2\u05d1\u05e1 15', 'detail_price': '120.00', 'detail_unit_measure': '\u05e7\u05d5\u05e4\u05e1\u05d0', 'detail_price_for_order': 360.0, 'detail_supplier': 'Meditecnica'}, {'id': 2, 'order': 2, 'item': 22, 'quantity': 2, 'approved_to_ship': 'MQ==', 'recived': '', 'detail_name': '\u05d0\u05d2\u05d3 \u05d7\u05d1\u05d9\u05e9\u05d4 \u05e7\u05d8\u05df 5 \u05e1\u05de', 'detail_price': '150.00', 'detail_unit_measure': '\u05d0\u05e8\u05d2\u05d6', 'detail_price_for_order': 300.0, 'detail_supplier': 'Meditecnica'}]}]"
+  },
+  {
+    "id": 285,
+    "datetime": "2024-06-23 21:47:19.191741",
+    "class_name": "AnonViews",
+    "func_name": "login",
+    "func_input": "FirstAdmin",
+    "func_output": "True"
+  },
+  {
+    "id": 286,
+    "datetime": "2024-06-23 21:47:19.337688",
+    "class_name": "AdminViews",
+    "func_name": "get_all_orders",
+    "func_input": "None",
+    "func_output": "[{'order': {'id': 2, 'datetime': '19-06-24 21:08', 'branch': 2, 'user': 3, 'sent_to_supplier': '', 'branch_name': '\u05d1\u05d0\u05e8 \u05e9\u05d1\u05e2', 'area_name': '\u05d3\u05e8\u05d5\u05dd', 'users_name': 'Betty Linn', 'all_order_approved_to_ship': True, 'all_order_recived': False, 'order_total': 660.0}, 'details': [{'id': 1, 'order': 2, 'item': 13, 'quantity': 3, 'approved_to_ship': 'MQ==', 'recived': '', 'detail_name': '\u05d2\u05d1\u05e1 15', 'detail_price': '120.00', 'detail_unit_measure': '\u05e7\u05d5\u05e4\u05e1\u05d0', 'detail_price_for_order': 360.0, 'detail_supplier': 'Meditecnica'}, {'id': 2, 'order': 2, 'item': 22, 'quantity': 2, 'approved_to_ship': 'MQ==', 'recived': '', 'detail_name': '\u05d0\u05d2\u05d3 \u05d7\u05d1\u05d9\u05e9\u05d4 \u05e7\u05d8\u05df 5 \u05e1\u05de', 'detail_price': '150.00', 'detail_unit_measure': '\u05d0\u05e8\u05d2\u05d6', 'detail_price_for_order': 300.0, 'detail_supplier': 'Meditecnica'}]}]"
   }
 ]

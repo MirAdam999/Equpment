@@ -6,13 +6,15 @@ from rest_framework.response import Response
 from django.db import transaction
 from .user_views import UserViews
 from ..models import *
-from ..serializer import *
+from ..serializers.serializer import *
 from ..log.logger import Logger
+from ..serializers.data_manipulation import DataConstructor
 
 logger = Logger()
+data_constructor = DataConstructor()
 
 class AdminViews(UserViews):
-    def __init__(self) -> None:
+    def __init__(self):
         super().__init__()
         
     @api_view(['POST'])
@@ -181,7 +183,9 @@ class AdminViews(UserViews):
         finally:
             logger.log('AdminViews','revoke_admin',user_id,output)       
        
-           
+       
+    @api_view(['GET'])
+    @permission_classes([IsAuthenticated,IsAdminUser])    
     def get_orders_by_branch(request, branch_id):
         try:
             orders = Order.objects.filter(branch = branch_id)
@@ -209,20 +213,18 @@ class AdminViews(UserViews):
             logger.log('AdminViews','get_orders_by_branch',branch_id,output)   
     
     
+    @api_view(['GET'])
+    @permission_classes([IsAuthenticated,IsAdminUser]) 
     def get_all_orders(request):
         try:
             orders = Order.objects.all()
             all_orders_data = []
             for order in orders:
-                order_seri = OrderSerializer(order)
-                order_details = OrderDetails.objects.filter(order = order.id)
-                order_details_seri = OrderDetailSerializer(order_details, many = True)
-                order_dict = {"order":order_seri.data,
-                              "details":order_details_seri.data}
+                order_dict = data_constructor.parse_order(order)
                 all_orders_data.append(order_dict)
                 
             output = all_orders_data
-            return Response({"orders and details":output}, status=status.HTTP_200_OK)
+            return Response({"all_orders":output}, status=status.HTTP_200_OK)
         
         except Order.DoesNotExist:
             output = f"No orders found."
@@ -236,7 +238,7 @@ class AdminViews(UserViews):
             logger.log('AdminViews','get_all_orders',None,output)   
     
     
-    def get_orders_by_dates(self,request):
+    def get_orders_by_dates(request):
         pass
     
     

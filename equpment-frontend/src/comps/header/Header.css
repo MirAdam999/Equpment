@@ -1,0 +1,20 @@
+.header {
+    top: 0;
+    width: 100vw;
+}
+
+.header-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.user-navbar-ul,
+.admin-navbar-ul {
+    width: 100vw;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-family: var(--main-font);
+}

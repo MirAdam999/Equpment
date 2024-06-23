@@ -6,8 +6,9 @@ from .anon_views import AnonViews
 from rest_framework.permissions import IsAuthenticated
 from django.db import transaction
 from ..models import *
-from ..serializer import *
+from ..serializers.serializer import *
 from ..log.logger import Logger
+from ..serializers.data_manipulation import DataConstructor
 
 logger = Logger()
 
@@ -217,6 +218,10 @@ class UserViews(AnonViews):
                     details = []
                     for key, detail in order_details.items():
                         detail['order'] = order.id  # Set the order ID for each detail
+                        item = Equpment.objects.get(pk = int(detail['item']))
+                        item_seri = EqupmentSerializer(item)
+                        item_data = item_seri.data
+                        detail['approved_to_ship'] = True if item_data.requres_approval == False else False
                         detail_serializer = OrderDetailSerializer(data=detail)
                         
                         # Save detail, on faliure rollback
