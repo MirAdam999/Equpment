@@ -1,0 +1,12 @@
+.cart-inner {
+    text-align: right;
+    direction: rtl;
+    border-collapse: collapse;
+}
+
+.cart-inner th,
+.cart-inner td {
+    border-bottom: solid 1px black;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}

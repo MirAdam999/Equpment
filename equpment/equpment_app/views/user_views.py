@@ -11,6 +11,7 @@ from ..log.logger import Logger
 from ..serializers.data_manipulation import DataConstructor
 
 logger = Logger()
+data_constructor = DataConstructor()
 
 class UserViews(AnonViews):
     def __init__(self) -> None:
@@ -105,8 +106,8 @@ class UserViews(AnonViews):
         try:
             equpment = Equpment.objects.filter(category = cat_id)
             seri = EqupmentSerializer(equpment, many = True)
-            output = {"equpment":seri.data}
-            return Response(output, status=status.HTTP_200_OK)
+            output = 'nah'
+            return Response({"equpment":seri.data}, status=status.HTTP_200_OK)
         
         except Equpment.DoesNotExist:
             output = f"No equpment under cat with id {cat_id}."
@@ -155,15 +156,11 @@ class UserViews(AnonViews):
             orders = Order.objects.filter(branch = branch_id)
             all_orders_data = []
             for order in orders:
-                order_seri = OrderSerializer(order)
-                order_details = OrderDetails.objects.filter(order = order.id)
-                order_details_seri = OrderDetailSerializer(order_details, many = True)
-                order_dict = {"order":order_seri.data,
-                              "details":order_details_seri.data}
+                order_dict = data_constructor.parse_order(order)
                 all_orders_data.append(order_dict)
                 
             output = all_orders_data
-            return Response({"orders and details":output}, status=status.HTTP_200_OK)
+            return Response({"branch_orders":output}, status=status.HTTP_200_OK)
         
         except Order.DoesNotExist:
             output = f"No orders for branch with id {branch_id}."
@@ -221,7 +218,7 @@ class UserViews(AnonViews):
                         item = Equpment.objects.get(pk = int(detail['item']))
                         item_seri = EqupmentSerializer(item)
                         item_data = item_seri.data
-                        detail['approved_to_ship'] = True if item_data.requres_approval == False else False
+                        detail['approved_to_ship'] = True if item_data['requres_approval']== False else False
                         detail_serializer = OrderDetailSerializer(data=detail)
                         
                         # Save detail, on faliure rollback

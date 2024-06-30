@@ -72,10 +72,6 @@ class AnonViews:
             found_token.delete()
             output = {'logout':True}
             return Response(output,status=status.HTTP_204_NO_CONTENT) 
-            
-        except Token.DoesNotExist:
-            output = {"not found": "Token not found"}
-            return Response(output, status=status.HTTP_404_NOT_FOUND) 
 
         except Exception as e:
             output = str(e)

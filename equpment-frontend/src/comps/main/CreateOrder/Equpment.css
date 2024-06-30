@@ -1,0 +1,10 @@
+.item-of-equpment {
+    text-align: right;
+    direction: rtl;
+    border-collapse: collapse;
+}
+
+.item-of-equpment th,
+.item-of-equpment td {
+    border-bottom: solid 1px black;
+}
