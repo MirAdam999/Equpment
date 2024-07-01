@@ -1,0 +1,14 @@
+.manage-users-form {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+}
+
+.manage-users-form div {
+    display: flex;
+    flex-direction: column;
+}
+
+.users-found-table {
+    direction: rtl;
+}

@@ -50,18 +50,23 @@ const Header = () => {
                 {isMasterUser &&
                     <ul className="admin-navbar-ul">
                         <li onClick={() => handleNavigation('/managment_orders')}>הזמנות</li>
-                        <li>ציוד</li>
+                        <li>ציוד
+                            <ul className="dropdown-ul">
+                                <li onClick={() => handleNavigation('/manage_equpment_categories')}>קטגוריות ציוד</li>
+                                <li onClick={() => handleNavigation('/manage_equpment_items')}>פריטי ציוד</li>
+                            </ul>
+                        </li>
                         <li>סניפים</li>
                         <li>ספקים</li>
-                        <li>משתמשים</li>
-                        <li>אזור אישי</li>
+                        <li onClick={() => handleNavigation('/manage_users')}>משתמשים</li>
+                        <li onClick={() => handleNavigation('/my_profile')}>אזור אישי</li>
                     </ul>
                 }
                 {!isMasterUser &&
                     <ul className="user-navbar-ul">
                         <li onClick={() => handleNavigation('/create_order')}>יצירת הזמנה + </li>
                         <li onClick={() => handleNavigation('/branch_orders')}>הזמנות</li>
-                        <li>אזור אישי</li>
+                        <li onClick={() => handleNavigation('/my_profile')}>אזור אישי</li>
                         <li onClick={() => handleNavigation('/choose_branch')}>החלפת סניף</li>
                     </ul>
                 }

@@ -33,7 +33,7 @@ class UserViews(AnonViews):
         
         except Branch.DoesNotExist:
             output = f"No Branches Found"
-            return Response({"not found": output}, status=status.HTTP_404_NOT_FOUND)
+            return Response({"not_found": output}, status=status.HTTP_404_NOT_FOUND)
                 
         except Exception as e:
             output = str(e)
@@ -79,8 +79,12 @@ class UserViews(AnonViews):
         """
         try:
             cats = EqupmentCategory.objects.all()
-            seri = EqupmentCategorySerializer(cats, many = True)
-            output = seri.data
+            parced_cats = []
+            for cat in cats:
+               parced_cat =  data_constructor.parce_cats(cat)
+               parced_cats.append(parced_cat)
+               
+            output = parced_cats
             return Response({"all_cats":output}, status=status.HTTP_200_OK)
         
         except Branch.DoesNotExist:
@@ -269,6 +273,32 @@ class UserViews(AnonViews):
             logger.log('UserViews','approve_delivery', order_detail_id, output)
     
     
+    @api_view(['GET'])
+    @permission_classes([IsAuthenticated])
+    def get_self(request):
+        """
+        12.06.24
+        Args: GET
+        Returns: requesting user user's data as json + 200/ not found str + 404 / err str + 500
+        """
+        try:
+            user = request.user
+            seri = UserSerializer(user)
+            output = seri.data
+            return Response({"me":output}, status=status.HTTP_200_OK)
+        
+        except User.DoesNotExist:
+            output = f"No User Data Found"
+            return Response({"not_found": output}, status=status.HTTP_404_NOT_FOUND)
+                
+        except Exception as e:
+            output = str(e)
+            return Response({"err":str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            
+        finally:
+            logger.log('UserViews','get_self',None,output)
+            
+    
     @api_view(['PUT'])
     @permission_classes([IsAuthenticated])
     def update_profile(request):
@@ -281,17 +311,17 @@ class UserViews(AnonViews):
             default_branch = request.data.get('default_branch')
             
             if not user.check_password(password):
-                output = 'Invalid Password'
+                output = 'סיסמה שגויא'
                 return Response({'wrong': output}, status=status.HTTP_400_BAD_REQUEST)
             
             existing_username = User.objects.filter(username=username)
             if existing_username and existing_username[0] != user:
-                output = 'User with Username exist, pick different username.'
+                output = 'משתמש עם שם שמתמש זה כבר קיים, אנא בחר שם משתמש שונה'
                 return Response({'wrong': output}, status=status.HTTP_400_BAD_REQUEST)
             
             existing_email = User.objects.filter(email=email)
             if existing_email and existing_email[0] != user:
-                output = 'User with Email given already exist.'
+                output = 'משתמש עם דוא"ל זה כבר קיים'
                 return Response({'wrong': output}, status=status.HTTP_400_BAD_REQUEST)
             
             seri = UserSerializer(user, data={"username":username,
@@ -327,7 +357,7 @@ class UserViews(AnonViews):
                 return Response({'wrong': output}, status=status.HTTP_400_BAD_REQUEST)
             
             if not user.check_password(old_password):
-                output = 'Invalid old password'
+                output = 'סיסמה ישנה שגויא'
                 return Response({'wrong': output}, status=status.HTTP_400_BAD_REQUEST)
             
             user.set_password(new_password)

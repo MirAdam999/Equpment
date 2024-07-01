@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 const LogIn = () => {
     const { storedURL } = useURL();
-    const { setToken, setName, setIsMasterPermission } = useToken();
+    const { setToken, setName, setID, setIsMasterPermission } = useToken();
     const { setCurrentBranchName, setCurrentBranchID, setCurrentNextOrder } = useBranch();
     const [errorMessage, setErrorMessage] = useState('');
     const username = useRef();
@@ -42,12 +42,14 @@ const LogIn = () => {
             } else {
                 const receivedToken = data.token;
                 const receivedName = data.user.name;
+                const receivedID = data.user.id;
                 const recevedMasterPrem = data.user.is_admin;
                 const recevedBranchName = data.user.default_branch_name;
                 const recevedBranchID = data.user.default_branch_id;
                 const recevedNextOrder = data.user.default_branch_next_order;
                 setToken(receivedToken);
                 setName(receivedName);
+                setID(receivedID);
                 setIsMasterPermission(recevedMasterPrem);
                 setCurrentBranchName(recevedBranchName);
                 setCurrentBranchID(recevedBranchID);
@@ -80,7 +82,7 @@ const LogIn = () => {
                     <button type="submit">התחבר</button>
                 </form>
                 {errorMessage &&
-                    <p>{errorMessage}</p>}
+                    <p className="err=msg">{errorMessage}</p>}
             </div>
         </div>
     )

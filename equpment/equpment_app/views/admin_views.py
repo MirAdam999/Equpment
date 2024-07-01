@@ -34,6 +34,12 @@ class AdminViews(UserViews):
             
             else:
                 output = serializer.errors
+                if 'username' in output:
+                    return Response({'wrong': 'משתמש עם שם משתמש זה כבר קיים, אנא בחר שם משתמש שונה'}, status=status.HTTP_400_BAD_REQUEST)
+                
+                if 'email' in output:
+                    return Response({'wrong': 'משתמש עם דוא"ל זה כבר קיים'}, status=status.HTTP_400_BAD_REQUEST)
+                
                 return Response({'err': output}, status=status.HTTP_400_BAD_REQUEST)
         
         except Exception as e:
@@ -85,19 +91,51 @@ class AdminViews(UserViews):
         finally:
             logger.log('AdminViews','get_all_users',None,output)    
     
+    
+    @api_view(['GET'])
+    @permission_classes([IsAuthenticated, IsAdminUser])
+    def get_filtered_users(request):
+        try:
+            user_type = request.GET.get('user_type', 'all')
+            user_status = request.GET.get('user_status', 'all')
+
+            filters = {}
+
+            if user_type != 'all':
+                filters['is_superuser'] = user_type
+
+            if user_status != 'all':
+                filters['is_active'] = user_status
+
+            users = User.objects.filter(**filters)
+
+            filtered_users = []
+            for user in users:
+                parced_user = data_constructor.parce_user(user)
+                filtered_users.append(parced_user)
+                
+            output = filtered_users
+            return Response({"filtered_users": output}, status=status.HTTP_200_OK)
+        
+        except Exception as e:
+            output = str(e)
+            return Response({"error": output}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
 
     @api_view(['PUT'])
     @permission_classes([IsAuthenticated,IsAdminUser]) 
     def disactivate_user(request, user_id):
         try:
-            user = User.objects.filter(pk = user_id)
+            user = User.objects.get(pk = user_id)
             current_user = request.user
             if user:
-                if user[0] == current_user:
+                if user_id == current_user.id:
                     output = {"wrong":"Cannot disactivate oneself"}
                     return Response(output, status=status.HTTP_400_BAD_REQUEST)
                 
                 user.is_active = False
+                user.save() 
+                
                 output = {"user_disactivated":user_id}
                 return Response(output, status=status.HTTP_200_OK) 
         
@@ -117,15 +155,17 @@ class AdminViews(UserViews):
     @permission_classes([IsAuthenticated,IsAdminUser])  
     def activate_user(request, user_id):
         try:
-            user = User.objects.filter(pk = user_id)
+            user = User.objects.get(pk = user_id)
             if user:
                 user.is_active = True
+                user.save() 
+                
                 output = {"user_activated":user_id}
                 return Response(output, status=status.HTTP_200_OK) 
         
         except User.DoesNotExist:
             output = f"No user with id {user_id}."
-            return Response({"not found": output}, status=status.HTTP_404_NOT_FOUND)
+            return Response({"not_found": output}, status=status.HTTP_404_NOT_FOUND)
         
         except Exception as e:
             output = str(e)
@@ -139,15 +179,17 @@ class AdminViews(UserViews):
     @permission_classes([IsAuthenticated,IsAdminUser]) 
     def make_admin(request, user_id):
         try:
-            user = User.objects.filter(pk = user_id)
+            user = User.objects.get(pk = user_id)
             if user:
                 user.is_superuser = True
+                user.save() 
+                
                 output = {"made_admin":user_id}
                 return Response(output, status=status.HTTP_200_OK) 
         
         except User.DoesNotExist:
             output = f"No user with id {user_id}."
-            return Response({"not found": output}, status=status.HTTP_404_NOT_FOUND)
+            return Response({"not_found": output}, status=status.HTTP_404_NOT_FOUND)
         
         except Exception as e:
             output = str(e)
@@ -161,20 +203,22 @@ class AdminViews(UserViews):
     @permission_classes([IsAuthenticated,IsAdminUser]) 
     def revoke_admin(request, user_id):
         try:
-            user = User.objects.filter(pk = user_id)
+            user = User.objects.get(pk = user_id)
             current_user = request.user
             if user:
-                if user[0] == current_user:
+                if user_id == current_user.id:
                     output = {"wrong":"Cannot revoke own admin premmisions"}
                     return Response(output, status=status.HTTP_400_BAD_REQUEST)
                     
                 user.is_superuser = False
+                user.save() 
+                
                 output = {"revoked_admin":user_id}
                 return Response(output, status=status.HTTP_200_OK) 
         
         except User.DoesNotExist:
             output = f"No user with id {user_id}."
-            return Response({"not found": output}, status=status.HTTP_404_NOT_FOUND)
+            return Response({"not_found": output}, status=status.HTTP_404_NOT_FOUND)
         
         except Exception as e:
             output = str(e)
@@ -325,7 +369,7 @@ class AdminViews(UserViews):
             return Response(output, status=status.HTTP_400_BAD_REQUEST)
         
         except EqupmentCategory.DoesNotExist:
-            output = "No equpment category with id given"
+            output = f"No equpment category with id {equpment_cat_id} found"
             return Response({"not_found": output}, status=status.HTTP_404_NOT_FOUND)
         
         except Exception as e:
@@ -334,6 +378,32 @@ class AdminViews(UserViews):
         
         finally:
             logger.log('AdminViews','update_equpment_category', (request.data, equpment_cat_id), output)          
+            
+            
+    @api_view(['DELETE'])
+    @permission_classes([IsAuthenticated, IsAdminUser])
+    def delete_equpment_category(request, equpment_cat_id):
+        """
+        20.06.24
+        Args: DELETE, equipment_cat_id (int)
+        Returns: deleted + 204/ not_found + 404 / err + 500
+        """
+        try:
+            equipment_cat = EqupmentCategory.objects.get(pk=equpment_cat_id)
+            equipment_cat.delete()
+            output = 'deleted'
+            return Response({"deleted": True}, status=status.HTTP_204_NO_CONTENT)
+        
+        except EqupmentCategory.DoesNotExist:
+            output = f"No equipment category with id {equpment_cat_id} found"
+            return Response({"not_found": output}, status=status.HTTP_404_NOT_FOUND)
+        
+        except Exception as e:
+            output = str(e)
+            return Response({'err': output}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+        finally:
+            logger.log('AdminViews','delete_equipment_category', (request.data, equpment_cat_id), output)  
                 
     
     @api_view(['POST'])

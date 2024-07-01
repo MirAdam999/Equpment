@@ -39,6 +39,7 @@ class AnonViews:
                 branch_seri = BranchSerializer(branch)
                 branch_data = branch_seri.data
                 user_data_for_frontend = {
+                    'id':seri_data.get('id', None),
                     'name':seri_data.get('name', None),
                     'is_admin':seri_data.get('is_superuser', None),
                     'default_branch_name': (branch_data.get('name',None)),
@@ -48,7 +49,7 @@ class AnonViews:
                 output = True
                 return Response({'token': token.key, 'user': user_data_for_frontend}, status=status.HTTP_200_OK)
             
-            output = {'wrong': 'Wrong Username/Password'}
+            output = {'wrong': 'סיסמה/שם משתמש שגויים'}
             return Response(output, status=status.HTTP_401_UNAUTHORIZED)
         
         except Exception as e:

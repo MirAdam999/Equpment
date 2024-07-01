@@ -10,3 +10,11 @@ body {
     margin: 0;
     width: 100%;
 }
+
+.sucsess-msg {
+    color: green;
+}
+
+.err-msg {
+    color: red;
+}

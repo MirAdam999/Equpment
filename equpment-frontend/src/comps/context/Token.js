@@ -5,6 +5,7 @@ const TokenContext = createContext();
 const TokenProvider = ({ children }) => {
     const [storedToken, setStoredToken] = useState(null);
     const [usersName, setUsersName] = useState('');
+    const [usersID, setUsersID] = useState('');
     const [isMasterUser, setIsMaster] = useState(false);
 
     const setToken = (newToken) => {
@@ -13,6 +14,10 @@ const TokenProvider = ({ children }) => {
 
     const setName = (newName) => {
         setUsersName(newName);
+    };
+
+    const setID = (newID) => {
+        setUsersID(newID);
     };
 
     const setIsMasterPermission = (masterPermission) => {
@@ -26,6 +31,8 @@ const TokenProvider = ({ children }) => {
                 setToken,
                 usersName,
                 setName,
+                usersID,
+                setID,
                 isMasterUser,
                 setIsMasterPermission,
             }}

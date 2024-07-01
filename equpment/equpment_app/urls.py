@@ -16,6 +16,7 @@ urlpatterns = [
     path('view_orders_by_branch/<int:branch_id>/',UserViews.view_orders_by_branch), # tested
     path('add_order/',UserViews.add_order), # tested 
     path('approve_delivery/<int:order_detail_id>/',UserViews.approve_delivery), 
+    path('get_self/',UserViews.get_self), # tested 
     path('update_profile/',UserViews.update_profile), # tested
     path('update_password/',UserViews.update_password), # tested
     path('change/',UserViews.change), # pakapaka
@@ -28,6 +29,7 @@ urlpatterns = [
     path('update_branch/<int:branch_id>/',AdminViews.update_branch), # tested
     path('add_equpment_category/',AdminViews.add_equpment_category), # tested
     path('update_equpment_category/<int:equpment_cat_id>/',AdminViews.update_equpment_category), # tested
+    path('delete_equpment_category/<int:equpment_cat_id>/',AdminViews.delete_equpment_category), 
     path('add_many_equpment_categories/',AdminViews.add_many_equpment_categories), # tested
     path('add_item_of_equpment/',AdminViews.add_item_of_equpment), # tested
     path('update_item_of_equpment/<int:equpment_id>/',AdminViews.update_item_of_equpment), # tested
@@ -35,9 +37,10 @@ urlpatterns = [
     path('update_supplier/<int:sup_id>/',AdminViews.update_supplier), # tested
     path('get_user_by_id/<int:user_id>/',AdminViews.get_user_by_id), # tested
     path('get_all_users/',AdminViews.get_all_users), # tested
+    path('get_filtered_users/',AdminViews.get_filtered_users), # tested
     path('disactivate_user/<int:user_id>/',AdminViews.disactivate_user), # tested
     path('activate_user/<int:user_id>/',AdminViews.activate_user), # tested
     path('make_admin/<int:user_id>/',AdminViews.make_admin), # tested
     path('revoke_admin/<int:user_id>/',AdminViews.revoke_admin), # tested
-    path('get_all_orders/',AdminViews.get_all_orders),
+    path('get_all_orders/',AdminViews.get_all_orders), # tested
 ]

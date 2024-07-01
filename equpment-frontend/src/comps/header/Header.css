@@ -9,6 +9,10 @@
     justify-content: space-evenly;
 }
 
+.header-top h1 {
+    background-color: yellow;
+}
+
 .user-navbar-ul,
 .admin-navbar-ul {
     width: 100vw;
@@ -17,4 +21,8 @@
     flex-direction: row;
     justify-content: space-evenly;
     font-family: var(--main-font);
+}
+
+.dropdown-ul {
+    list-style-type: none;
 }

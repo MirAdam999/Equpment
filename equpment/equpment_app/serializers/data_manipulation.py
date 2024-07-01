@@ -48,3 +48,24 @@ class DataConstructor:
         order_data['order_total'] = sum(detail['detail_price_for_order'] for detail in order_details_data)
 
         return {"order": order_data, "details": order_details_seri.data}
+    
+    
+    def parce_user(self, user):
+        seri = UserSerializer(user)
+        data = seri.data
+        
+        branch = Branch.objects.get(pk=data['default_branch'])
+        branch_seri = BranchSerializer(branch)
+        data['branch_name'] = branch_seri.data['name']
+        
+        return (data)
+    
+    
+    def parce_cats(self, cat):
+        seri = EqupmentCategorySerializer(cat)
+        data = seri.data
+        
+        count = Equpment.objects.filter(category=data['id']).count()
+        data['objects_in_category'] = count
+        
+        return (data)

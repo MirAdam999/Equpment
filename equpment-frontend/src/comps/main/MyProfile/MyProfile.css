@@ -1,0 +1,6 @@
+.my-profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    text-align: right;
+}
