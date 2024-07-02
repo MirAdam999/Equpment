@@ -1,0 +1,21 @@
+.add-equpment-form {
+    direction: rtl;
+    display: flex;
+    flex-direction: column;
+
+    width: 50%;
+}
+
+.add-equpment-form div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.searchbar-equpment form {
+    direction: rtl;
+}
+
+.equpment-table {
+    direction: rtl;
+}

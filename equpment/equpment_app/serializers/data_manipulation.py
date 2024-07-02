@@ -65,7 +65,32 @@ class DataConstructor:
         seri = EqupmentCategorySerializer(cat)
         data = seri.data
         
-        count = Equpment.objects.filter(category=data['id']).count()
+        count = Equpment.objects.filter(category=data['id'], active=True).count()
         data['objects_in_category'] = count
+        
+        return (data)
+    
+    
+    def parce_item_of_equpment(self, item):
+        seri = EqupmentSerializer(item)
+        data = seri.data
+        
+        category = EqupmentCategory.objects.get(pk=data['category'])
+        cat_seri = EqupmentCategorySerializer(category)
+        data['cat_name'] = cat_seri.data['name']
+        
+        supplier = Supplier.objects.get(pk=data['supplier'])
+        supplier_seri = SupplierSerializer(supplier)
+        data['supplier_name'] = supplier_seri.data['name']
+        
+        return (data)
+    
+    
+    def parce_supplier(self, supplier):
+        seri = SupplierSerializer(supplier)
+        data = seri.data
+        
+        count = Equpment.objects.filter(supplier=data['id'], active=True).count()
+        data['items_supplied'] = count
         
         return (data)

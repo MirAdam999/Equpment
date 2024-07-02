@@ -23,6 +23,7 @@ urlpatterns = [
     
     # admin views
     path('add_user/',AdminViews.add_user), # tested
+    path('get_all_areas/',AdminViews.get_all_areas),
     path('add_area/',AdminViews.add_area), # tested
     path('update_area/<int:area_id>/',AdminViews.update_area), # tested
     path('add_branch/',AdminViews.add_branch), # tested
@@ -31,8 +32,12 @@ urlpatterns = [
     path('update_equpment_category/<int:equpment_cat_id>/',AdminViews.update_equpment_category), # tested
     path('delete_equpment_category/<int:equpment_cat_id>/',AdminViews.delete_equpment_category), 
     path('add_many_equpment_categories/',AdminViews.add_many_equpment_categories), # tested
+    path('get_filtered_equpment/',AdminViews.get_filtered_equpment), # tested
     path('add_item_of_equpment/',AdminViews.add_item_of_equpment), # tested
     path('update_item_of_equpment/<int:equpment_id>/',AdminViews.update_item_of_equpment), # tested
+    path('activate_equpment/<int:equpment_id>/',AdminViews.activate_equpment), # tested
+    path('deactivate_equpment/<int:equpment_id>/',AdminViews.deactivate_equpment), # tested
+    path('get_all_suppliers/',AdminViews.get_all_suppliers), # tested
     path('add_supplier/',AdminViews.add_supplier), # tested
     path('update_supplier/<int:sup_id>/',AdminViews.update_supplier), # tested
     path('get_user_by_id/<int:user_id>/',AdminViews.get_user_by_id), # tested

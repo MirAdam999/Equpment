@@ -19,7 +19,7 @@ const ApproveDeletionPopUp = (props) => {
                 <p>{props.question}</p>
                 <div>
                     <button onClick={props.onClose}>בטל</button>
-                    <button onClick={props.onDelete}>מחק</button>
+                    <button onClick={props.onDelete}>{props.action}</button>
                 </div>
             </div>
         )

@@ -10,6 +10,8 @@ import MyProfile from './comps/main/MyProfile/MyProfile';
 import ManageUsers from './comps/main/ManageUsers/ManageUsers';
 import ManageCats from './comps/main/MangeEqupment/ManageCats/ManageCats';
 import ManageEqupment from './comps/main/MangeEqupment/ManageEqupment';
+import ManageSuppliers from './comps/main/ManageSuppliers/ManageSuppliers';
+import ManageBranches from './comps/main/ManageBranches/ManageBranches';
 import { URLProvider } from './comps/context/URL';
 import { TokenProvider } from './comps/context/Token';
 import { BranchProvider } from './comps/context/BranchData';
@@ -38,6 +40,8 @@ function App() {
                 <Route path="/manage_users" element={<ManageUsers />} />
                 <Route path="/manage_equpment_categories" element={<ManageCats />} />
                 <Route path="/manage_equpment_items" element={<ManageEqupment />} />
+                <Route path="/manage_suppliers" element={<ManageSuppliers />} />
+                <Route path="/manage_branches" element={<ManageBranches />} />
               </Routes>
 
               <Footer />

@@ -3,82 +3,115 @@ import { useURL } from "../../context/URL";
 import { useToken } from "../../context/Token";
 import { useEffect, useState } from "react";
 import ApproveDeletionPopUp from "./ApproveDeletionPopUp";
+import AddEqupment from "./AddEqupment";
+import './ManageEqupment.css'
 
 const ManageEqupment = () => {
-    // add active field
-    //update parce_cats
-    //dynamic search (cat, sup, active)
     //update 
-    //add (popup)
-    //dicontinue
     const { storedURL } = useURL()
     const { storedToken } = useToken()
+    const [wantedCategory, setWantedCategory] = useState('all');
+    const [wantedSupplier, setWantedSupplier] = useState('all');
+    const [activityStatus, setActivityStatus] = useState('all');
     const [equpment, setEqupment] = useState([]);
-    const [equpmentToUpdate, setEqupmentToUpdate] = useState([]);
-    const [sucsess, setSucsess] = useState(false)
+    const [cats, setCats] = useState([]);
+    const [suppliers, setSuppliers] = useState([]);
     const [popUpOpen, setPopUpOpen] = useState(null);
-    const [rerender, setRerender] = useState(false)
+    const [addPopUpOpen, setAddPopUpOpen] = useState(false);
+    const [searched, setSearched] = useState(false);
+    const [loading, setLoading] = useState(false);
 
-    const openApproveDelete = (cat) => {
-        setPopUpOpen(cat);
+    const openApproveDelete = (item) => {
+        setPopUpOpen(item);
     };
 
     const closeApproveDelete = () => {
         setPopUpOpen(null);
-        setRerender(true);
+        searchEqupment();
     };
 
+    const openAdd = () => {
+        setAddPopUpOpen(true);
+    };
+
+    const closeAdd = () => {
+        setAddPopUpOpen(false);
+        searchEqupment();
+    };
 
     useEffect(() => {
-        const fetchEqupment = async () => {
+        const fetchCats = async () => {
             try {
-                const result = await fetch(`${storedURL}/get_equpment_categories/`,
-                    {
-                        method: 'GET',
-                        headers: {
-                            "Authorization": `Token ${storedToken}`
-                        },
-                    });
-
-                const data = await result.json();
-
-                if ('all_cats' in data) {
-                    setCats(data.all_cats);
-                    setRerender(false);
-                    setSucsess(false);
-                } else if ('err' in data) {
-                    console.error('Error:', data.err);
-                } else {
-                    console.error('Error: No data on unknown');
-                }
-
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        }
-
-        fetchCats();
-    }, [rerender])
-
-    const createCategory = async (e) => {
-        e.preventDefault()
-        try {
-            const result = await fetch(`${storedURL}/add_equpment_category/`,
-                {
-                    method: 'POST',
+                const result = await fetch(`${storedURL}/get_equpment_categories/`, {
+                    method: 'GET',
                     headers: {
                         "Authorization": `Token ${storedToken}`,
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({
-                        name: catNameToAdd
-                    })
+                });
+                const data = await result.json();
+                if ('all_cats' in data) {
+                    setCats(data.all_cats);
+
+                } else if ('err' in data) {
+                    console.error('Error:', data.err);
+                } else {
+                    console.error('Error: Unknown error');
+                }
+            } catch (error) {
+                console.error('Error getting categories:', error);
+            }
+        }
+
+        const fetchSuppliers = async () => {
+            try {
+                const result = await fetch(`${storedURL}/get_all_suppliers/`, {
+                    method: 'GET',
+                    headers: {
+                        "Authorization": `Token ${storedToken}`,
+                        "Content-Type": "application/json"
+                    },
+                });
+                const data = await result.json();
+                if ('all_suppliers' in data) {
+                    setSuppliers(data.all_suppliers);
+
+                } else if ('err' in data) {
+                    console.error('Error:', data.err);
+                } else {
+                    console.error('Error: Unknown error');
+                }
+            } catch (error) {
+                console.error('Error getting suppliers:', error);
+            }
+        }
+
+        fetchCats();
+        fetchSuppliers();
+    }, [])
+
+    const searchEqupment = async (e, preventDefault) => {
+        if (preventDefault) {
+            e.preventDefault();
+        }
+        setSearched(true);
+        setLoading(true);
+        setEqupment([]);
+        try {
+            const result = await fetch(`${storedURL}/get_filtered_equpment/?equpment_cat=${wantedCategory}&equpment_supplier=${wantedSupplier}&equpment_status=${activityStatus}`,
+                {
+                    method: 'GET',
+                    headers: {
+                        "Authorization": `Token ${storedToken}`,
+                        "Content-Type": "application/json"
+                    }
                 });
 
             const data = await result.json();
 
-            if ('new_equpment_category' in data) {
-                setRerender(true);
+            if ('filtered_equpment' in data) {
+                setEqupment(data.filtered_equpment);
+
             } else if ('err' in data) {
                 console.error('Error:', data.err);
             } else {
@@ -87,125 +120,214 @@ const ManageEqupment = () => {
 
         } catch (error) {
             console.error('Error fetching data:', error);
+        } finally {
+            setLoading(false);
         }
     }
 
-    const updateCategory = async (catId) => {
+    const activateEqupment = async (item) => {
         try {
-            const result = await fetch(`${storedURL}/update_equpment_category/${catId}/`, {
+            const result = await fetch(`${storedURL}/activate_equpment/${item.id}/`, {
                 method: 'PUT',
                 headers: {
                     "Authorization": `Token ${storedToken}`,
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({
-                    name: catNameToUpdate
-                })
             });
             const data = await result.json();
-            if ('updated' in data) {
-                setRerender(true);
-                setCatNameToUpdate('');
+            if ('equpment_activated' in data) {
+                item.status = 'פעיל'
+                openApproveDelete(item);
+
             } else if ('err' in data) {
                 console.error('Error:', data.err);
             } else {
                 console.error('Error: Unknown error');
             }
         } catch (error) {
-            console.error('Error updating category:', error);
+            console.error('Error:', error);
         }
-    };
+    }
 
-    const deleteCategory = async (catId) => {
+    const deactivateEqupment = async (item) => {
         try {
-            const result = await fetch(`${storedURL}/delete_equpment_category/${catId}/`, {
-                method: 'DELETE',
+            const result = await fetch(`${storedURL}/deactivate_equpment/${item.id}/`, {
+                method: 'PUT',
                 headers: {
                     "Authorization": `Token ${storedToken}`,
                     "Content-Type": "application/json"
-                }
+                },
             });
-            if (result.status === 204) {
-                setSucsess(true);
+            const data = await result.json();
+            if ('equpment_deactivated' in data) {
+                item.status = 'לא פעיל'
+                openApproveDelete(item);
+
+            } else if ('err' in data) {
+                console.error('Error:', data.err);
             } else {
-                const data = await result.json();
-                if ('err' in data) {
-                    console.error('Error:', data.err);
-                } else {
-                    console.error('Unexpected error:', data);
-                }
+                console.error('Error: Unknown error');
             }
         } catch (error) {
-            console.error('Error updating category:', error);
+            console.error('Error:', error);
+        }
+    }
+
+    const updateEqupment = async (item) => {
+        try {
+            const result = await fetch(`${storedURL}/update_item_of_equpment/${item.id}/`, {
+                method: 'PUT',
+                headers: {
+                    "Authorization": `Token ${storedToken}`,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(item),
+            });
+            const data = await result.json();
+            if ('updated' in data) {
+                searchEqupment();
+            } else if ('err' in data) {
+                console.error('Error:', data.err);
+            } else {
+                console.error('Error: Unknown error');
+            }
+        } catch (error) {
+            console.error('Error:', error);
         }
     };
 
-    const handleAddInputChange = (e) => {
-        setCatNameToAdd(e.target.value);
-    };
-
-    const handleInputChange = (e, catId) => {
-        const updatedCats = cats.map(cat => {
-            if (cat.id === catId) {
-                return { ...cat, name: e.target.value };
-            }
-            return cat;
-        });
-        setCats(updatedCats);
-        setCatNameToUpdate(e.target.value);
+    const handleInputChange = (e, item, field) => {
+        const value = e.target.value;
+        setEqupment((prevEqupment) =>
+            prevEqupment.map((eq) =>
+                eq.id === item.id ? { ...eq, [field]: value } : eq
+            )
+        );
     };
 
     return (
-        <div>
-            {!cats && <div>LOADING</div>}
-            {cats &&
-                <div>
-                    {popUpOpen && <ApproveDeletionPopUp
-                        onClose={closeApproveDelete}
-                        onDelete={() => deleteCategory(popUpOpen.id)}
-                        sucsess={sucsess}
-                        question={`מחק קטגוררית ציוד '${popUpOpen.name}'?`}
-                        deletion_msg={`קטגורייה '${popUpOpen.name}' נמחקה בהצלחה`} />}
+        <div className="manage-equpment">
 
-                    <h2>ניהול קטגוריות ציוד</h2>
-                    <h3>לידעתך: לא ניתן למחוק קטגוריות שיש בהן ציוד</h3>
+            <h2>ניהול פריטי ציוד</h2>
+            <button onClick={openAdd}>יצירת פריט ציוד +</button>
+            {addPopUpOpen && <AddEqupment onClose={closeAdd} cats={cats} suppliers={suppliers} />}
 
-                    <form onSubmit={createCategory} className="create-cat-form">
-                        <label htmlFor="name">יצירת קטגוריה חדשה</label><br />
-                        <input value={catNameToAdd} onChange={handleAddInputChange} name='name' type="text" placeholder="הזן שם לקטוגיית ציוד"></input>
-                        <button type="submit">יצירה</button>
-                    </form>
+            <div className="searchbar-equpment">
 
-                    <table className="cats-table">
-                        <thead>
-                            <th>מס</th>
-                            <th>שם</th>
-                            <th>יח' ציוד בקטגוריה</th>
-                            <th>עדכן</th>
-                            <th>מחק</th>
-                        </thead>
-                        <tbody>
-                            {cats.map((cat) => (
-                                <tr>
-                                    <td>{cat.id}</td>
-                                    <td>
-                                        <input value={cat.name} onChange={(e) => handleInputChange(e, cat.id)} />
-                                    </td>
-                                    <td>{cat.objects_in_category}</td>
-                                    <td>
-                                        <button onClick={() => updateCategory(cat.id)}>עדכון</button>
-                                    </td>
-                                    <td>
-                                        <button disabled={parseInt(cat.objects_in_category) !== 0}
-                                            onClick={() => openApproveDelete(cat)}>מחק קטורייה</button>
-                                    </td>
-                                </tr>
+                <form >
+                    <div>
+                        <label htmlFor="wanted-cat">קטגוריית ציוד</label>
+                        <select id="wanted-cat" value={wantedCategory} onChange={(e) => setWantedCategory(e.target.value)}>
+                            <option value="all">הצג הכל</option>
+                            {Array.isArray(cats) && cats.map((cat) => (
+                                <option key={cat.id} value={cat.id}>
+                                    {cat.name}
+                                </option>
                             ))}
-                        </tbody>
-                    </table>
+                        </select>
 
+                        <label htmlFor="wanted-supplier">ספק</label>
+                        <select id="wanted-supplier" value={wantedSupplier} onChange={(e) => setWantedSupplier(e.target.value)}>
+                            <option value="all">הצג הכל</option>
+                            {Array.isArray(suppliers) && suppliers.map((supplier) => (
+                                <option key={supplier.id} value={supplier.id}>
+                                    {supplier.name}
+                                </option>
+                            ))}
+                        </select>
+
+                        <label htmlFor="activity-status">קטגוריית ציוד</label>
+                        <select id="activity-status" value={activityStatus} onChange={(e) => setActivityStatus(e.target.value)}>
+                            <option value="all">הצג הכל</option>
+                            <option value="0">ציוד לא פעיל</option>
+                            <option value="1">ציוד פעיל</option>
+                        </select>
+
+                    </div>
+
+                    <div><button type="submit" onClick={(e) => searchEqupment(e, true)}>הצג</button></div>
+                </form>
+
+            </div>
+
+            {searched &&
+                <div className="equpment-found">
+                    {loading && <div>LOADING</div>}
+                    {!loading && equpment.length > 0 &&
+                        <div>
+                            {popUpOpen && <ApproveDeletionPopUp onClose={closeApproveDelete} deletion_msg={`פריט ציוד '${popUpOpen.name}' הפך ל${popUpOpen.status}`} sucsess={true} />}
+
+                            <table className="equpment-table">
+                                <thead>
+                                    <th>מס' פריט</th>
+                                    <th>שם פריט</th>
+                                    <th>יח מידה</th>
+                                    <th>מחיר ליחידה בשח</th>
+                                    <th>קטגורייה</th>
+                                    <th>ספק</th>
+                                    <th>דורש איור מנהל להזמנה</th>
+                                    <th>פעיל</th>
+                                    <th>עדכן פריט</th>
+                                    <th>הפך פריט לפעיל/לא פעיל</th>
+                                </thead>
+                                <tbody>
+                                    {equpment.map((item) =>
+                                    (<tr>
+                                        <td>{item.id}</td>
+                                        <td><input type="text" value={item.name} id="name" onChange={(e) => handleInputChange(e, item, 'name')}></input></td>
+                                        <td><input type="text" value={item.unit_measure} id="unit_measure" onChange={(e) => handleInputChange(e, item, 'unit_measure')}></input></td>
+                                        <td><input type="number" value={item.price} id="price" onChange={(e) => handleInputChange(e, item, 'price')}></input></td>
+
+                                        <td>
+                                            <select
+                                                value={item.category}
+                                                onChange={(e) => handleInputChange(e, item, 'category')}>
+                                                {Array.isArray(cats) && cats.map((cat) => (
+                                                    <option key={cat.id} value={cat.id}>
+                                                        {cat.name}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <select
+                                                value={item.supplier}
+                                                onChange={(e) => handleInputChange(e, item, 'supplier')}>
+                                                {Array.isArray(suppliers) && suppliers.map((supplier) => (
+                                                    <option key={supplier.id} value={supplier.id}>
+                                                        {supplier.name}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        </td>
+
+                                        <td>
+                                            <select value={item.requres_approval} onChange={(e) => handleInputChange(e, item, 'requres_approval')}>
+                                                <option value={false}>
+                                                    לא נדרש אישור
+                                                </option>
+                                                <option value={true}>
+                                                    נדרש אישור
+                                                </option>
+                                            </select>
+                                        </td>
+
+                                        <td>{item.active === true ? 'פעיל' : 'לא פעיל'}</td>
+
+                                        <td><button onClick={() => updateEqupment(item)}>עדכן</button></td>
+
+                                        <td><button onClick={item.active === true ? () => deactivateEqupment(item) : () => activateEqupment(item)}>
+                                            {item.active === true ? 'הפך ללא פעיל' : 'הפך לפעיל'}</button></td>
+                                    </tr>))}
+
+                                </tbody>
+                            </table>
+
+                        </div>}
+
+                    {!loading && equpment.length === 0 && <div> לא נמצאו פרטי ציוד העונים לדרישות החיפוש</div>}
                 </div>}
-        </div>
+        </div >
     )
 }
 

@@ -406,6 +406,40 @@ class AdminViews(UserViews):
             logger.log('AdminViews','delete_equipment_category', (request.data, equpment_cat_id), output)  
                 
     
+    @api_view(['GET'])
+    @permission_classes([IsAuthenticated, IsAdminUser])
+    def get_filtered_equpment(request):
+        try:
+            equpment_cat = request.GET.get('equpment_cat', 'all')
+            equpment_supplier = request.GET.get('equpment_supplier', 'all')
+            equpment_status = request.GET.get('equpment_status', 'all')
+
+            filters = {}
+
+            if equpment_cat != 'all':
+                filters['category'] = equpment_cat
+
+            if equpment_supplier != 'all':
+                filters['supplier'] = equpment_supplier
+                
+            if equpment_status != 'all':
+                filters['active'] = equpment_status
+
+            equpment = Equpment.objects.filter(**filters)
+
+            filtered_equpment = []
+            for item in equpment:
+                parced_item = data_constructor.parce_item_of_equpment(item)
+                filtered_equpment.append(parced_item)
+                
+            output = filtered_equpment
+            return Response({"filtered_equpment": output}, status=status.HTTP_200_OK)
+        
+        except Exception as e:
+            output = str(e)
+            return Response({"error": output}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+        
     @api_view(['POST'])
     @permission_classes([IsAuthenticated, IsAdminUser])
     def add_item_of_equpment(request):
@@ -419,7 +453,7 @@ class AdminViews(UserViews):
             if serializer.is_valid():
                 serializer.save()
                 output = {'new_item_of_equpment': serializer.data}
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
+                return Response(output, status=status.HTTP_201_CREATED)
             
             output = {'err':serializer.errors}
             return Response(output, status=status.HTTP_400_BAD_REQUEST)
@@ -461,6 +495,62 @@ class AdminViews(UserViews):
         
         finally:
             logger.log('AdminViews','update_item_of_equpment', (request.data, equpment_id), output)     
+            
+            
+    @api_view(['PUT'])
+    @permission_classes([IsAuthenticated, IsAdminUser])  
+    def deactivate_equpment(request, equpment_id):
+        """
+        02.07.24
+        Args: PUT, equpment_id (int)
+        Returns: equpment_deactivated + 201/ not_found + 404 / err + 500
+        """
+        try:
+            equpment = Equpment.objects.get(pk=equpment_id)
+            if equpment:
+                equpment.active = False
+                equpment.save() 
+                output = {"equpment_deactivated": equpment_id}
+                return Response(output, status=status.HTTP_200_OK)
+        
+        except Equpment.DoesNotExist:
+            output = "No equpment  with id given"
+            return Response({"not_found": output}, status=status.HTTP_404_NOT_FOUND)
+        
+        except Exception as e:
+            output = str(e)
+            return Response({'err':output}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+        finally:
+            logger.log('AdminViews','deactivate_equpment', (equpment_id), output)   
+            
+            
+    @api_view(['PUT'])
+    @permission_classes([IsAuthenticated, IsAdminUser])  
+    def activate_equpment(request, equpment_id):
+        """
+        02.07.24
+        Args: PUT, equpment_id (int)
+        Returns: equpment_activated + 201/ not_found + 404 / err + 500
+        """
+        try:
+            equpment = Equpment.objects.get(pk=equpment_id)
+            if equpment:
+                equpment.active = True
+                equpment.save() 
+                output = {"equpment_activated": equpment_id}
+                return Response(output, status=status.HTTP_200_OK)
+        
+        except Equpment.DoesNotExist:
+            output = "No equpment  with id given"
+            return Response({"not_found": output}, status=status.HTTP_404_NOT_FOUND)
+        
+        except Exception as e:
+            output = str(e)
+            return Response({'err':output}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+        finally:
+            logger.log('AdminViews','activate_equpment', (equpment_id), output)     
     
     
     @api_view(['POST'])
@@ -476,7 +566,7 @@ class AdminViews(UserViews):
             if serializer.is_valid():
                 serializer.save()
                 output = {'new_branch': serializer.data}
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
+                return Response(output, status=status.HTTP_201_CREATED)
             
             output = {'err':serializer.errors}
             return Response(output, status=status.HTTP_400_BAD_REQUEST)
@@ -518,6 +608,32 @@ class AdminViews(UserViews):
         
         finally:
             logger.log('AdminViews','update_branch', (request.data, branch_id), output)        
+    
+    
+    @api_view(['GET'])
+    @permission_classes([IsAuthenticated,IsAdminUser])
+    def get_all_areas(request):
+        """
+        12.06.24
+        Args: GET
+        Returns: list of areas as jsons + 200/ not found str + 404 / err str + 500
+        """
+        try:
+            area = Area.objects.all()
+            seri = AreaSerializer(area, many = True)
+            output = seri.data
+            return Response({"all_areas":output}, status=status.HTTP_200_OK)
+        
+        except Branch.DoesNotExist:
+            output = f"No Branches Found"
+            return Response({"not_found": output}, status=status.HTTP_404_NOT_FOUND)
+                
+        except Exception as e:
+            output = str(e)
+            return Response({"err":str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            
+        finally:
+            logger.log('AdminViews','get_all_areas',None,output)
     
     
     @api_view(['POST'])
@@ -575,6 +691,36 @@ class AdminViews(UserViews):
         
         finally:
             logger.log('AdminViews','update_area', (request.data, area_id), output) 
+    
+    
+    @api_view(['GET'])
+    @permission_classes([IsAuthenticated,IsAdminUser])
+    def get_all_suppliers(request):
+        """
+        12.06.24
+        Args: GET
+        Returns: list of suppliers as jsons + 200/ not found str + 404 / err str + 500
+        """
+        try:
+            supliers = Supplier.objects.all()
+            parced_suppliers =[]
+            for supplier in supliers:
+                parced_supplier = data_constructor.parce_supplier(supplier)
+                parced_suppliers.append(parced_supplier)
+                
+            output = parced_suppliers
+            return Response({"all_suppliers":output}, status=status.HTTP_200_OK)
+        
+        except Branch.DoesNotExist:
+            output = f"No Supliers Found"
+            return Response({"not_found": output}, status=status.HTTP_404_NOT_FOUND)
+                
+        except Exception as e:
+            output = str(e)
+            return Response({"err":str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            
+        finally:
+            logger.log('AdminViews','get_all_suppliers',None,output)
     
     
     @api_view(['POST'])

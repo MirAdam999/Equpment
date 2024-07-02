@@ -56,8 +56,8 @@ const Header = () => {
                                 <li onClick={() => handleNavigation('/manage_equpment_items')}>פריטי ציוד</li>
                             </ul>
                         </li>
-                        <li>סניפים</li>
-                        <li>ספקים</li>
+                        <li onClick={() => handleNavigation('/manage_branches')}>סניפים</li>
+                        <li onClick={() => handleNavigation('/manage_suppliers')}>ספקים</li>
                         <li onClick={() => handleNavigation('/manage_users')}>משתמשים</li>
                         <li onClick={() => handleNavigation('/my_profile')}>אזור אישי</li>
                     </ul>

@@ -11,6 +11,7 @@ class Area(models.Model):
     
 class Branch(models.Model):
     name = models.CharField(max_length=50)
+    address = models.CharField(max_length=1000,null=True)
     area = models.ForeignKey(Area, on_delete=models.CASCADE)
     next_order = models.DateField(null=True, blank=True)
     
@@ -78,7 +79,8 @@ class Equpment(models.Model):
     category = models.ForeignKey(EqupmentCategory, on_delete=models.CASCADE)
     supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=50, decimal_places=2)
-    requres_approval = models.BinaryField(default=False)
+    requres_approval = models.BooleanField(default=False)
+    active = models.BooleanField(default=True)
     
     def __str__(self):
         return self.name   
@@ -88,7 +90,7 @@ class Order(models.Model):
     datetime = models.DateTimeField(auto_now_add=True)
     branch = models.ForeignKey(Branch, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    sent_to_supplier = models.BinaryField(default=False)
+    sent_to_supplier = models.BooleanField(default=False)
     
     def __str__(self):
         return str(self.branch)
@@ -98,8 +100,8 @@ class OrderDetails(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     item = models.ForeignKey(Equpment, on_delete=models.CASCADE)
     quantity = models.IntegerField()
-    approved_to_ship = models.BinaryField(default=False)
-    recived = models.BinaryField(default=False)
+    approved_to_ship = models.BooleanField(default=False)
+    recived = models.BooleanField(default=False)
     
     def __str__(self):
         return str(self.item)    

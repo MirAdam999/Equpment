@@ -160,10 +160,11 @@ const ManageCats = () => {
                         onDelete={() => deleteCategory(popUpOpen.id)}
                         sucsess={sucsess}
                         question={`מחק קטגוררית ציוד '${popUpOpen.name}'?`}
+                        action={'מחק'}
                         deletion_msg={`קטגורייה '${popUpOpen.name}' נמחקה בהצלחה`} />}
 
                     <h2>ניהול קטגוריות ציוד</h2>
-                    <h3>לידעתך: לא ניתן למחוק קטגוריות שיש בהן ציוד</h3>
+                    <h3>לידעתך: לא ניתן למחוק קטגוריות שיש בהן ציוד פעיל</h3>
 
                     <form onSubmit={createCategory} className="create-cat-form">
                         <label htmlFor="name">יצירת קטגוריה חדשה</label><br />

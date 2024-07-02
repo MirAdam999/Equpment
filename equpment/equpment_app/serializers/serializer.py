@@ -13,7 +13,7 @@ class BranchSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Branch
-        fields = ['id', 'name', 'area', 'next_order']              
+        fields = ['id', 'name','address', 'area', 'next_order']              
         
 
 class UserSerializer(serializers.ModelSerializer):
@@ -74,7 +74,7 @@ class EqupmentSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Equpment
-        fields = ['id', 'name', 'unit_measure', 'category', 'supplier', 'price', 'requres_approval']
+        fields = ['id', 'name', 'unit_measure', 'category', 'supplier', 'price', 'requres_approval','active']
         
         
 class OrderSerializer(serializers.ModelSerializer):
