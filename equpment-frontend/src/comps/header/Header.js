@@ -44,7 +44,7 @@ const Header = () => {
                 <h1 onClick={logout} >יציאה</h1>
                 <h1>{usersName} ברוכים השבים</h1>
                 <h2>סניף: {branchName}</h2>
-                <h2>תאריך הזמנה הבאה: {nextOrder ? nextOrder : "טרם נקבע"}</h2>
+                {branchName !== 'הנהלה' && <h2>תאריך הזמנה הבאה: {nextOrder ? nextOrder : "טרם נקבע"}</h2>}
             </div>
             <nav>
                 {isMasterUser &&

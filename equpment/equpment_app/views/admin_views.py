@@ -9,6 +9,7 @@ from ..models import *
 from ..serializers.serializer import *
 from ..log.logger import Logger
 from ..serializers.data_manipulation import DataConstructor
+from datetime import datetime
 
 logger = Logger()
 data_constructor = DataConstructor()
@@ -282,8 +283,71 @@ class AdminViews(UserViews):
             logger.log('AdminViews','get_all_orders',None,output)   
     
     
-    def get_orders_by_dates(request):
-        pass
+    @api_view(['GET'])
+    @permission_classes([IsAuthenticated, IsAdminUser])
+    def get_filtered_orders(request):
+        try:
+            id = request.GET.get('id', 'all')
+            branch = request.GET.get('branch', 'all')
+            area = request.GET.get('area', 'all')
+            start_date = request.GET.get('start_date', None)
+            end_date = request.GET.get('end_date', None)
+            sent_to_supplier = request.GET.get('sent_to_supplier', 'all')
+            received = request.GET.get('received', 'all')
+            approved_to_ship = request.GET.get('approved_to_ship', 'all')
+            supplier = request.GET.get('supplier', 'all')
+
+            filters = {}
+            if id != 'all':
+                orders = [Order.objects.get(pk=id)]
+                
+            else:
+                if branch != 'all':
+                    filters['branch'] = branch
+                    
+                if area != 'all':
+                    filters['branch__area__id'] = area
+                    
+                if start_date and end_date :
+                    start_date = datetime.strptime(start_date, '%Y-%m-%d')
+                    end_date = datetime.strptime(end_date, '%Y-%m-%d')
+                    filters['datetime__range'] = (start_date, end_date)
+                    
+                if sent_to_supplier != 'all':
+                    filters['sent_to_supplier'] = sent_to_supplier
+
+                if not filters:
+                    orders = Order.objects.all()
+                else:
+                    orders = Order.objects.filter(**filters)
+                
+            if orders is None:
+                orders = [Order.objects.none()]
+
+            filtered_orders_data = []
+            
+            for order in orders:
+                order_details = OrderDetails.objects.filter(order=order)
+
+                all_received = all(detail.recived == (received == 'true') for detail in order_details) if received != 'all' else True
+                all_approved = all(detail.approved_to_ship == (approved_to_ship == 'true') for detail in order_details) if approved_to_ship != 'all' else True
+                supplier_match = True
+                if supplier != 'all':
+                    supplier_match = order_details.filter(item__supplier__id=int(supplier)).exists()
+
+                if all_received and all_approved and supplier_match:
+                        order_dict = data_constructor.parse_order(order)
+                        filtered_orders_data.append(order_dict)
+                
+            output = filtered_orders_data
+            return Response({"filtered_orders": output}, status=status.HTTP_200_OK)
+        
+        except Exception as e:
+            output = str(e)
+            return Response({"error": output}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+        finally:
+            logger.log('AdminViews','get_filtered_orders', filters, output)
     
     
     @api_view(['POST'])
@@ -438,6 +502,9 @@ class AdminViews(UserViews):
         except Exception as e:
             output = str(e)
             return Response({"error": output}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+        finally:
+            logger.log('AdminViews','get_filtered_equpment', filters, output)
         
         
     @api_view(['POST'])

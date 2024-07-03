@@ -40,8 +40,8 @@ const OrderView = (props) => {
                                 <td>{detail.detail_price} שח</td>
                                 <th>{detail.detail_price_for_order} שח</th>
                                 <td>{detail.detail_supplier}</td>
-                                <td>{detail.approved_to_ship}</td>
-                                <td>{detail.recived}</td>
+                                <td>{detail.approved_to_ship ? 'אושר להספקה' : 'טרם אושר'}</td>
+                                <td>{detail.recived ? 'התקבל' : 'לא התקבל'}</td>
                             </tr>
 
                         ))}

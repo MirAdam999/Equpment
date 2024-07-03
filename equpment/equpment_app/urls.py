@@ -48,4 +48,5 @@ urlpatterns = [
     path('make_admin/<int:user_id>/',AdminViews.make_admin), # tested
     path('revoke_admin/<int:user_id>/',AdminViews.revoke_admin), # tested
     path('get_all_orders/',AdminViews.get_all_orders), # tested
+    path('get_filtered_orders/',AdminViews.get_filtered_orders),
 ]
