@@ -1,0 +1,38 @@
+.equpment-cat-btn {
+    width: 23rem;
+    cursor: pointer;
+    background-color: var(--dark-blue);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.equpment-cat-btn p {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: white;
+}
+
+.arrow-icon {
+    font-size: 2.5rem;
+    color: var(--light-blue);
+    transition: ease 0.2s;
+}
+
+#arrow-icon-down {
+    transform: rotate(90deg);
+}
+
+#closed {
+    max-height: 0.001px;
+    overflow: hidden;
+    transition: 1s ease;
+}
+
+#open {
+    max-height: 2000px;
+    overflow: hidden;
+    transition: 1s ease;
+}

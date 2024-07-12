@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import ApproveDeletionPopUp from "./ApproveDeletionPopUp";
 import AddEqupment from "./AddEqupment";
 import './ManageEqupment.css'
+import Loading from '../../../Loading/Loading'
 
 const ManageEqupment = () => {
     //update 
@@ -65,7 +66,7 @@ const ManageEqupment = () => {
 
         const fetchSuppliers = async () => {
             try {
-                const result = await fetch(`${storedURL}/get_all_suppliers/`, {
+                const result = await fetch(`${storedURL}/get_active_suppliers/`, {
                     method: 'GET',
                     headers: {
                         "Authorization": `Token ${storedToken}`,
@@ -73,8 +74,8 @@ const ManageEqupment = () => {
                     },
                 });
                 const data = await result.json();
-                if ('all_suppliers' in data) {
-                    setSuppliers(data.all_suppliers);
+                if ('active_suppliers' in data) {
+                    setSuppliers(data.active_suppliers);
 
                 } else if ('err' in data) {
                     console.error('Error:', data.err);
@@ -207,62 +208,64 @@ const ManageEqupment = () => {
 
     return (
         <div className="manage-equpment">
-
             <h2>ניהול פריטי ציוד</h2>
-            <button onClick={openAdd}>יצירת פריט ציוד +</button>
-            {addPopUpOpen && <AddEqupment onClose={closeAdd} cats={cats} suppliers={suppliers} />}
+            <div className='manage-equpment-top'>
+                <button onClick={openAdd} id='open-add-equpment'>יצירת פריט ציוד +</button>
+                {addPopUpOpen && <AddEqupment onClose={closeAdd} cats={cats} suppliers={suppliers} />}
 
-            <div className="searchbar-equpment">
+                <div className='manage-equpment-form-wrapper'>
+                    <h3>הצגת פרטי ציוד</h3>
+                    <form className='manage-equpment-form'>
+                        <div>
+                            <label htmlFor="wanted-cat">קטגוריית ציוד</label>
+                            <select id="wanted-cat" value={wantedCategory} onChange={(e) => setWantedCategory(e.target.value)}>
+                                <option value="all">הצג הכל</option>
+                                {Array.isArray(cats) && cats.map((cat) => (
+                                    <option key={cat.id} value={cat.id}>
+                                        {cat.name}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        <div>
+                            <label htmlFor="wanted-supplier">ספק</label>
+                            <select id="wanted-supplier" value={wantedSupplier} onChange={(e) => setWantedSupplier(e.target.value)}>
+                                <option value="all">הצג הכל</option>
+                                {Array.isArray(suppliers) && suppliers.map((supplier) => (
+                                    <option key={supplier.id} value={supplier.id}>
+                                        {supplier.name}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        <div>
+                            <label htmlFor="activity-status">סטטוס ציוד</label>
+                            <select id="activity-status" value={activityStatus} onChange={(e) => setActivityStatus(e.target.value)}>
+                                <option value="all">הצג הכל</option>
+                                <option value="0">ציוד לא פעיל</option>
+                                <option value="1">ציוד פעיל</option>
+                            </select>
 
-                <form >
-                    <div>
-                        <label htmlFor="wanted-cat">קטגוריית ציוד</label>
-                        <select id="wanted-cat" value={wantedCategory} onChange={(e) => setWantedCategory(e.target.value)}>
-                            <option value="all">הצג הכל</option>
-                            {Array.isArray(cats) && cats.map((cat) => (
-                                <option key={cat.id} value={cat.id}>
-                                    {cat.name}
-                                </option>
-                            ))}
-                        </select>
+                        </div>
 
-                        <label htmlFor="wanted-supplier">ספק</label>
-                        <select id="wanted-supplier" value={wantedSupplier} onChange={(e) => setWantedSupplier(e.target.value)}>
-                            <option value="all">הצג הכל</option>
-                            {Array.isArray(suppliers) && suppliers.map((supplier) => (
-                                <option key={supplier.id} value={supplier.id}>
-                                    {supplier.name}
-                                </option>
-                            ))}
-                        </select>
-
-                        <label htmlFor="activity-status">קטגוריית ציוד</label>
-                        <select id="activity-status" value={activityStatus} onChange={(e) => setActivityStatus(e.target.value)}>
-                            <option value="all">הצג הכל</option>
-                            <option value="0">ציוד לא פעיל</option>
-                            <option value="1">ציוד פעיל</option>
-                        </select>
-
-                    </div>
-
-                    <div><button type="submit" onClick={(e) => searchEqupment(e, true)}>הצג</button></div>
-                </form>
-
+                        <div><button type="submit" onClick={(e) => searchEqupment(e, true)}>הצג</button></div>
+                    </form>
+                </div>
             </div>
 
             {searched &&
                 <div className="equpment-found">
-                    {loading && <div>LOADING</div>}
+                    {loading && <div><Loading /></div>}
                     {!loading && equpment.length > 0 &&
                         <div>
                             {popUpOpen && <ApproveDeletionPopUp onClose={closeApproveDelete} deletion_msg={`פריט ציוד '${popUpOpen.name}' הפך ל${popUpOpen.status}`} sucsess={true} />}
 
-                            <table className="equpment-table">
+                            <table className="equpment-found-table">
                                 <thead>
-                                    <th>מס' פריט</th>
+                                    <th>מק"ט</th>
                                     <th>שם פריט</th>
                                     <th>יח מידה</th>
-                                    <th>מחיר ליחידה בשח</th>
+                                    <th>מחיר ליחידה בש"ח</th>
                                     <th>קטגורייה</th>
                                     <th>ספק</th>
                                     <th>דורש איור מנהל להזמנה</th>
@@ -302,21 +305,22 @@ const ManageEqupment = () => {
                                         </td>
 
                                         <td>
-                                            <select value={item.requres_approval} onChange={(e) => handleInputChange(e, item, 'requres_approval')}>
-                                                <option value={false}>
+                                            <select value={item.requres_approval} id={item.requres_approval ? 'red' : 'green'} onChange={(e) => handleInputChange(e, item, 'requres_approval')}>
+                                                <option value={false} >
                                                     לא נדרש אישור
                                                 </option>
-                                                <option value={true}>
+                                                <option value={true} >
                                                     נדרש אישור
                                                 </option>
                                             </select>
                                         </td>
 
-                                        <td>{item.active === true ? 'פעיל' : 'לא פעיל'}</td>
+                                        <td id={item.active === true ? 'green' : 'red'}>{item.active === true ? 'פעיל' : 'לא פעיל'}</td>
 
-                                        <td><button onClick={() => updateEqupment(item)}>עדכן</button></td>
+                                        <td><button onClick={() => updateEqupment(item)} id='update-item-btn'>עדכן</button></td>
 
-                                        <td><button onClick={item.active === true ? () => deactivateEqupment(item) : () => activateEqupment(item)}>
+                                        <td><button onClick={item.active === true ? () => deactivateEqupment(item) : () => activateEqupment(item)}
+                                            id={item.active === true ? 'deactivate-item' : 'activate-item'}>
                                             {item.active === true ? 'הפך ללא פעיל' : 'הפך לפעיל'}</button></td>
                                     </tr>))}
 

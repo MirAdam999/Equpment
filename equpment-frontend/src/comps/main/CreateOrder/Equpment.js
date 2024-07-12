@@ -20,13 +20,13 @@ const Equpment = (props) => {
     };
 
     return (
-        <div>
+        <div className="item-of-equpment-wrapper">
             <table className="item-of-equpment">
                 <thead>
                     <th>פריט</th>
                     <th>יחידת מידה</th>
                     <th>כמות</th>
-                    <th>הוסף להזמנה</th>
+                    <th>להזמנה</th>
                 </thead>
                 <tbody>
                     {equpment.map(item => (

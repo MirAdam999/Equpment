@@ -14,7 +14,7 @@ const AddBranch = (props) => {
     const [added, setAdded] = useState(null)
 
     const addBranch = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
         try {
             const result = await fetch(`${storedURL}/add_branch/`,
                 {
@@ -55,16 +55,16 @@ const AddBranch = (props) => {
     };
 
     return (
-        <div>
-            <div>
+        <div className='popup'>
+            <div className='popup-inner' id='add-branches-popup'>
 
-                <div>
-                    <h2></h2>
-                    <button onClick={props.onClose}>X</button>
+                <div className='add-branches-top'>
+                    <p>יצירת סניף חדש</p>
+                    <button className='close-btn' onClick={props.onClose}>X</button>
                 </div>
 
-                <div>
-                    <form onSubmit={addBranch} className="add-branch-form">
+                <div className='add-branches-btm'>
+                    <form onSubmit={addBranch} className="add-branches-form">
 
                         <div>
                             <label htmlFor="name">שם סניף</label>
@@ -72,7 +72,7 @@ const AddBranch = (props) => {
                         </div>
 
                         <div>
-                            <label htmlFor="address">כתובת מדוויקת של הסניף ומיקוד</label>
+                            <label htmlFor="address">כתובת ומיקוד</label>
                             <input type="text" name="address" id='address' value={branchData.address} onChange={handleInputChange} required></input>
                         </div>
                         <div>
@@ -88,10 +88,10 @@ const AddBranch = (props) => {
                             </select>
                         </div>
 
-                        <div><button type="submit">צור סניף חדש</button></div>
+                        <button type="submit">צור סניף חדש</button>
 
                     </form>
-                    {added && <div className="sucsess-msg">סניף '{added}' נוצר בהצלחה</div>}
+                    {added && <p className="sucsess-msg">נוצר בהצלחה {added} סניף </p>}
                 </div>
 
             </div>

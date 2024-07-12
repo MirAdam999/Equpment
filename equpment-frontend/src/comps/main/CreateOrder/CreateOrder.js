@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import RunningOrder from "./RunningOrder";
 import EqupmentSection from "./EqupmntSection";
 import './CreateOrder.css'
+import Loading from './../../../Loading/Loading'
 
 const CreateOrder = () => {
     const { storedURL } = useURL();
@@ -43,12 +44,27 @@ const CreateOrder = () => {
 
     return (
         <div className="create-order">
-            <RunningOrder />
-            {!loading && equpmentCats.length > 0 &&
+            <RunningOrder id='running-order' />
+            {!loading && equpmentCats.length > 0 && (
                 <div className="equpment-cats">
-                    {equpmentCats.map(cat => (<EqupmentSection cat={cat} />))}
-                </div>}
-            {loading && <div>LOADING</div>}
+                    <div className="equpment-cats-column">
+                        {equpmentCats.filter((_, index) => index % 3 === 0).map(cat => (
+                            <EqupmentSection key={cat.id} cat={cat} />
+                        ))}
+                    </div>
+                    <div className="equpment-cats-column">
+                        {equpmentCats.filter((_, index) => index % 3 === 1).map(cat => (
+                            <EqupmentSection key={cat.id} cat={cat} />
+                        ))}
+                    </div>
+                    <div className="equpment-cats-column">
+                        {equpmentCats.filter((_, index) => index % 3 === 2).map(cat => (
+                            <EqupmentSection key={cat.id} cat={cat} />
+                        ))}
+                    </div>
+                </div>
+            )}
+            {loading && <Loading />}
         </div>
     )
 }

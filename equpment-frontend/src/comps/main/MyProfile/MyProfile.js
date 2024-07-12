@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { useToken } from "../../context/Token";
 import { useURL } from "../../context/URL";
 import './MyProfile.css'
+import Loading from '../../../Loading/Loading';
 
 const MyProfile = () => {
     const { storedURL } = useURL();
@@ -15,7 +16,7 @@ const MyProfile = () => {
     useEffect(() => {
         const fetchBranches = async () => {
             try {
-                const result = await fetch(`${storedURL}/get_all_branches/`,
+                const result = await fetch(`${storedURL}/get_active_branches/`,
                     {
                         method: 'GET',
                         headers: {
@@ -25,8 +26,9 @@ const MyProfile = () => {
 
                 const data = await result.json();
 
-                if ('all_branches' in data) {
-                    setBranches(data.all_branches);
+                if ('active_branches' in data) {
+                    setBranches(data.active_branches);
+                    console.log(data.active_branches)
                 } else if ('err' in data) {
                     console.error('Error:', data.err);
                 } else {
@@ -77,7 +79,8 @@ const MyProfile = () => {
             </div>
         )
     } else {
-        return (<div>LOADING</div>);
+        return (
+            <div className="loading"> <Loading /></div>);
     }
 
 }

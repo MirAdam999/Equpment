@@ -4,6 +4,9 @@ import { useURL } from "../../context/URL";
 import { useToken } from "../../context/Token";
 import { useBranch } from "../../context/BranchData";
 import './RunningOrder.css'
+import { IoCartOutline } from "react-icons/io5";
+import { FaTrash } from "react-icons/fa";
+import { IoSend } from "react-icons/io5";
 
 const RunningOrder = () => {
     const { storedURL } = useURL()
@@ -56,27 +59,40 @@ const RunningOrder = () => {
 
     return (
         <div className="cart">
-            <h2>הזמנה נוכחית</h2>
-            <table className="cart-inner">
-                <thead>
-                    <th>פריט</th>
-                    <th>כמות</th>
-                    <th>יח מידה</th>
-                    <th>הסרה</th>
-                </thead>
-                <tbody>
-                    {cart.map(item => (
-                        <tr>
-                            <td>{item.name}</td>
-                            <td>{item.quantity}</td>
-                            <td>{item.unit_measure}</td>
-                            <td><button onClick={() => removeProduct(item.id)}>הסר</button></td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-            <button onClick={() => sendOrder()}>שגר הזמנה</button>
-            {sucsess && <div>הזמנה נוצרה בהצלחהת מספר הזמנה:{sucsess} ניתן כעת לצפות בהמנה ב"הזמנות"</div>}
+            <div className="cart-top">
+                <h2>הזמנה נוכחית <IoCartOutline /></h2>
+                {cart.length > 0 && <button id='clear-order-btn' onClick={clearCart}>נקה כלל ההזמנה <FaTrash /></button>}
+            </div>
+            <div className="cart-inner">
+                <table className="cart-inner-table">
+                    <thead>
+                        <th>פריט</th>
+                        <th>כמות</th>
+                        <th>יח מידה</th>
+                        <th>הסרה</th>
+                    </thead>
+                    <tbody>
+                        {cart.map(item => (
+                            <tr>
+                                <td>{item.name}</td>
+                                <td>{item.quantity}</td>
+                                <td>{item.unit_measure}</td>
+                                <td id='clear-item'><button onClick={() => removeProduct(item.id)}>X</button></td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+                {cart.length === 0 && <p id="empty-cart">-אין פריטים בהזמנה-</p>}
+            </div>
+            <button id="send-order-btn" onClick={() => sendOrder()} disabled={cart.length === 0}>שגר הזמנה <IoSend /></button>
+            {sucsess && <div className="popup">
+                <div className="popup-inner" id="order-created">
+                    <button className="close-btn" onClick={() => setSucsess(false)}>X</button>
+                    <p className="sucsess-msg">הזמנה נוצרה בהצלחה</p>
+                    <p className="sucsess-msg">מספר הזמנה: {sucsess}</p>
+                    <p className="sucsess-msg">ניתן כעת לצפות ולעקוב אחר ההזמנה בתגיית הזמנות</p>
+                </div>
+            </div>}
         </div>
     )
 }

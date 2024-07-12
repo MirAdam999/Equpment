@@ -83,22 +83,25 @@ const ChangePass = () => {
     };
 
     return (
-        <div>
+        <div className='change-pass'>
             <h2>שינוי סיסמה</h2>
-            <form onSubmit={updatePass}>
-                <label htmlFor="old_password">סיסמה ישנה</label><br />
-                <input type="password" id="old_password" value={userData.old_password} placeholder='הזן סימה ישנה'
-                    required onChange={handleInputChange} /><br />
-
-                <label htmlFor="new_password">סיסמה חדשה</label><br />
-                <input type="password" id="new_password" value={userData.new_password} placeholder='הזן סיסמה חדשה'
-                    required onChange={handleInputChange} /><br />
-
-                <label htmlFor="repeat_pass">הזן סיסמה חדשה שנית</label><br />
-                <input type="password" id="repeat_pass" value={userData.repeat_pass} placeholder='הזן סיסמה חדשה שנית'
-                    required onChange={handleInputChange} /><br />
-
-                <button type="submit">שנה סיסמה</button>
+            <form onSubmit={updatePass} className='change-pass-form'>
+                <div>
+                    <label htmlFor="old_password">סיסמה ישנה</label><br />
+                    <input type="password" id="old_password" value={userData.old_password} placeholder='הזן סימה ישנה'
+                        required onChange={handleInputChange} /><br />
+                </div>
+                <div>
+                    <label htmlFor="new_password">סיסמה חדשה</label><br />
+                    <input type="password" id="new_password" value={userData.new_password} placeholder='הזן סיסמה חדשה'
+                        required onChange={handleInputChange} /><br />
+                </div>
+                <div>
+                    <label htmlFor="repeat_pass">הזן סיסמה חדשה שנית</label><br />
+                    <input type="password" id="repeat_pass" value={userData.repeat_pass} placeholder='הזן סיסמה חדשה שנית'
+                        required onChange={handleInputChange} /><br />
+                </div>
+                <button type="submit" className="submit-button">שנה סיסמה</button>
             </form>
             {sucsess && <div className="sucsess-msg">סיסמה עודכנה בהצלחה</div>}
             {err && !sucsess && <div className="err-msg">{err}</div>}

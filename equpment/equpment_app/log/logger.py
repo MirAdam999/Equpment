@@ -1,6 +1,7 @@
 import json
 import os
 from datetime import datetime
+import tempfile
 
 class Logger(object):
     _instance = None
@@ -55,14 +56,22 @@ class Logger(object):
 
     def _load_entries(self):
         try:
-            with open(self.log_path, 'r') as file:
+            with open(self.log_path, 'r', encoding='utf-8') as file:
                 return json.load(file)
         except FileNotFoundError:
             return []
-
-
+            
+    
     def _save_entries(self, entries):
-        with open(self.log_path, 'w') as file:
-            json.dump(entries, file,indent=2)
+        temp_log_file = None
+        try:
+            # Use a temporary file to ensure atomic writes
+            temp_log_file = tempfile.NamedTemporaryFile('w', delete=False, encoding='utf-8')
+            json.dump(entries, temp_log_file, indent=2, ensure_ascii=False)
+            temp_log_file.close()
+            os.replace(temp_log_file.name, self._log_file)
+        except Exception as e:
+            if temp_log_file is not None:
+                os.remove(temp_log_file.name)
         
         

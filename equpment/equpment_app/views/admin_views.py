@@ -282,7 +282,37 @@ class AdminViews(UserViews):
         finally:
             logger.log('AdminViews','get_all_orders',None,output)   
     
-    
+  
+    @api_view(['GET'])
+    @permission_classes([IsAuthenticated,IsAdminUser]) 
+    def get_requres_attention_orders(request):
+        try:
+            orders = Order.objects.all()
+            filtered_orders_data = []
+            for order in orders:
+                order_details = OrderDetails.objects.filter(order=order)
+
+                all_approved = all(detail.approved_to_ship == 1 for detail in order_details) 
+                unnaproved = False if all_approved else True
+                
+                all_sent_to_supplier = all(detail.sent_to_supplier == 'true' for detail in order_details) 
+                not_sent = False if all_sent_to_supplier else True
+
+                if unnaproved or not_sent:
+                        order_dict = data_constructor.parse_order(order)
+                        filtered_orders_data.append(order_dict)
+                
+            output = filtered_orders_data
+            return Response({"requring_attention_orders": output}, status=status.HTTP_200_OK)
+                
+        except Exception as e:
+            output = str(e)
+            return Response({"err":str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            
+        finally:
+            logger.log('AdminViews','get_requres_attention_orders',None,output)   
+            
+              
     @api_view(['GET'])
     @permission_classes([IsAuthenticated, IsAdminUser])
     def get_filtered_orders(request):
@@ -312,9 +342,6 @@ class AdminViews(UserViews):
                     start_date = datetime.strptime(start_date, '%Y-%m-%d')
                     end_date = datetime.strptime(end_date, '%Y-%m-%d')
                     filters['datetime__range'] = (start_date, end_date)
-                    
-                if sent_to_supplier != 'all':
-                    filters['sent_to_supplier'] = sent_to_supplier
 
                 if not filters:
                     orders = Order.objects.all()
@@ -329,13 +356,35 @@ class AdminViews(UserViews):
             for order in orders:
                 order_details = OrderDetails.objects.filter(order=order)
 
-                all_received = all(detail.recived == (received == 'true') for detail in order_details) if received != 'all' else True
-                all_approved = all(detail.approved_to_ship == (approved_to_ship == 'true') for detail in order_details) if approved_to_ship != 'all' else True
+                recived_match = True
+                if received != 'all':
+                    all_received = all(detail.recived == 'true' for detail in order_details) 
+                    if all_received:
+                        recived_match = True if received == '1' else False
+                    else:
+                        recived_match = False if received == '1' else True
+                
+                approved_match = True
+                if approved_to_ship != 'all':
+                    all_approved = all(detail.approved_to_ship == 1 for detail in order_details) 
+                    if all_approved:
+                        approved_match = True if approved_to_ship == '1' else False
+                    else:
+                        approved_match = False if approved_to_ship == '1' else True
+                
+                sent_to_supplier_match = True
+                if sent_to_supplier != 'all':
+                    all_sent_to_supplier = all(detail.sent_to_supplier == 'true' for detail in order_details) 
+                    if all_sent_to_supplier:
+                        sent_to_supplier_match = True if sent_to_supplier == '1' else False
+                    else:
+                        sent_to_supplier_match = False if sent_to_supplier == '1' else True
+                
                 supplier_match = True
                 if supplier != 'all':
                     supplier_match = order_details.filter(item__supplier__id=int(supplier)).exists()
 
-                if all_received and all_approved and supplier_match:
+                if recived_match and approved_match and sent_to_supplier_match and supplier_match:
                         order_dict = data_constructor.parse_order(order)
                         filtered_orders_data.append(order_dict)
                 
@@ -348,6 +397,33 @@ class AdminViews(UserViews):
         
         finally:
             logger.log('AdminViews','get_filtered_orders', filters, output)
+    
+    
+    @api_view(['GET'])
+    @permission_classes([IsAuthenticated,IsAdminUser]) 
+    def get_unshipped_orders(request):
+        try:
+            orders = Order.objects.all()
+            filtered_orders_data = []
+            for order in orders:
+                order_details = OrderDetails.objects.filter(order=order)
+                
+                all_sent_to_supplier = all(detail.sent_to_supplier == 'true' for detail in order_details) 
+                not_sent = False if all_sent_to_supplier else True
+
+                if not_sent:
+                        order_dict = data_constructor.parse_order(order)
+                        filtered_orders_data.append(order_dict)
+                
+            output = filtered_orders_data
+            return Response({"unshipped_orders": output}, status=status.HTTP_200_OK)
+                
+        except Exception as e:
+            output = str(e)
+            return Response({"err":str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            
+        finally:
+            logger.log('AdminViews','get_unshipped_orders',None,output) 
     
     
     @api_view(['POST'])
@@ -675,6 +751,62 @@ class AdminViews(UserViews):
         
         finally:
             logger.log('AdminViews','update_branch', (request.data, branch_id), output)        
+            
+            
+    @api_view(['PUT'])
+    @permission_classes([IsAuthenticated, IsAdminUser])   
+    def activate_branch(request, branch_id):
+        """
+        10.07.24
+        Args: PUT, branch_id (int)
+        Returns: branch_activated + 201/ not_found + 404 / err + 500
+        """
+        try:
+            branch = Branch.objects.get(pk=branch_id)
+            if branch:
+                branch.active = True
+                branch.save() 
+                output = {"branch_activated": branch_id}
+                return Response(output, status=status.HTTP_201_CREATED)
+        
+        except Branch.DoesNotExist:
+            output = "No branch  with id given"
+            return Response({"not_found": output}, status=status.HTTP_404_NOT_FOUND)
+        
+        except Exception as e:
+            output = str(e)
+            return Response({'err':output}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+        finally:
+            logger.log('AdminViews','activate_branch', (branch_id), output)   
+
+
+    @api_view(['PUT'])
+    @permission_classes([IsAuthenticated, IsAdminUser])   
+    def deactivate_branch(request, branch_id):
+        """
+        10.07.24
+        Args: PUT, branch_id (int)
+        Returns: branch_deactivated + 201/ not_found + 404 / err + 500
+        """
+        try:
+            branch = Branch.objects.get(pk=branch_id)
+            if branch:
+                branch.active = False
+                branch.save() 
+                output = {"branch_deactivated": branch_id}
+                return Response(output, status=status.HTTP_201_CREATED)
+        
+        except Branch.DoesNotExist:
+            output = "No branch  with id given"
+            return Response({"not_found": output}, status=status.HTTP_404_NOT_FOUND)
+        
+        except Exception as e:
+            output = str(e)
+            return Response({'err':output}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+        finally:
+            logger.log('AdminViews','deactivate_branch', (branch_id), output)    
     
     
     @api_view(['GET'])
@@ -788,6 +920,36 @@ class AdminViews(UserViews):
             
         finally:
             logger.log('AdminViews','get_all_suppliers',None,output)
+            
+            
+    @api_view(['GET'])
+    @permission_classes([IsAuthenticated,IsAdminUser])
+    def get_active_suppliers(request):
+        """
+        12.06.24
+        Args: GET
+        Returns: list of active suppliers as jsons + 200/ not found str + 404 / err str + 500
+        """
+        try:
+            supliers = Supplier.objects.filter(active = True)
+            parced_suppliers =[]
+            for supplier in supliers:
+                parced_supplier = data_constructor.parce_supplier(supplier)
+                parced_suppliers.append(parced_supplier)
+                
+            output = parced_suppliers
+            return Response({"active_suppliers":output}, status=status.HTTP_200_OK)
+        
+        except Branch.DoesNotExist:
+            output = f"No Supliers Found"
+            return Response({"not_found": output}, status=status.HTTP_404_NOT_FOUND)
+                
+        except Exception as e:
+            output = str(e)
+            return Response({"err":str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            
+        finally:
+            logger.log('AdminViews','get_active_suppliers',None,output)
     
     
     @api_view(['POST'])
@@ -803,7 +965,7 @@ class AdminViews(UserViews):
             if serializer.is_valid():
                 serializer.save()
                 output = {'new_supplier': serializer.data}
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
+                return Response(output, status=status.HTTP_201_CREATED)
             
             output = {'err':serializer.errors}
             return Response(output, status=status.HTTP_400_BAD_REQUEST)
@@ -845,15 +1007,72 @@ class AdminViews(UserViews):
         
         finally:
             logger.log('AdminViews','update_supplier', (request.data, sup_id), output) 
+            
+            
+    @api_view(['PUT'])
+    @permission_classes([IsAuthenticated, IsAdminUser])    
+    def activate_supplier(request, sup_id):
+        """
+        19.06.24
+        Args: PUT, sup_id (int)
+        Returns: supplier_activated + 201/ not_found + 404 / err + 500
+        """
+        try:
+            sup = Supplier.objects.get(pk=sup_id)
+            if sup:
+                sup.active = True
+                sup.save() 
+                output = {"supplier_activated": sup_id}
+                return Response(output, status=status.HTTP_201_CREATED)
+            
+        except SupplierSerializer.DoesNotExist:
+            output = "No supplier with id given"
+            return Response({"not_found": output}, status=status.HTTP_404_NOT_FOUND)
+        
+        except Exception as e:
+            output = str(e)
+            return Response({'err':output}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+        finally:
+            logger.log('AdminViews','activate_supplier', (sup_id), output) 
 
 
+    @api_view(['PUT'])
+    @permission_classes([IsAuthenticated, IsAdminUser])    
+    def deactivate_supplier(request, sup_id):
+        """
+        10.07.24
+        Args: PUT, sup_id (int)
+        Returns: supplier_deactivated + 201/ not_found + 404 / err + 500
+        """
+        try:
+            sup = Supplier.objects.get(pk=sup_id)
+            if sup:
+                sup.active = False
+                sup.save() 
+                output = {"supplier_deactivated": sup_id}
+                return Response(output, status=status.HTTP_201_CREATED)
+            
+        except SupplierSerializer.DoesNotExist:
+            output = "No supplier with id given"
+            return Response({"not_found": output}, status=status.HTTP_404_NOT_FOUND)
+        
+        except Exception as e:
+            output = str(e)
+            return Response({'err':output}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+        finally:
+            logger.log('AdminViews','deactivate_supplier', (sup_id), output) 
+            
+            
     @api_view(['PUT'])
     @permission_classes([IsAuthenticated,IsAdminUser]) 
     def approve_order_detail(request, order_detail_id):
         try:
-            od = OrderDetails.objects.filter(pk = order_detail_id)
+            od = OrderDetails.objects.get(pk = order_detail_id)
             if od:
                 od.approved_to_ship = True
+                od.save() 
                 output = {"approved_to_ship":order_detail_id}
                 return Response(output, status=status.HTTP_200_OK) 
         
@@ -867,6 +1086,28 @@ class AdminViews(UserViews):
             
         finally:
             logger.log('AdminViews','approve_order_detail',order_detail_id,output)      
+            
+            
+    @api_view(['DELETE'])
+    @permission_classes([IsAuthenticated,IsAdminUser]) 
+    def remove_order_detail(request, order_detail_id):
+        try:
+            od = OrderDetails.objects.filter(pk = order_detail_id)
+            if od:
+                od.delete()
+                output = {'detail_deleted':order_detail_id}
+                return Response(output, status=status.HTTP_200_OK) 
+        
+        except OrderDetails.DoesNotExist:
+            output = f"No order detail with id {order_detail_id}."
+            return Response({"not found": output}, status=status.HTTP_404_NOT_FOUND)
+        
+        except Exception as e:
+            output = str(e)
+            return Response({"err":str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            
+        finally:
+            logger.log('AdminViews','approve_order_detail',order_detail_id,output)   
     
     
     @api_view(['PUT'])

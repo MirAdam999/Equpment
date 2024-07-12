@@ -1,0 +1,30 @@
+.ship-orders {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    text-align: center;
+    min-height: 70vh;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+}
+
+.ship-orders h2 {
+    padding-bottom: 0.2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-bottom: solid 2px var(--dark-blue);
+    margin-bottom: 0.5rem;
+}
+
+.ship-orders table {
+    border-collapse: collapse;
+    border: solid 1px black;
+    direction: rtl;
+}
+
+.ship-orders th,
+.ship-orders td,
+.ship-orders tr {
+    border: solid 1px black;
+}

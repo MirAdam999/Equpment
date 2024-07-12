@@ -1,7 +1,99 @@
+.manage-users {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    text-align: center;
+    min-height: 70vh;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+}
+
+.manage-users h2 {
+    padding-bottom: 0.2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-bottom: solid 2px var(--dark-blue);
+    margin-bottom: 0.5rem;
+}
+
+.manage-users-top {
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 100px;
+}
+
+#open-add-user {
+    font-size: 1.4rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    font-weight: 800;
+    background-color: var(--light-blue);
+    border-radius: 0.3rem;
+    border: solid 1px var(--light-blue);
+    color: var(--dark-blue);
+    transition: ease 0.2s;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+#open-add-user:hover {
+    background-color: var(--light-green);
+    border: solid 1px var(--light-green);
+    color: var(--dark-blue);
+}
+
+.manage-users-form-wrapper {
+    background-color: var(--dark-blue);
+    border-radius: 0.3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 1rem;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+.manage-users-form-wrapper h3 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.3rem;
+    font-size: 1.4rem;
+    color: var(--light-blue);
+}
+
 .manage-users-form {
     display: flex;
     flex-direction: row-reverse;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: last baseline;
+    gap: 20px;
+    font-size: 1.2rem;
+}
+
+.manage-users-form button {
+    font-size: 1.4rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    font-weight: 800;
+    background-color: var(--light-blue);
+    border-radius: 0.3rem;
+    border: solid 1px var(--light-blue);
+    color: var(--dark-blue);
+    transition: ease 0.2s;
+    cursor: pointer;
+}
+
+.manage-users-form button:hover {
+    background-color: var(--light-green);
+    border: solid 1px var(--light-green);
+    color: var(--dark-blue);
 }
 
 .manage-users-form div {
@@ -9,6 +101,198 @@
     flex-direction: column;
 }
 
+.manage-users-form select {
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 0.2rem;
+    border: solid 1px gray;
+    font-family: var(--main-font);
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+}
+
+.manage-users-form select:focus {
+    outline: none;
+}
+
+.manage-users-table-wrapper {
+    text-align: center;
+}
+
 .users-found-table {
     direction: rtl;
+    border: white solid 2px;
+    border-collapse: collapse;
+    font-size: 1rem;
+}
+
+.users-found-table th {
+    font-size: 1.2rem;
+    color: white;
+    background-color: var(--dark-blue);
+}
+
+.users-found-table th,
+.users-found-table td {
+    border: solid 1px var(--dark-blue);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.users-found-table tr:hover {
+    background-color: var(--light-green);
+}
+
+.admin-user {
+    color: var(--medium-blue);
+}
+
+.active-user {
+    color: green;
+}
+
+.nonactive-user {
+    color: red;
+}
+
+.users-found-table button {
+    font-size: 1rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    transition: ease 0.2s;
+    cursor: pointer;
+    outline: none;
+}
+
+.users-found-table button:disabled {
+    cursor: not-allowed;
+    color: gray;
+    border: solid 1px gray;
+    background-color: rgba(128, 128, 128, 0.61);
+}
+
+.make-admin-user {
+    border: var(--dark-blue) solid 1px;
+    color: white;
+    background-color: var(--dark-blue);
+}
+
+.make-admin-user:hover {
+    border: var(--dark-blue) solid 1px;
+    color: var(--dark-blue);
+    background-color: white;
+}
+
+.revoke-admin-user,
+.disable-user {
+    background-color: white;
+    color: red;
+    border: solid 1px red;
+}
+
+.revoke-admin-user:hover,
+.disable-user:hover {
+    background-color: red;
+    color: white;
+    border: solid 1px red;
+}
+
+.enable-user {
+    color: white;
+    border: solid 1px green;
+    background-color: green;
+}
+
+.enable-user:hover {
+    background-color: white;
+    border: solid 1px green;
+    color: green;
+}
+
+.user-update-msg {
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+.add-user-top {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+.add-user-btm div {
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: last baseline;
+    gap: 20px;
+}
+
+.add-user-btm input {
+    font-family: var(--english-font);
+    text-align: right;
+    font-size: 1rem;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    border: none;
+    border-bottom: var(--dark-blue) solid 1px;
+    background-color: rgba(128, 128, 128, 0.158);
+    direction: ltr;
+    transition: ease 0.3s;
+    margin-top: 1rem;
+}
+
+.add-user-btm input:focus {
+    background-color: var(--dark-blue);
+    color: white;
+    outline: none;
+}
+
+.add-user-btm button {
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-weight: 800;
+    background-color: var(--dark-blue);
+    border: solid 1px var(--dark-blue);
+    color: white;
+    transition: ease 0.3s;
+    cursor: pointer;
+}
+
+.add-user-btm button:hover {
+    background-color: var(--light-blue);
+    border: solid 1px var(--light-blue);
+    color: var(--dark-blue);
+    letter-spacing: 2px;
+}
+
+.add-user-btm select {
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 0.2rem;
+    border: solid 1px gray;
+    font-family: var(--main-font);
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    margin-top: 1rem;
+    width: 58%;
+}
+
+.add-user-btm select:focus {
+    outline: none;
 }

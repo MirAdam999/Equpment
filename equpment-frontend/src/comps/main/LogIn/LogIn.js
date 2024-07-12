@@ -3,6 +3,7 @@ import { useURL } from "../../context/URL";
 import { useBranch } from "../../context/BranchData";
 import { useState, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
+import './Login.css'
 
 const LogIn = () => {
     const { storedURL } = useURL();
@@ -56,7 +57,7 @@ const LogIn = () => {
                 setCurrentNextOrder(recevedNextOrder);
 
                 if (recevedMasterPrem) {
-                    handleNavigation('/managment_orders')
+                    handleNavigation('/requres_attention')
                 } else {
                     handleNavigation('/branch_orders')
                 }
@@ -71,18 +72,20 @@ const LogIn = () => {
 
     return (
         <div className="login-page">
-            <h1>מערכת ניהול הזמנות ציוד</h1>
-            <div className="login-form">
-                <form onSubmit={handleLogin}>
+            <div className="login-inner">
+                <h1>מערכת ניהול הזמנות ציוד </h1>
+                <form onSubmit={handleLogin} className="login-form">
+                    <h3>כניסה למערכת</h3>
                     <label htmlFor="username">שם משתמש</label>
                     <input type="text" id="username" ref={username} required /><br />
                     <label htmlFor="password">סיסמה</label>
                     <input type="password" id="password" ref={password} required /><br />
 
                     <button type="submit">התחבר</button>
+
+                    {errorMessage &&
+                        <p className="err-msg">{errorMessage}</p>}
                 </form>
-                {errorMessage &&
-                    <p className="err=msg">{errorMessage}</p>}
             </div>
         </div>
     )

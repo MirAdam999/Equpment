@@ -1,6 +1,7 @@
 import { useURL } from '../../context/URL';
 import { useToken } from '../../context/Token';
 import { useState } from 'react';
+import './MangeSuppliers.css'
 
 const AddSupplier = (props) => {
     const { storedURL } = useURL();
@@ -51,15 +52,15 @@ const AddSupplier = (props) => {
     };
 
     return (
-        <div>
-            <div>
+        <div className='popup'>
+            <div className='popup-inner' id='add-supp-popup'>
 
-                <div>
-                    <h2></h2>
-                    <button onClick={props.onClose}>X</button>
+                <div className='add-supp-top'>
+                    <p>יצירת ספק חדש</p>
+                    <button className='close-btn' onClick={props.onClose}>X</button>
                 </div>
 
-                <div>
+                <div className='add-supp-btm'>
                     <form onSubmit={addSupplier} className="add-supplier-form">
 
                         <div>
@@ -72,10 +73,10 @@ const AddSupplier = (props) => {
                             <input type="text" name="contact" id='contact' value={supplierData.contact} onChange={handleInputChange} required></input>
                         </div>
 
-                        <div><button type="submit">צור ספק חדש</button></div>
+                        <button type="submit">צור ספק חדש</button>
 
                     </form>
-                    {added && <div className="sucsess-msg">ספק '{added}' נוצר בהצלחה</div>}
+                    {added && <p className="sucsess-msg">נוצר בהצלחה {added} ספק </p>}
                 </div>
 
             </div>

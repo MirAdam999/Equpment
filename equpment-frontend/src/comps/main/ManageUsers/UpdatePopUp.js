@@ -6,10 +6,10 @@ const UpdatePopUp = (props) => {
     const action = props.action
 
     return (
-        <div className="popup-wrappper">
+        <div className="popup">
             <div className="popup-inner">
-                <button onClick={props.onClose}>X</button>
-                <div>משתמש {user_name}, מספר משתמש {user_id}, {action}</div>
+                <button className='close-btn' onClick={props.onClose}>X</button>
+                <div className="user-update-msg">משתמש {user_name}, מספר משתמש {user_id}, {action}</div>
             </div>
         </div>
     )

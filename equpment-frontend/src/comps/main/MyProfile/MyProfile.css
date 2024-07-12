@@ -1,6 +1,107 @@
 .my-profile {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
     text-align: right;
+    min-height: 60vh;
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+
+}
+
+.change-pass,
+.change-profile {
+    padding-left: 5rem;
+    padding-right: 5rem;
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+.change-pass {
+    border-right: var(--medium-blue) solid 2px;
+}
+
+.change-pass h2,
+.change-profile h2 {
+    padding-top: 1rem;
+    text-align: center;
+}
+
+.change-pass-form,
+.change-profile-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.change-pass-form div,
+.change-profile-form div {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.change-pass-form input,
+.change-profile-form input {
+    text-align: center;
+    font-size: 1rem;
+    padding: 0.2rem;
+    font-family: var(--english-font);
+    border-radius: 0.2rem;
+    border: solid 1px gray;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    width: 100%;
+    margin-top: 0.2rem;
+}
+
+.change-profile-form input:disabled {
+    border: solid gray 1px;
+    background-color: rgba(128, 128, 128, 0.2);
+    color: var(--dark-blue);
+    cursor: not-allowed;
+}
+
+.change-pass-form input:focus,
+.change-profile-form input:focus {
+    outline: none;
+    border: solid var(--medium-blue) 1px;
+}
+
+.change-profile-form select {
+    text-align: center;
+    font-size: 1rem;
+    font-family: var(--english-font);
+    border-radius: 0.2rem;
+    border: solid 1px gray;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    width: 102%;
+    margin-top: 0.2rem;
+}
+
+#input-pass-for-update-label {
+    text-align: center;
+    font-weight: 800;
+}
+
+.submit-button {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    font-weight: 800;
+    background-color: var(--dark-blue);
+    border-radius: 0.4rem;
+    border: solid 1px var(--dark-blue);
+    color: white;
+    width: 102%;
+    cursor: pointer;
+    transition: ease 0.3s;
+}
+
+.submit-button:hover {
+    background-color: var(--light-blue);
+    border: solid 1px var(--light-blue);
+    color: var(--dark-blue);
+    letter-spacing: 2px;
 }

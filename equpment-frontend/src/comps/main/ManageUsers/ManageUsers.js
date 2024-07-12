@@ -4,6 +4,7 @@ import { useToken } from "../../context/Token";
 import AddUser from './AddUser';
 import UpdatePopUp from './UpdatePopUp';
 import './ManageUsers.css'
+import Loading from '../../../Loading/Loading'
 
 const ManageUsers = () => {
     const { storedURL } = useURL()
@@ -184,35 +185,42 @@ const ManageUsers = () => {
     return (
         <div className='manage-users'>
 
-            <div>
+            <h2>ניהול משתמשים</h2>
 
-                {popUpOpen && <AddUser onClose={closeAddUser} />}
-                <button onClick={openAddUser}>יצירת משתמש +</button>
+            {popUpOpen && <AddUser onClose={closeAddUser} search={searchUser} />}
+            <div className='manage-users-top'>
 
-                <form className='manage-users-form'>
-                    <div>
-                        <label htmlFor="user-type">סוג משתמש</label>
-                        <select id="user-type" value={userType} onChange={(e) => setUserType(e.target.value)}>
-                            <option value="all">הצג הכל</option>
-                            <option value="0">רגיל</option>
-                            <option value="1">מנהל</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label htmlFor="user-status">סטטוס משתמש</label>
-                        <select id="user-status" value={userStatus} onChange={(e) => setUserStatus(e.target.value)}>
-                            <option value="all">הצג הכל</option>
-                            <option value="1">פעיל</option>
-                            <option value="0">לא פעיל</option>
-                        </select>
-                    </div>
-                    <div><button type="submit" onClick={(e) => searchUser(e, true)}>הצג</button></div>
-                </form>
+                <button onClick={openAddUser} id='open-add-user'>יצירת משתמש +</button>
 
+                <div className='manage-users-form-wrapper'>
+
+                    <h3>הצגת משתמשים</h3>
+                    <form className='manage-users-form'>
+
+                        <div>
+                            <label htmlFor="user-type">סוג משתמש</label>
+                            <select id="user-type" value={userType} onChange={(e) => setUserType(e.target.value)}>
+                                <option value="all">הצג הכל</option>
+                                <option value="0">רגיל</option>
+                                <option value="1">מנהל</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label htmlFor="user-status">סטטוס משתמש</label>
+                            <select id="user-status" value={userStatus} onChange={(e) => setUserStatus(e.target.value)}>
+                                <option value="all">הצג הכל</option>
+                                <option value="1">פעיל</option>
+                                <option value="0">לא פעיל</option>
+                            </select>
+                        </div>
+                        <div><button type="submit" onClick={(e) => searchUser(e, true)}>הצג</button></div>
+                    </form>
+
+                </div>
             </div>
 
-            <div>
-                {loading && <div>LOADING</div>}
+            <div className='manage-users-table-wrapper'>
+                {loading && <div><Loading /></div>}
                 {searched && found.length > 0 &&
                     <div>
                         <table className='users-found-table'>
@@ -233,17 +241,19 @@ const ManageUsers = () => {
                                         <td>{user.name}</td>
                                         <td>{user.email}</td>
                                         <td>{user.branch_name}</td>
-                                        <td>{user.is_superuser === true ? 'מנהל' : 'רגיל'}</td>
-                                        <td>{user.is_active === true ? 'פעיל' : 'לא פעיל'}</td>
+                                        <td className={user.is_superuser === true ? 'admin-user' : ''}>{user.is_superuser === true ? 'מנהל' : 'רגיל'}</td>
+                                        <td className={user.is_active === true ? 'active-user' : 'nonactive-user'}>{user.is_active === true ? 'פעיל' : 'לא פעיל'}</td>
                                         <td>{user.is_superuser === true ?
-                                            <button onClick={() => revokeAdmin(user)}
+                                            <button onClick={() => revokeAdmin(user)} className='revoke-admin-user'
                                                 disabled={user.id === usersID}>סגירת הרשות מנהל</button> :
-                                            <button onClick={() => makeAdmin(user)}>פתח הרשאות מנהל</button>}</td>
+                                            <button onClick={() => makeAdmin(user)} className='make-admin-user'
+                                                disabled={user.is_active === false}>פתח הרשאות מנהל</button>}</td>
 
                                         <td>{user.is_active === true ?
-                                            <button onClick={() => deactivateUser(user)}
+                                            <button onClick={() => deactivateUser(user)} className='disable-user'
                                                 disabled={user.id === usersID}>הפך ללא פעיל</button> :
-                                            <button onClick={() => activateUser(user)}>הפעל משתמש</button>}</td>
+                                            <button onClick={() => activateUser(user)}
+                                                className='enable-user'>הפעל משתמש</button>}</td>
                                     </tr>
                                 ))}
                             </tbody>

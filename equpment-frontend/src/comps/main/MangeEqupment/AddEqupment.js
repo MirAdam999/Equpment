@@ -1,6 +1,7 @@
 import { useURL } from "../../context/URL";
 import { useToken } from "../../context/Token";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { BsExclamationCircle } from "react-icons/bs";
 
 const AddEqupment = (props) => {
     const cats = props.cats
@@ -72,14 +73,14 @@ const AddEqupment = (props) => {
     };
 
     return (
-        <div className="popup-wrapper">
+        <div className="popup">
             <div className="popup-inner">
-                <div>
-                    <button onClick={props.onClose}>X</button>
+                <div className="add-item-top">
+                    <button onClick={props.onClose} className="close-btn">X</button>
                     <h2>יצירת פריט ציוד חדש</h2>
                 </div>
-                <div>
-                    <form onSubmit={addEqupment} className="add-equpment-form">
+                <div className="add-item-btm">
+                    <form onSubmit={addEqupment}>
 
                         <div>
                             <label htmlFor="name">שם הפריט</label>
@@ -129,14 +130,13 @@ const AddEqupment = (props) => {
                                 />
                                 הזמנת פריט זה דורשת אישור מנהל
                             </label>
-                            <p>פרטי ציוד שדורשים אישור מנהל, יצתרכו אישור טרם תוכל לשלוח לספק את ההזמנה</p>
                         </div>
-
-                        <div><button type="submit">צור פריט חדש</button></div>
+                        <p id='warning-msg'> <BsExclamationCircle id="warning-icon" /> פרטי ציוד שדורשים אישור מנהל, < br />יצתרכו אישור טרם תוכל לשלוח לספק את ההזמנה</p>
+                        <button type="submit">צור פריט חדש</button>
 
                     </form>
 
-                    {added && <div className="sucsess-msg">פריט ציוד '{added}' נוצר בהצלחה</div>}
+                    {added && <p className="sucsess-msg">פריט ציוד '{added}' נוצר בהצלחה</p>}
                 </div>
             </div>
         </div>

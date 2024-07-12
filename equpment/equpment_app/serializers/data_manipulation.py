@@ -30,6 +30,7 @@ class DataConstructor:
         order_details_data = order_details_seri.data
 
         order_data['all_order_approved_to_ship'] = all(detail['approved_to_ship'] for detail in order_details_seri.data)
+        order_data['all_order_sent_to_supplier'] = all(detail['sent_to_supplier'] for detail in order_details_seri.data)
         order_data['all_order_recived'] = all(detail['recived'] for detail in order_details_seri.data)
         
         for detail in order_details_data:
@@ -44,6 +45,7 @@ class DataConstructor:
             supplier_seri = SupplierSerializer(supplier)
             
             detail['detail_supplier'] = supplier_seri.data['name']
+            detail['detail_supplier_id'] = supplier_seri.data['id']
 
         order_data['order_total'] = sum(detail['detail_price_for_order'] for detail in order_details_data)
 

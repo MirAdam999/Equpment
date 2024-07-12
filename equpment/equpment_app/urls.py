@@ -10,12 +10,14 @@ urlpatterns = [
     
     # user views
     path('get_all_branches/',UserViews.get_all_branches), # tested
+    path('get_active_branches/',UserViews.get_active_branches), # tested
     path('get_branch/<int:branch_id>/',UserViews.get_branch), # tested
     path('get_equpment_categories/',UserViews.get_equpment_categories), # tested
     path('get_equpment_by_category/<int:cat_id>/',UserViews.get_equpment_by_category), # tested
     path('view_orders_by_branch/<int:branch_id>/',UserViews.view_orders_by_branch), # tested
     path('add_order/',UserViews.add_order), # tested 
-    path('approve_delivery/<int:order_detail_id>/',UserViews.approve_delivery), 
+    path('view_order_by_id/<int:order_id>/',UserViews.view_order_by_id),  # tested
+    path('approve_delivery/<int:order_detail_id>/',UserViews.approve_delivery),  # tested
     path('get_self/',UserViews.get_self), # tested 
     path('update_profile/',UserViews.update_profile), # tested
     path('update_password/',UserViews.update_password), # tested
@@ -28,6 +30,8 @@ urlpatterns = [
     path('update_area/<int:area_id>/',AdminViews.update_area), # tested
     path('add_branch/',AdminViews.add_branch), # tested
     path('update_branch/<int:branch_id>/',AdminViews.update_branch), # tested
+    path('activate_branch/<int:branch_id>/',AdminViews.activate_branch),
+    path('deactivate_branch/<int:branch_id>/',AdminViews.deactivate_branch),
     path('add_equpment_category/',AdminViews.add_equpment_category), # tested
     path('update_equpment_category/<int:equpment_cat_id>/',AdminViews.update_equpment_category), # tested
     path('delete_equpment_category/<int:equpment_cat_id>/',AdminViews.delete_equpment_category), 
@@ -38,8 +42,11 @@ urlpatterns = [
     path('activate_equpment/<int:equpment_id>/',AdminViews.activate_equpment), # tested
     path('deactivate_equpment/<int:equpment_id>/',AdminViews.deactivate_equpment), # tested
     path('get_all_suppliers/',AdminViews.get_all_suppliers), # tested
+    path('get_active_suppliers/',AdminViews.get_active_suppliers), 
     path('add_supplier/',AdminViews.add_supplier), # tested
     path('update_supplier/<int:sup_id>/',AdminViews.update_supplier), # tested
+    path('activate_supplier/<int:sup_id>/',AdminViews.activate_supplier),
+    path('deactivate_supplier/<int:sup_id>/',AdminViews.deactivate_supplier),
     path('get_user_by_id/<int:user_id>/',AdminViews.get_user_by_id), # tested
     path('get_all_users/',AdminViews.get_all_users), # tested
     path('get_filtered_users/',AdminViews.get_filtered_users), # tested
@@ -48,5 +55,9 @@ urlpatterns = [
     path('make_admin/<int:user_id>/',AdminViews.make_admin), # tested
     path('revoke_admin/<int:user_id>/',AdminViews.revoke_admin), # tested
     path('get_all_orders/',AdminViews.get_all_orders), # tested
-    path('get_filtered_orders/',AdminViews.get_filtered_orders),
+    path('get_filtered_orders/',AdminViews.get_filtered_orders), # tested
+    path('get_requres_attention_orders/',AdminViews.get_requres_attention_orders), # tested
+    path('approve_order_detail/<int:order_detail_id>/',AdminViews.approve_order_detail), # tested
+    path('remove_order_detail/<int:order_detail_id>/',AdminViews.remove_order_detail),  # tested
+    path('get_unshipped_orders/',AdminViews.get_unshipped_orders), 
 ]

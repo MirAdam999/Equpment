@@ -1,0 +1,56 @@
+.choose_branch-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    text-align: right;
+    min-height: 60vh;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+}
+
+.choose_branch-page h1 {
+    color: var(--dark-blue);
+    border-bottom: solid 2px var(--light-green);
+    padding-bottom: 0.5rem;
+}
+
+.choose_branch-page form {
+    display: flex;
+    flex-direction: column;
+}
+
+.choose_branch-page button {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 0.3rem;
+    font-weight: 800;
+    background-color: var(--dark-blue);
+    border-radius: 0.5rem;
+    border: solid 1px var(--dark-blue);
+    color: white;
+    transition: ease 0.3s;
+    cursor: pointer;
+}
+
+.choose_branch-page button:hover {
+    background-color: var(--light-blue);
+    border: solid 1px var(--light-blue);
+    color: var(--dark-blue);
+    letter-spacing: 2px;
+}
+
+.choose_branch-page select {
+    text-align: center;
+    font-size: 1.1rem;
+    font-family: var(--english-font);
+    border-radius: 0.2rem;
+    border: solid 1px gray;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 102%;
+    margin-top: 0.2rem;
+}

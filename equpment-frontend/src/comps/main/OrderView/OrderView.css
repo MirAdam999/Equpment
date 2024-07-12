@@ -1,0 +1,112 @@
+.order-view-head div {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#order-view-norder-num {
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+#order-view-norder-num span {
+    color: var(--dark-blue);
+    font-weight: 600;
+}
+
+.order-view-head p {
+    font-size: 1.2rem;
+    margin: 0.3rem;
+}
+
+.order-view-head span {
+    font-weight: 600;
+}
+
+.order-view-head {
+    border-bottom: var(--dark-blue) solid 2px;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+#order-view-table {
+    direction: rtl;
+    border-collapse: collapse;
+    border: solid var(--light-green) 1px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+#order-view-table thead {
+    text-align: center;
+    color: var(--dark-blue);
+    border: solid var(--light-green) 1px;
+    background-color: var(--light-blue);
+}
+
+#order-view-table td,
+#order-view-table th {
+    border: solid var(--light-green) 1px;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+#order-view-table tr:hover {
+    background-color: var(--light-green);
+}
+
+#total-price {
+    font-weight: 800;
+    font-size: 1.2rem;
+}
+
+#total-price span {
+    color: var(--dark-blue);
+}
+
+#approve-delivery {
+    text-align: center;
+}
+
+#approve-delivery-btn {
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border: none;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    background-color: var(--light-green);
+    color: var(--dark-blue);
+    font-weight: 600;
+    transition: ease 0.2s;
+    cursor: pointer;
+}
+
+#approve-delivery-btn:hover {
+    background-color: var(--dark-blue);
+    color: var(--light-green);
+}
+
+#disallow-delivery-btn {
+    color: red;
+    background-color: white;
+    border: solid 1px red;
+    cursor: pointer;
+    transition: 0.2s ease;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+#disallow-delivery-btn:hover {
+    color: white;
+    background-color: red;
+}

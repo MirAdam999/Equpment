@@ -79,6 +79,6 @@ class AnonViews:
             return Response({'err':str(e)},status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         
         finally:
-            logger.log('AnonViews','logout',token,output)
+            logger.log('AnonViews','logout',None,output)
             
             

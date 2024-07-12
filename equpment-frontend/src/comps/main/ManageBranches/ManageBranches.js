@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { useURL } from '../../context/URL';
 import { useToken } from '../../context/Token';
 import AddBranch from './AddBranch';
+import Loading from '../../../Loading/Loading'
+import './ManageBranches.css'
 
 const ManageBranches = () => {
     const { storedURL } = useURL();
@@ -88,7 +90,7 @@ const ManageBranches = () => {
             });
             const data = await result.json();
             if ('updated' in data) {
-                setSucsess(true)
+                setSucsess(!sucsess)
             } else if ('err' in data) {
                 console.error('Error:', data.err);
             } else {
@@ -108,52 +110,114 @@ const ManageBranches = () => {
         );
     };
 
+    const activateBranch = async (branch) => {
+        try {
+            const result = await fetch(`${storedURL}/activate_branch/${branch.id}/`,
+                {
+                    method: 'PUT',
+                    headers: {
+                        "Authorization": `Token ${storedToken}`,
+                        "Content-Type": "application/json"
+                    }
+                });
+
+            const data = await result.json();
+
+            if ('branch_activated' in data) {
+                setSucsess(!sucsess)
+
+            } else if ('err' in data) {
+                console.error('Error:', data.err);
+            } else {
+                console.error('Error: unknown');
+            }
+
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    }
+
+    const deactivateBranch = async (branch) => {
+        try {
+            const result = await fetch(`${storedURL}/deactivate_branch/${branch.id}/`,
+                {
+                    method: 'PUT',
+                    headers: {
+                        "Authorization": `Token ${storedToken}`,
+                        "Content-Type": "application/json"
+                    }
+                });
+
+            const data = await result.json();
+
+            if ('branch_deactivated' in data) {
+                setSucsess(!sucsess)
+
+            } else if ('err' in data) {
+                console.error('Error:', data.err);
+            } else {
+                console.error('Error: unknown');
+            }
+
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    }
+
     return (
         <div className='manage-branches'>
-            <div>
+            <div className='manage-branches-top'>
                 <h2>ניהול סניפים</h2>
-                <button onClick={openAddBranch}>יצירת סניף חדש +</button>
+                <button id='add-branches' onClick={openAddBranch}>יצירת סניף חדש +</button>
                 {popUpOpen && <AddBranch onClose={closeAddBranch} areas={areas} />}
             </div>
-            <div>
-                {braches.length === 0 && <div>LOADING</div>}
-                {areas.length > 0 && braches.length > 0 &&
-                    <div>
-                        <table>
-                            <thead>
-                                <th>מס סניף</th>
-                                <th>אזור</th>
-                                <th>שם סניף</th>
-                                <th>כתובת ומיקוד</th>
-                                <th>הזמנה הבאה</th>
-                                <th>עדכן</th>
-                            </thead>
-                            <tbody>
-                                {braches.map((branch) => (
-                                    <tr>
-                                        <td>{branch.id}</td>
-                                        <td>
-                                            <select
-                                                value={branch.area}
-                                                onChange={(e) => handleInputChange(e, branch, 'area')}>
-                                                {Array.isArray(areas) && areas.map((area) => (
-                                                    <option key={area.id} value={area.id}>
-                                                        {area.name}
-                                                    </option>
-                                                ))}
-                                            </select>
-                                        </td>
-                                        <td><input type="text" value={branch.name} id="name" onChange={(e) => handleInputChange(e, branch, 'name')}></input></td>
-                                        <td><input type="text" value={branch.address} id="address" onChange={(e) => handleInputChange(e, branch, 'address')}></input></td>
-                                        <td><input type="date" value={branch.next_order} id="next_order" onChange={(e) => handleInputChange(e, branch, 'next_order')}></input></td>
-                                        <td><button onClick={() => updateBranch(branch)}>עדכן</button></td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>}
-            </div>
-        </div>
+
+            {braches.length === 0 && <div className='branches'><Loading /></div>}
+            {areas.length > 0 && braches.length > 0 &&
+                <div className='branches'>
+                    <table>
+                        <thead>
+                            <th>מס סניף</th>
+                            <th>אזור</th>
+                            <th>שם סניף</th>
+                            <th>כתובת ומיקוד</th>
+                            <th>הזמנה הבאה</th>
+                            <th>עדכן</th>
+                            <th>סטטוס</th>
+                            <th>הפך לפעיל/לא פעיל</th>
+                        </thead>
+                        <tbody>
+                            {braches.map((branch) => (
+                                <tr>
+                                    <td>{branch.id}</td>
+                                    <td>
+                                        <select
+                                            value={branch.area}
+                                            onChange={(e) => handleInputChange(e, branch, 'area')}>
+                                            {Array.isArray(areas) && areas.map((area) => (
+                                                <option key={area.id} value={area.id}>
+                                                    {area.name}
+                                                </option>
+                                            ))}
+                                        </select>
+                                    </td>
+                                    <td><input type="text" value={branch.name} id="name" onChange={(e) => handleInputChange(e, branch, 'name')}></input></td>
+                                    <td><input type="text" value={branch.address} id="address" onChange={(e) => handleInputChange(e, branch, 'address')}></input></td>
+                                    <td><input type="date" value={branch.next_order} id="next_order" onChange={(e) => handleInputChange(e, branch, 'next_order')}></input></td>
+                                    <td><button onClick={() => updateBranch(branch)}>עדכן</button></td>
+                                    <td className={branch.active === true ? 'active-branch' : 'nonactive-branch'}>{branch.active === true ? 'פעיל' : 'לא פעיל'}</td>
+                                    <td>{branch.active === true ?
+                                        <button onClick={() => deactivateBranch(branch)} id='disable-branch'>הפך ללא פעיל</button> :
+                                        <button onClick={() => activateBranch(branch)}
+                                            id='enable-branch'>הפעל סניף</button>}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            }
+
+        </div >
     )
 }
 

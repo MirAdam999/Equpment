@@ -26,10 +26,10 @@ class UserViews(AnonViews):
         Returns: list of branches as jsons + 200/ not found str + 404 / err str + 500
         """
         try:
-            branch = Branch.objects.all()
-            seri = BranchSerializer(branch, many = True)
-            output = seri.data
-            return Response({"all_branches":output}, status=status.HTTP_200_OK)
+            branches = Branch.objects.all()
+            seri = BranchSerializer(branches, many = True)
+            output = branches
+            return Response({"all_branches":seri.data}, status=status.HTTP_200_OK)
         
         except Branch.DoesNotExist:
             output = f"No Branches Found"
@@ -41,6 +41,32 @@ class UserViews(AnonViews):
             
         finally:
             logger.log('UserViews','get_all_branches',None,output)
+            
+    
+    @api_view(['GET'])
+    @permission_classes([IsAuthenticated])
+    def get_active_branches(request):
+        """
+        12.06.24
+        Args: GET
+        Returns: list of branches as jsons + 200/ not found str + 404 / err str + 500
+        """
+        try:
+            branches = Branch.objects.filter(active = True)
+            seri = BranchSerializer(branches, many = True)
+            output = branches
+            return Response({"active_branches":seri.data}, status=status.HTTP_200_OK)
+        
+        except Branch.DoesNotExist:
+            output = f"No Branches Found"
+            return Response({"not_found": output}, status=status.HTTP_404_NOT_FOUND)
+                
+        except Exception as e:
+            output = str(e)
+            return Response({"err":str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            
+        finally:
+            logger.log('UserViews','get_active_branches',None,output)
     
     
     @api_view(['GET'])
@@ -54,8 +80,8 @@ class UserViews(AnonViews):
         try:
             branch = Branch.objects.get(pk = branch_id)
             seri = BranchSerializer(branch)
-            output = seri.data
-            return Response({"branch":output}, status=status.HTTP_200_OK)
+            output = branch
+            return Response({"branch":seri.data}, status=status.HTTP_200_OK)
         
         except Branch.DoesNotExist:
             output = f"Branch with id {branch_id} does not exist."
@@ -84,12 +110,12 @@ class UserViews(AnonViews):
                parced_cat =  data_constructor.parce_cats(cat)
                parced_cats.append(parced_cat)
                
-            output = parced_cats
-            return Response({"all_cats":output}, status=status.HTTP_200_OK)
+            output = cats
+            return Response({"all_cats":parced_cats}, status=status.HTTP_200_OK)
         
-        except Branch.DoesNotExist:
-            output = f"No Branches Found"
-            return Response({"not found": output}, status=status.HTTP_404_NOT_FOUND)
+        except EqupmentCategory.DoesNotExist:
+            output = f"No Categories Found"
+            return Response({"not_found": output}, status=status.HTTP_404_NOT_FOUND)
                 
         except Exception as e:
             output = str(e)
@@ -108,9 +134,9 @@ class UserViews(AnonViews):
         Returns: list of equpments as jsons + 200/ not found str + 404 / err str + 500
         """
         try:
-            equpment = Equpment.objects.filter(category = cat_id)
+            equpment = Equpment.objects.filter(category = cat_id, active =True)
             seri = EqupmentSerializer(equpment, many = True)
-            output = 'nah'
+            output = equpment
             return Response({"equpment":seri.data}, status=status.HTTP_200_OK)
         
         except Equpment.DoesNotExist:
@@ -135,15 +161,13 @@ class UserViews(AnonViews):
         """
         try:
             order = Order.objects.get(pk = order_id)
-            order_seri = OrderSerializer(order)
-            order_details = OrderDetails.objects.filter(order = order_id)
-            order_details_seri = OrderDetailSerializer(order_details, many = True)
-            output = (order_seri.data, order_details_seri.data)
-            return Response({"order and details":output}, status=status.HTTP_200_OK)
+            order_dict = data_constructor.parse_order(order)
+            output = order
+            return Response({"order_and_details":order_dict}, status=status.HTTP_200_OK)
         
         except Order.DoesNotExist:
             output = f"Order with id {order_id} does not exist."
-            return Response({"not found": output}, status=status.HTTP_404_NOT_FOUND)
+            return Response({"not_found": output}, status=status.HTTP_404_NOT_FOUND)
                 
         except Exception as e:
             output = str(e)
@@ -163,8 +187,8 @@ class UserViews(AnonViews):
                 order_dict = data_constructor.parse_order(order)
                 all_orders_data.append(order_dict)
                 
-            output = all_orders_data
-            return Response({"branch_orders":output}, status=status.HTTP_200_OK)
+            output = orders
+            return Response({"branch_orders":all_orders_data}, status=status.HTTP_200_OK)
         
         except Order.DoesNotExist:
             output = f"No orders for branch with id {branch_id}."
@@ -236,8 +260,8 @@ class UserViews(AnonViews):
                             return Response({'err': output}, status=status.HTTP_400_BAD_REQUEST)
 
                 # Transaction sucsess
-                output = {'order': order_serializer.data, 'details': details}
-                return Response({'new_order':output}, status=status.HTTP_201_CREATED)
+                output = order
+                return Response({'new_order':{'order': order_serializer.data, 'details': details}}, status=status.HTTP_201_CREATED)
             
             # Bad order request   
             else:
@@ -249,7 +273,7 @@ class UserViews(AnonViews):
             return Response({'err': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
             
         finally:
-            logger.log('UserViews','add_order', request.data, output)
+            logger.log('UserViews','add_order', request, output)
     
     
     @api_view(['PUT'])
@@ -259,6 +283,7 @@ class UserViews(AnonViews):
             order_detail = OrderDetails.objects.get(pk = order_detail_id)
             if order_detail:
                 order_detail.recived = True
+                order_detail.save() 
                 output = True
                 return Response({"approved_delivery":order_detail_id}, status=status.HTTP_200_OK) 
             

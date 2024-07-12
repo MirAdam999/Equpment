@@ -3,7 +3,6 @@ import Header from '../header/Header'
 import { useToken } from "../context/Token"
 import { useEffect } from 'react';
 
-
 const Main = () => {
     const { storedToken } = useToken();
 

@@ -1,6 +1,7 @@
 import { useURL } from "../../context/URL";
 import { useToken } from "../../context/Token";
 import { useEffect, useState } from "react";
+import './ManageUsers.css'
 
 const AddUser = (props) => {
     const { storedURL } = useURL()
@@ -93,40 +94,55 @@ const AddUser = (props) => {
         });
     };
 
+    const close = () => {
+        props.onClose();
+        props.search();
+    }
+
     return (
-        <div>
-            <div>
-                <div>
-                    <button onClick={props.onClose}>X</button>
+        <div className="popup">
+            <div className="popup-inner">
+                <div className="add-user-top">
+                    <button className="close-btn" onClick={close}>X</button>
                     <h2>יצירת משתמש חדש</h2>
                 </div>
-                <form onSubmit={addUser}>
-                    <label htmlFor="name">שם פרטי ומשפחה</label><br />
-                    <input type="text" id="name" value={userData.name} onChange={handleInputChange} required></input><br />
-                    <label htmlFor="username">שם משתמש</label><br />
-                    <input type="text" id="username" value={userData.username} onChange={handleInputChange} required></input><br />
-                    <label htmlFor="email">דוא"ל</label><br />
-                    <input type="email" id="email" value={userData.email} onChange={handleInputChange} required></input><br />
+                <div className="add-user-btm">
+                    <form onSubmit={addUser}>
+                        <div>
+                            <label htmlFor="name">שם פרטי ומשפחה</label>
+                            <input type="text" id="name" value={userData.name} onChange={handleInputChange} required></input>
+                        </div>
+                        <div>
+                            <label htmlFor="username">שם משתמש</label>
+                            <input type="text" id="username" value={userData.username} onChange={handleInputChange} required></input>
+                        </div>
+                        <div>
+                            <label htmlFor="email">דוא"ל</label>
+                            <input type="email" id="email" value={userData.email} onChange={handleInputChange} required></input>
+                        </div>
+                        <div>
+                            <label htmlFor="default_branch">סניף ראשי</label>
+                            <select value={selectedValue} onChange={handleSelectChange} id="default_branch">
+                                <option value="">-בחר סניף-</option>
+                                {Array.isArray(branches) && branches.map((branch) => (
+                                    <option key={branch.id} value={branch.id}>
+                                        {branch.name}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        <div>
+                            <label htmlFor="password">סיסמה ראשונית</label>
+                            <input type="text" id="password" value={userData.password} onChange={handleInputChange} required />
+                        </div>
 
-                    <label htmlFor="default_branch">סניף ראשי</label><br />
-                    <select value={selectedValue} onChange={handleSelectChange} id="default_branch">
-                        <option value="">-בחר סניף-</option>
-                        {Array.isArray(branches) && branches.map((branch) => (
-                            <option key={branch.id} value={branch.id}>
-                                {branch.name}
-                            </option>
-                        ))}
-                    </select><br />
+                        <button type="submit">יצירת משתמש</button>
 
-                    <label htmlFor="password">סיסמה ראשונית</label><br />
-                    <input type="text" id="password" value={userData.password} onChange={handleInputChange} required /><br />
+                    </form>
 
-                    <button type="submit">יצירת משתמש</button>
-                </form>
-
-                {sucsess && <div className="sucsess-msg">משתמש נוצר בהצלחה</div>}
-                {err && <div className="err-msg">{err}</div>}
-
+                    {sucsess && <p className="sucsess-msg">משתמש נוצר בהצלחה</p>}
+                    {err && <div className="err-msg">{err}</div>}
+                </div>
             </div>
         </div>
     )

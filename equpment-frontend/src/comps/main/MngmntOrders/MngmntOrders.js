@@ -3,6 +3,7 @@ import { useToken } from "../../context/Token";
 import { useURL } from "../../context/URL";
 import OrdersDisplay from "../OrdersDisplay/OrdersDisplay";
 import './MngmntOrders.css'
+import Loading from '../../../Loading/Loading'
 
 const ManagmentOrders = () => {
     const { storedURL } = useURL();
@@ -149,81 +150,102 @@ const ManagmentOrders = () => {
     }
 
     return (
-        <div className="managment-orders">
+        <div className="manage-orders">
             <h2>ניהול הזמנות</h2>
-            <div className="orders-searchbar">
 
-                <form onSubmit={searchOrders}>
-                    <label htmlFor="id">מספר הזמנה</label>
-                    <input type="number" id="id" value={searchParams.id} onChange={handleInputChange}></input>
+            <div className='manage-orders-form-wrapper'>
+                <h3>הצגת הזמנות ציוד</h3>
 
-                    <label htmlFor="area">אזור</label>
-                    <select id="area" value={searchParams.area} onChange={handleInputChange}>
-                        <option value="all">הצג הכל</option>
-                        {Array.isArray(areas) && areas.map((area) => (
-                            <option key={area.id} value={area.id}>
-                                {area.name}
-                            </option>
-                        ))}
-                    </select>
+                <form onSubmit={searchOrders} className="manage-orders-form">
+                    <div className="manage-orders-form-row">
+                        <div>
+                            <label htmlFor="id">מספר הזמנה</label>
+                            <input type="number" id="id" min='1' value={searchParams.id} onChange={handleInputChange}></input>
+                        </div>
+                        <div>
+                            <label htmlFor="area">אזור</label>
+                            <select id="area" value={searchParams.area} onChange={handleInputChange}>
+                                <option value="all">הצג הכל</option>
+                                {Array.isArray(areas) && areas.map((area) => (
+                                    <option key={area.id} value={area.id}>
+                                        {area.name}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        <div>
+                            <label htmlFor="branch">סניף</label>
+                            <select id="branch" value={searchParams.branch} onChange={handleInputChange}>
+                                <option value="all">הצג הכל</option>
+                                {Array.isArray(branches) && branches.map((branch) => (
+                                    <option key={branch.id} value={branch.id}>
+                                        {branch.name}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
 
-                    <label htmlFor="branch">סניף</label>
-                    <select id="branch" value={searchParams.branch} onChange={handleInputChange}>
-                        <option value="all">הצג הכל</option>
-                        {Array.isArray(branches) && branches.map((branch) => (
-                            <option key={branch.id} value={branch.id}>
-                                {branch.name}
-                            </option>
-                        ))}
-                    </select>
-
-                    <div> <p>בן תאריכים</p>
-                        <label htmlFor="start_date">מתאריך</label>
-                        <input type="date" id="start_date" value={searchParams.start_date} onChange={handleInputChange}></input>
-
-                        <label htmlFor="end_date">עד תאריך</label>
-                        <input type="date" id="end_date" value={searchParams.end_date} onChange={handleInputChange}></input>
                     </div>
 
-                    <label htmlFor="approved_to_ship"> אושרה להספקה</label>
-                    <select id="approved_to_ship" value={searchParams.approved_to_ship} onChange={handleInputChange}>
-                        <option value="all">הצג הכל</option>
-                        <option value="1">כלל ההזמנה אושרה להספקה</option>
-                        <option value="0">לא אושרה להספקה</option>
-                    </select>
+                    <div className="manage-orders-form-row">
+                        <div>
+                            <label htmlFor="start_date">מתאריך</label>
+                            <input type="date" id="start_date" value={searchParams.start_date} onChange={handleInputChange}></input>
+                        </div>
 
-                    <label htmlFor="sent_to_supplier"> נשלחה לספק</label>
-                    <select id="sent_to_supplier" value={searchParams.sent_to_supplier} onChange={handleInputChange}>
-                        <option value="all">הצג הכל</option>
-                        <option value="1">נשלחה לספק</option>
-                        <option value="0">לא לא נשלחה לספק</option>
-                    </select>
+                        <div>
+                            <label htmlFor="end_date">עד תאריך</label>
+                            <input type="date" id="end_date" value={searchParams.end_date} onChange={handleInputChange}></input>
+                        </div>
+                    </div>
 
-                    <label htmlFor="received"> התקבלה</label>
-                    <select id="received" value={searchParams.received} onChange={handleInputChange}>
-                        <option value="all">הצג הכל</option>
-                        <option value="1">כלל הפריטים התקבלו</option>
-                        <option value="0">לא כל הפריטים התקבלו</option>
-                    </select>
+                    <div className="manage-orders-form-row">
+                        <div>
+                            <label htmlFor="approved_to_ship"> אושרה להספקה</label>
+                            <select id="approved_to_ship" value={searchParams.approved_to_ship} onChange={handleInputChange}>
+                                <option value="all">הצג הכל</option>
+                                <option value="1">כלל ההזמנה אושרה</option>
+                                <option value="0">לא אושרה</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label htmlFor="sent_to_supplier"> נשלחה לספק</label>
+                            <select id="sent_to_supplier" value={searchParams.sent_to_supplier} onChange={handleInputChange}>
+                                <option value="all">הצג הכל</option>
+                                <option value="1">הכל נשלח</option>
+                                <option value="0">לא הכל נשלח</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label htmlFor="received"> התקבלה</label>
+                            <select id="received" value={searchParams.received} onChange={handleInputChange}>
+                                <option value="all">הצג הכל</option>
+                                <option value="1">כלל הפריטים התקבלו</option>
+                                <option value="0">לא כל הפריטים התקבלו</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label htmlFor="supplier">ספק</label>
+                            <select id="supplier" value={searchParams.supplier} onChange={handleInputChange}>
+                                <option value="all">הצג הכל</option>
+                                {Array.isArray(suppliers) && suppliers.map((supplier) => (
+                                    <option key={supplier.id} value={supplier.id}>
+                                        {supplier.name}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
 
-                    <label htmlFor="supplier">ספק</label>
-                    <select id="supplier" value={searchParams.supplier} onChange={handleInputChange}>
-                        <option value="all">הצג הכל</option>
-                        {Array.isArray(suppliers) && suppliers.map((supplier) => (
-                            <option key={supplier.id} value={supplier.id}>
-                                {supplier.name}
-                            </option>
-                        ))}
-                    </select>
+                    </div>
 
-                    <button type="submit">הצג</button>
+                    <div className="manage-orders-form-row"><button type="submit">הצג</button></div>
 
                 </form>
 
-            </div>
+            </div >
             {searched &&
                 <div>
-                    {loading && <div>LOADING</div>}
+                    {loading && <div><Loading /></div>}
                     {!loading && orders.length > 0 &&
                         <OrdersDisplay orders={orders} />}
                     {!loading && orders.length === 0 &&

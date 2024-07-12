@@ -3,6 +3,7 @@ import { useToken } from "../../context/Token";
 import { useState, useEffect } from "react";
 import Equpment from "./Equpment";
 import './EqupmntSection.css'
+import { MdArrowRight } from "react-icons/md";
 
 const EqupmentSection = (props) => {
     const cat = props.cat
@@ -45,8 +46,13 @@ const EqupmentSection = (props) => {
 
     return (
         <div>
-            <button onClick={showOrHideEqupment}>{cat.name}</button>
-            {showEqupment && <Equpment equpment={equpment} />}
+            <button className='equpment-cat-btn' onClick={showOrHideEqupment}>
+                <p>{cat.name}</p>
+                <MdArrowRight className="arrow-icon" id={showEqupment ? 'arrow-icon-down' : ''} />
+            </button>
+            <div className='section-content' id={showEqupment ? 'open' : 'closed'}>
+                {showEqupment && <Equpment equpment={equpment} />}
+            </div>
         </div >
     )
 }

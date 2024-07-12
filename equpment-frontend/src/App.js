@@ -12,6 +12,8 @@ import ManageCats from './comps/main/MangeEqupment/ManageCats/ManageCats';
 import ManageEqupment from './comps/main/MangeEqupment/ManageEqupment';
 import ManageSuppliers from './comps/main/ManageSuppliers/ManageSuppliers';
 import ManageBranches from './comps/main/ManageBranches/ManageBranches';
+import RequresAttention from './comps/main/MngmntOrders/RequresAttention/RequresAttention';
+import ShipOrders from './comps/main/MngmntOrders/ShipOrders/ShipOrders';
 import { URLProvider } from './comps/context/URL';
 import { TokenProvider } from './comps/context/Token';
 import { BranchProvider } from './comps/context/BranchData';
@@ -26,7 +28,7 @@ function App() {
           <BranchProvider>
             <CartProvider>
 
-              <Main />
+              <Main className='main' />
 
               <Routes>
                 <Route exact path="/" element={<LogIn />} />
@@ -37,6 +39,8 @@ function App() {
                 <Route path="/create_order" element={<CreateOrder />} />
 
                 <Route path="/managment_orders" element={<ManagmentOrders />} />
+                <Route path="/requres_attention" element={<RequresAttention />} />
+                <Route path="/ship_orders" element={<ShipOrders />} />
                 <Route path="/manage_users" element={<ManageUsers />} />
                 <Route path="/manage_equpment_categories" element={<ManageCats />} />
                 <Route path="/manage_equpment_items" element={<ManageEqupment />} />

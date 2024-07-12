@@ -14,6 +14,7 @@ class Branch(models.Model):
     address = models.CharField(max_length=1000,null=True)
     area = models.ForeignKey(Area, on_delete=models.CASCADE)
     next_order = models.DateField(null=True, blank=True)
+    active = models.BooleanField(default=True)
     
     def __str__(self):
         return self.name  
@@ -68,6 +69,7 @@ class EqupmentCategory(models.Model):
 class Supplier(models.Model):
     name = models.CharField(max_length=200, unique=True)
     contact = models.CharField(max_length=500)
+    active = models.BooleanField(default=True)
     
     def __str__(self):
         return self.name   
@@ -90,7 +92,6 @@ class Order(models.Model):
     datetime = models.DateTimeField(auto_now_add=True)
     branch = models.ForeignKey(Branch, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    sent_to_supplier = models.BooleanField(default=False)
     
     def __str__(self):
         return str(self.branch)
@@ -101,6 +102,7 @@ class OrderDetails(models.Model):
     item = models.ForeignKey(Equpment, on_delete=models.CASCADE)
     quantity = models.IntegerField()
     approved_to_ship = models.BooleanField(default=False)
+    sent_to_supplier = models.BooleanField(default=False)
     recived = models.BooleanField(default=False)
     
     def __str__(self):

@@ -1,0 +1,69 @@
+.orders-display {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px;
+    direction: rtl;
+}
+
+.orders-display>* {
+    direction: ltr;
+}
+
+.open-order {
+    cursor: pointer;
+    transition: ease-in-out 0.2s;
+    background-color: #5DEBD720;
+    border: solid 2px #5DEBD720;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 0.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 1rem;
+}
+
+.open-order:hover {
+    scale: 1.05;
+    border: solid 2px var(--dark-blue);
+}
+
+#done-order {
+    background-color: rgba(0, 128, 0, 0.2);
+}
+
+#attention-requred {
+    background-color: rgba(255, 0, 0, 0.15);
+}
+
+.open-order-inner div {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    font-size: 1rem;
+}
+
+.open-order-inner div p,
+.open-order-inner div h3 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+#order-num {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    border-bottom: var(--dark-blue) solid 1px;
+}
+
+#order-sum-preview {
+    color: var(--dark-blue);
+}
+
+#order-datetime-preview {
+    text-wrap: wrap;
+    margin-right: 1rem;
+}
