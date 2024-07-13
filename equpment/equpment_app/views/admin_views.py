@@ -401,7 +401,7 @@ class AdminViews(UserViews):
     
     @api_view(['GET'])
     @permission_classes([IsAuthenticated,IsAdminUser]) 
-    def get_unshipped_orders(request):
+    def get_unshipped(request):
         try:
             orders = Order.objects.all()
             filtered_orders_data = []
@@ -412,18 +412,19 @@ class AdminViews(UserViews):
                 not_sent = False if all_sent_to_supplier else True
 
                 if not_sent:
-                        order_dict = data_constructor.parse_order(order)
-                        filtered_orders_data.append(order_dict)
+                        filtered_orders_data.append(order)
+                        
+            parced_and_filtred_orders = data_constructor.parce_orders_for_suppliers(filtered_orders_data)          
                 
-            output = filtered_orders_data
-            return Response({"unshipped_orders": output}, status=status.HTTP_200_OK)
+            output = parced_and_filtred_orders
+            return Response({"unshipped_orders_by_supplier_then_branch": output}, status=status.HTTP_200_OK)
                 
         except Exception as e:
             output = str(e)
             return Response({"err":str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
             
         finally:
-            logger.log('AdminViews','get_unshipped_orders',None,output) 
+            logger.log('AdminViews','get_unshipped',None,output) 
     
     
     @api_view(['POST'])

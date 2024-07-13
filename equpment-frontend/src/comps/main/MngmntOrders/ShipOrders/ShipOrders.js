@@ -92,7 +92,7 @@ const ShipOrders = () => {
 
         const fetchUnshippedOredrs = async () => {
             try {
-                const result = await fetch(`${storedURL}/get_unshipped_orders/`,
+                const result = await fetch(`${storedURL}/get_unshipped/`,
                     {
                         method: 'GET',
                         headers: {

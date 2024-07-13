@@ -59,5 +59,5 @@ urlpatterns = [
     path('get_requres_attention_orders/',AdminViews.get_requres_attention_orders), # tested
     path('approve_order_detail/<int:order_detail_id>/',AdminViews.approve_order_detail), # tested
     path('remove_order_detail/<int:order_detail_id>/',AdminViews.remove_order_detail),  # tested
-    path('get_unshipped_orders/',AdminViews.get_unshipped_orders), 
+    path('get_unshipped/',AdminViews.get_unshipped), 
 ]

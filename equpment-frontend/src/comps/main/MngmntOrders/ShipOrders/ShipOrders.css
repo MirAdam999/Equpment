@@ -7,6 +7,9 @@
     min-height: 70vh;
     padding-top: 1rem;
     padding-bottom: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    overflow-x: auto;
 }
 
 .ship-orders h2 {
@@ -27,4 +30,5 @@
 .ship-orders td,
 .ship-orders tr {
     border: solid 1px black;
+    border-collapse: collapse;
 }
