@@ -64,7 +64,7 @@ const CreateOrder = () => {
                     </div>
                 </div>
             )}
-            {loading && <Loading />}
+            {loading && <div className="equpment-cats"><Loading /></div>}
         </div>
     )
 }

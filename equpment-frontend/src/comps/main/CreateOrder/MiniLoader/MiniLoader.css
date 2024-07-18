@@ -1,0 +1,31 @@
+/* HTML: <div class="loader"></div> */
+.loader {
+    width: 15px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    animation: l5 1s infinite linear alternate;
+    align-items: center;
+    text-align: center;
+}
+
+@keyframes l5 {
+    0% {
+        box-shadow: 20px 0 var(--light-green), -20px 0 var(--dark-blue);
+        background: var(--light-green)
+    }
+
+    33% {
+        box-shadow: 20px 0 var(--light-green), -20px 0 var(--dark-blue);
+        background: var(--dark-blue)
+    }
+
+    66% {
+        box-shadow: 20px 0 var(--dark-blue), -20px 0 var(--light-green);
+        background: var(--dark-blue)
+    }
+
+    100% {
+        box-shadow: 20px 0 var(--dark-blue), -20px 0 var(--light-green);
+        background: var(--light-green)
+    }
+}

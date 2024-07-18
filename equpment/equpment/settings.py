@@ -64,6 +64,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
+
 ROOT_URLCONF = 'equpment.urls'
 
 TEMPLATES = [

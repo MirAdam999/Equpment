@@ -1,0 +1,148 @@
+.order-for-supplier {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    font-family: "Noto Sans Hebrew", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+    width: 595px;
+}
+
+.order-for-supplier-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+}
+
+.order-for-supplier-top div {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.order-for-supplier-top p {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    margin: 0;
+    gap: 10px;
+}
+
+.data-span {
+    font-weight: 600;
+}
+
+#supplier-name {
+    font-size: 1.4rem;
+    color: var(--dark-blue);
+}
+
+.total-price {
+    font-weight: 600;
+    color: var(--dark-blue);
+}
+
+.order-for-supplier-btm td,
+.order-for-supplier-btm th {
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+}
+
+.order-for-supplier-btm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.close-and-export {
+    display: flex;
+    justify-content: space-between;
+}
+
+#comments {
+    width: 100px
+}
+
+.order-for-supplier-top table {
+    width: 590px;
+    border: transparent;
+}
+
+.order-for-supplier-btm table {
+    width: 590px;
+}
+
+.order-for-supplier-top tr,
+.order-for-supplier-top td,
+.order-for-supplier-top th {
+    border: transparent;
+    text-align: left;
+}
+
+#order-for-supplier-btm-th {
+    font-size: 1rem;
+}
+
+#right {
+    text-align: right;
+}
+
+.to-word {
+    border: none;
+    font-family: var(--main-font);
+    color: var(--light-blue);
+    background-color: var(--dark-blue);
+    font-size: 1rem;
+    font-weight: 600;
+    padding-right: .5rem;
+    padding-left: .5rem;
+    cursor: pointer;
+    transition: 0.2s ease;
+    border-radius: 0.5rem;
+}
+
+.to-word:hover {
+    color: var(--dark-blue);
+    background-color: var(--light-blue);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.mark-sent {
+    background-color: green;
+    border: solid 2px green;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    padding-right: .5rem;
+    padding-left: .5rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    transition: 0.2s ease;
+}
+
+.mark-sent:hover {
+    color: green;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.mark-sent:disabled {
+    color: gray;
+    border: solid 2px gray;
+    background-color: rgba(128, 128, 128, 0.438);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: not-allowed;
+}
+
+#not-approved-item {
+    background-color: rgba(255, 0, 0, 0.192);
+    color: red;
+}

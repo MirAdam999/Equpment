@@ -98,14 +98,32 @@ class DataConstructor:
         return (data)
     
     
-    def parce_orders_for_suppliers(self, orders):
-        order_seri = OrderSerializer(orders, many=True)
-        orders_data = order_seri.data
-        
+    def parce_orders_for_suppliers(self, details):
         all_branches = set()
         all_suppliers = set()
         all_unshipped_details=[]
-        for order_data in orders_data:
+
+        order_details_seri = OrderDetailSerializer(details, many=True)
+        order_details_data = order_details_seri.data
+
+        for detail in order_details_data:
+            equipment = Equpment.objects.get(pk=detail['item'])
+            equipment_seri = EqupmentSerializer(equipment)
+            detail['detail_name'] = f"{equipment_seri.data['name']}, {equipment_seri.data['unit_measure']}"
+            detail['detail_price'] = equipment_seri.data['price']
+            detail['detail_price_for_order'] = float(float(equipment_seri.data['price']) * float(detail['quantity']))
+            
+            supplier = Supplier.objects.get(pk=equipment_seri.data['supplier'])
+            supplier_seri = SupplierSerializer(supplier)
+            
+            detail['detail_supplier'] = supplier_seri.data['name']
+            detail['detail_supplier_id'] = supplier_seri.data['id']
+            all_suppliers.add(supplier_seri.data['id'])
+
+            order = Order.objects.get(pk=detail['order'])
+            order_seri = OrderSerializer(order)
+            order_data = order_seri.data
+            
             order_datetime = datetime.strptime(order_data['datetime'], '%Y-%m-%dT%H:%M:%S.%fZ').strftime('%d-%m-%y %H:%M')
             order_data['datetime'] = order_datetime
 
@@ -118,33 +136,16 @@ class DataConstructor:
             area = Area.objects.get(pk=branch_seri.data['area'])
             area_seri = AreaSerializer(area)
             order_data['area_name'] = area_seri.data['name']
-
-            order_details = OrderDetails.objects.filter(order=order_data['id'])
-            order_details_seri = OrderDetailSerializer(order_details, many=True)
-            order_details_data = order_details_seri.data
-
-            for detail in order_details_data:
-                equipment = Equpment.objects.get(pk=detail['item'])
-                equipment_seri = EqupmentSerializer(equipment)
-                detail['datetime'] = order_data['datetime'] 
-                detail['branch'] = order_data['branch']
-                detail['branch_name'] = order_data['branch_name']
-                detail['branch_address'] = order_data['branch_address'] 
-                detail['area_name'] = order_data['area_name']
-                detail['detail_name'] = f"{equipment_seri.data['name']}, {equipment_seri.data['unit_measure']}"
-                detail['detail_price'] = equipment_seri.data['price']
-                detail['detail_price_for_order'] = float(equipment_seri.data['price']) * float(detail['quantity'])
-                
-                supplier = Supplier.objects.get(pk=equipment_seri.data['supplier'])
-                supplier_seri = SupplierSerializer(supplier)
-                
-                detail['detail_supplier'] = supplier_seri.data['name']
-                detail['detail_supplier_id'] = supplier_seri.data['id']
-                all_suppliers.add(supplier_seri.data['id'])
-                
-                all_unshipped_details.append(detail)
-
-        unshipped_by_aupplier_and_branch=[]
+            
+            detail['datetime'] = order_data['datetime'] 
+            detail['branch'] = order_data['branch']
+            detail['branch_name'] = order_data['branch_name']
+            detail['branch_address'] = order_data['branch_address'] 
+            detail['area_name'] = order_data['area_name']
+            
+            all_unshipped_details.append(detail)
+            
+            
         by_supplier_dict = {}
         for supplier in all_suppliers:
             by_branch_dict = {}
@@ -153,6 +154,5 @@ class DataConstructor:
                 
             by_supplier_dict[supplier] = by_branch_dict
         
-        unshipped_by_aupplier_and_branch.append(by_supplier_dict)
-        return unshipped_by_aupplier_and_branch
+        return by_supplier_dict
             

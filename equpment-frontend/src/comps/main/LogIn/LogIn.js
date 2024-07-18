@@ -73,6 +73,30 @@ const LogIn = () => {
     return (
         <div className="login-page">
             <div className="login-inner">
+
+                <div className="demo-users">
+                    <h3>Demo Users</h3>
+                    <table>
+                        <thead>
+                            <th>Login</th>
+                            <th>Password</th>
+                            <th>Role</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>FirstAdmin</td>
+                                <td>FirstAdminPassword123</td>
+                                <td>Admin</td>
+                            </tr>
+                            <tr>
+                                <td>betty12345</td>
+                                <td>betty12345</td>
+                                <td>Regular</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
                 <h1>מערכת ניהול הזמנות ציוד </h1>
                 <form onSubmit={handleLogin} className="login-form">
                     <h3>כניסה למערכת</h3>

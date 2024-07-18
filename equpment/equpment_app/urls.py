@@ -21,7 +21,7 @@ urlpatterns = [
     path('get_self/',UserViews.get_self), # tested 
     path('update_profile/',UserViews.update_profile), # tested
     path('update_password/',UserViews.update_password), # tested
-    path('change/',UserViews.change), # pakapaka
+
     
     # admin views
     path('add_user/',AdminViews.add_user), # tested
@@ -59,5 +59,6 @@ urlpatterns = [
     path('get_requres_attention_orders/',AdminViews.get_requres_attention_orders), # tested
     path('approve_order_detail/<int:order_detail_id>/',AdminViews.approve_order_detail), # tested
     path('remove_order_detail/<int:order_detail_id>/',AdminViews.remove_order_detail),  # tested
-    path('get_unshipped/',AdminViews.get_unshipped), 
+    path('get_unshipped/',AdminViews.get_unshipped), # tested
+    path('send_order_to_supplier/',AdminViews.send_order_to_supplier),  # tested
 ]

@@ -186,7 +186,7 @@ const ManageEqupment = () => {
             });
             const data = await result.json();
             if ('updated' in data) {
-                searchEqupment();
+
             } else if ('err' in data) {
                 console.error('Error:', data.err);
             } else {

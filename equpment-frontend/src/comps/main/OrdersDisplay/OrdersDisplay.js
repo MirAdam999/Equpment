@@ -29,7 +29,7 @@ const OrdersDisplay = (props) => {
                         <div><p>תאריך הזמנה </p><h3 id="order-datetime-preview">{order.order.datetime}</h3></div>
                         <div> <p>מזמין</p><h3>{order.order.users_name}</h3></div>
                         <div> <p>כל הפריטים אושרו </p><p className={order.order.all_order_approved_to_ship ? 'sucsess-msg' : 'err-msg'}>{order.order.all_order_approved_to_ship ? 'כן' : 'לא'}</p></div>
-                        <div> <p>הזמנה נשלחה לספק </p><p className={order.order.sent_to_supplier ? 'sucsess-msg' : 'err-msg'}>{order.order.sent_to_supplier ? 'כן' : ' לא'}</p></div>
+                        <div> <p>הזמנה נשלחה לספק </p><p className={order.order.all_order_sent_to_supplier ? 'sucsess-msg' : 'err-msg'}>{order.order.all_order_sent_to_supplier ? 'כן' : ' לא'}</p></div>
                         <div> <p>כלל ההזמנה סופקה </p><p className={order.order.all_order_recived ? 'sucsess-msg' : 'err-msg'}>{order.order.all_order_recived ? 'כן' : 'לא'}</p></div>
                     </div>
                     {isMasterUser &&

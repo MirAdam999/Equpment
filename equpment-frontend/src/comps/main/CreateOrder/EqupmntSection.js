@@ -27,6 +27,8 @@ const EqupmentSection = (props) => {
 
                 if ('equpment' in data) {
                     setEqupment(data.equpment);
+                } else if ('not_found' in data) {
+                    setEqupment(['none']);
                 } else if ('err' in data) {
                     console.error('Error:', data.err);
                 } else {

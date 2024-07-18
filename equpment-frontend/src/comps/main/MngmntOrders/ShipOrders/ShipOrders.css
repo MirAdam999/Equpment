@@ -24,6 +24,7 @@
     border-collapse: collapse;
     border: solid 1px black;
     direction: rtl;
+    margin-top: 1rem;
 }
 
 .ship-orders th,
@@ -31,4 +32,56 @@
 .ship-orders tr {
     border: solid 1px black;
     border-collapse: collapse;
+}
+
+.ship-orders td {
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+}
+
+.ship-orders th {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    font-size: 1.2rem;
+    background-color: var(--light-blue);
+    color: var(--dark-blue);
+}
+
+.area-name {
+    background-color: var(--dark-blue);
+    color: white;
+    font-weight: 600;
+}
+
+.branch-name {
+    font-weight: 600;
+    background-color: var(--light-green);
+    color: var(--dark-blue);
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.open-order-for-supp {
+    border: none;
+    font-family: var(--main-font);
+    color: var(--light-blue);
+    background-color: var(--dark-blue);
+    font-size: 1rem;
+    font-weight: 600;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.open-order-for-supp:hover {
+    color: var(--dark-blue);
+    background-color: var(--light-blue);
+}
+
+.no-orders {
+    color: gray;
+    margin: 0;
 }

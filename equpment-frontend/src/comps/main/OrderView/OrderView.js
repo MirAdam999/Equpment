@@ -2,7 +2,6 @@ import { useToken } from "../../context/Token"
 import { useURL } from "../../context/URL"
 import { useState } from "react"
 import './OrderView.css'
-import { utils, writeFile } from 'xlsx';
 
 const OrderView = (props) => {
     const order = props.order.order
@@ -173,7 +172,7 @@ const OrderView = (props) => {
                                 <td className={detail.approved_to_ship ? 'sucsess-msg' : ' err-msg'}>{detail.approved_to_ship ? 'אושר להספקה' : 'טרם אושר'}</td>
                                 <td className={detail.sent_to_supplier ? 'sucsess-msg' : ' err-msg'}>{detail.sent_to_supplier ? 'נשלח לספק' : 'לא נשלח לספק'}</td>
                                 <td className={detail.recived ? 'sucsess-msg' : ' err-msg'}>{detail.recived ? 'התקבל' : 'לא התקבל'}</td>
-                                {!isMasterUser && order.all_order_recived && <td id='approve-delivery'>
+                                {!isMasterUser && !order.all_order_recived && <td id='approve-delivery'>
                                     {!detail.recived &&
                                         <button id='approve-delivery-btn' onClick={() => approveDelivery(detail.id)}>אשר הגעה לסניף</button>}
                                 </td>}

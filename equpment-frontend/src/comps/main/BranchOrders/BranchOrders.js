@@ -35,9 +35,9 @@ const BranchOrders = () => {
                     setOrders(branchOrders);
 
                     setNotApprovedToShip(branchOrders.filter(order => !order.order.all_order_approved_to_ship));
-                    setApprovedToShip(branchOrders.filter(order => order.order.all_order_approved_to_ship && !order.order.all_order_recived && !order.order.sent_to_supplier));
+                    setApprovedToShip(branchOrders.filter(order => order.order.all_order_approved_to_ship && !order.order.all_order_recived && !order.order.all_order_sent_to_supplier));
                     setReceivedOrders(branchOrders.filter(order => order.order.all_order_recived));
-                    setSentToSupplier(branchOrders.filter(order => order.order.sent_to_supplier && !order.order.all_order_recived));
+                    setSentToSupplier(branchOrders.filter(order => order.order.all_order_sent_to_supplier && !order.order.all_order_recived));
 
                 } else if ('err' in data) {
                     console.error('Error:', data.err);

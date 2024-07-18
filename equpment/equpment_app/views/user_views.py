@@ -10,6 +10,8 @@ from ..serializers.serializer import *
 from ..log.logger import Logger
 from ..serializers.data_manipulation import DataConstructor
 
+from datetime import datetime
+
 logger = Logger()
 data_constructor = DataConstructor()
 
@@ -141,7 +143,7 @@ class UserViews(AnonViews):
         
         except Equpment.DoesNotExist:
             output = f"No equpment under cat with id {cat_id}."
-            return Response({"not found": output}, status=status.HTTP_404_NOT_FOUND)
+            return Response({"not_found": output}, status=status.HTTP_404_NOT_FOUND)
         
         except Exception as e:
             output = str(e)
@@ -398,12 +400,4 @@ class UserViews(AnonViews):
         finally:
             logger.log('UserViews','update_password', user, output)  
             
-    
-    @api_view(['PUT'])
-    @permission_classes([IsAuthenticated])
-    def change(request):
-        user = request.user
-        pas = request.data.get('pas')
-        user.set_password(pas)
-        user.save()
-        return Response({'updated': pas}, status=status.HTTP_200_OK)
+  

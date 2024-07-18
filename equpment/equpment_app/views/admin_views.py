@@ -374,7 +374,7 @@ class AdminViews(UserViews):
                 
                 sent_to_supplier_match = True
                 if sent_to_supplier != 'all':
-                    all_sent_to_supplier = all(detail.sent_to_supplier == 'true' for detail in order_details) 
+                    all_sent_to_supplier = all(detail.sent_to_supplier == 1 for detail in order_details) 
                     if all_sent_to_supplier:
                         sent_to_supplier_match = True if sent_to_supplier == '1' else False
                     else:
@@ -403,18 +403,8 @@ class AdminViews(UserViews):
     @permission_classes([IsAuthenticated,IsAdminUser]) 
     def get_unshipped(request):
         try:
-            orders = Order.objects.all()
-            filtered_orders_data = []
-            for order in orders:
-                order_details = OrderDetails.objects.filter(order=order)
-                
-                all_sent_to_supplier = all(detail.sent_to_supplier == 'true' for detail in order_details) 
-                not_sent = False if all_sent_to_supplier else True
-
-                if not_sent:
-                        filtered_orders_data.append(order)
-                        
-            parced_and_filtred_orders = data_constructor.parce_orders_for_suppliers(filtered_orders_data)          
+            filtred_order_details = OrderDetails.objects.filter(sent_to_supplier=False)
+            parced_and_filtred_orders = data_constructor.parce_orders_for_suppliers(filtred_order_details)          
                 
             output = parced_and_filtred_orders
             return Response({"unshipped_orders_by_supplier_then_branch": output}, status=status.HTTP_200_OK)
@@ -1113,22 +1103,33 @@ class AdminViews(UserViews):
     
     @api_view(['PUT'])
     @permission_classes([IsAuthenticated,IsAdminUser])    
-    def send_order_to_supplier(request, order_id):
+    def send_order_to_supplier(request):
         try:
-            order = Order.objects.filter(pk = order_id)
-            if order:
-                order.sent_to_supplier = True
-                output = {"sent_to_supplier":order_id}
-                return Response(output, status=status.HTTP_200_OK) 
-        
-        except Order.DoesNotExist:
-            output = f"No order with id {order_id}."
-            return Response({"not found": output}, status=status.HTTP_404_NOT_FOUND)
+            details = request.data.get('details', [])
+            with transaction.atomic():
+                for detail in details: 
+                    detail_obj = OrderDetails.objects.get(pk = detail)
+                    if not detail_obj:
+                        transaction.set_rollback(True)
+                        output = 'no_detail'
+                        return Response({'err': output}, status=status.HTTP_400_BAD_REQUEST)
+                    
+                    if detail_obj.approved_to_ship:
+                        detail_obj.sent_to_supplier = True
+                        detail_obj.save()
+                        
+                    else:
+                        transaction.set_rollback(True)
+                        output = 'unnaproved detail'
+                        return Response({'err': output}, status=status.HTTP_400_BAD_REQUEST)
+                
+            output = {'sent_to_supplier':details}
+            return Response(output, status=status.HTTP_200_OK) 
         
         except Exception as e:
             output = str(e)
             return Response({"err":str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
             
         finally:
-            logger.log('AdminViews','send_order_to_supplier',order_id,output)     
+            logger.log('AdminViews','send_order_to_supplier',details if details else None,output)     
     
