@@ -24,19 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-nrn^cz%z@xr5^oj86yrn6fa)y+!&ge2%m*hl0n&lb*3-mj_^^6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = [
-                'localhost',
-                 '127.0.0.1', 
-                 'localhost:3000',
-                 '10.0.0.6:3000'
-                 ]
+ALLOWED_HOSTS = ['*']
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-    'http://10.0.0.6:3000'
-]
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Application definition
 
@@ -93,8 +85,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'equpment',
-        'HOST':'127.0.0.1',
-        'PORT':'3306',
+        'HOST':'host.docker.internal',
+        'PORT':'3308',
         'USER':os.getenv('DB_USER'),
         "PASSWORD":os.getenv('DB_PASSWORD'),
     }

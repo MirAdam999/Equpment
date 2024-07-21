@@ -1070,5 +1070,13 @@
     "func_name": "logout",
     "func_input": "None",
     "func_output": "{'logout': True}"
+  },
+  {
+    "id": 135,
+    "datetime": "2024-07-20 15:42:29.204673",
+    "class_name": "Celery Tasks",
+    "func_name": "reset_next_order_date",
+    "func_input": "2024-07-20",
+    "func_output": "good run"
   }
 ]
