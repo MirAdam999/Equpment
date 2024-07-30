@@ -31,21 +31,21 @@ function App() {
               <Main className='main' />
 
               <Routes>
-                <Route exact path="/" element={<LogIn />} />
-                <Route path="/my_profile" element={<MyProfile />} />
+                <Route exact path="https://mirshukhman.github.io/Equpment/" element={<LogIn />} />
+                <Route path="https://mirshukhman.github.io/Equpment/my_profile" element={<MyProfile />} />
 
-                <Route path="/choose_branch" element={<ChooseBranch />} />
-                <Route path="/branch_orders" element={<BranchOrders />} />
-                <Route path="/create_order" element={<CreateOrder />} />
+                <Route path="https://mirshukhman.github.io/Equpment/choose_branch" element={<ChooseBranch />} />
+                <Route path="https://mirshukhman.github.io/Equpment/branch_orders" element={<BranchOrders />} />
+                <Route path="https://mirshukhman.github.io/Equpment/create_order" element={<CreateOrder />} />
 
-                <Route path="/managment_orders" element={<ManagmentOrders />} />
-                <Route path="/requres_attention" element={<RequresAttention />} />
-                <Route path="/ship_orders" element={<ShipOrders />} />
-                <Route path="/manage_users" element={<ManageUsers />} />
-                <Route path="/manage_equpment_categories" element={<ManageCats />} />
-                <Route path="/manage_equpment_items" element={<ManageEqupment />} />
-                <Route path="/manage_suppliers" element={<ManageSuppliers />} />
-                <Route path="/manage_branches" element={<ManageBranches />} />
+                <Route path="https://mirshukhman.github.io/Equpment/managment_orders" element={<ManagmentOrders />} />
+                <Route path="https://mirshukhman.github.io/Equpment/requres_attention" element={<RequresAttention />} />
+                <Route path="https://mirshukhman.github.io/Equpment/ship_orders" element={<ShipOrders />} />
+                <Route path="https://mirshukhman.github.io/Equpment/manage_users" element={<ManageUsers />} />
+                <Route path="https://mirshukhman.github.io/Equpment/manage_equpment_categories" element={<ManageCats />} />
+                <Route path="https://mirshukhman.github.io/Equpment/manage_equpment_items" element={<ManageEqupment />} />
+                <Route path="https://mirshukhman.github.io/Equpment/manage_suppliers" element={<ManageSuppliers />} />
+                <Route path="https://mirshukhman.github.io/Equpment/manage_branches" element={<ManageBranches />} />
               </Routes>
 
               <Footer />
