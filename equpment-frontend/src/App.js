@@ -32,20 +32,20 @@ function App() {
 
               <Routes>
                 <Route path="/Equpment" element={<LogIn />} />
-                <Route path="/Equpment/my_profile" element={<MyProfile />} />
+                <Route path="/my_profile" element={<MyProfile />} />
 
-                <Route path="/Equpment/choose_branch" element={<ChooseBranch />} />
-                <Route path="/Equpment/branch_orders" element={<BranchOrders />} />
-                <Route path="/Equpment/create_order" element={<CreateOrder />} />
+                <Route path="/choose_branch" element={<ChooseBranch />} />
+                <Route path="/branch_orders" element={<BranchOrders />} />
+                <Route path="/create_order" element={<CreateOrder />} />
 
-                <Route path="/Equpment/managment_orders" element={<ManagmentOrders />} />
-                <Route path="/Equpment/requres_attention" element={<RequresAttention />} />
-                <Route path="/Equpment/ship_orders" element={<ShipOrders />} />
-                <Route path="/Equpment/manage_users" element={<ManageUsers />} />
-                <Route path="/Equpment/manage_equpment_categories" element={<ManageCats />} />
-                <Route path="/Equpment/manage_equpment_items" element={<ManageEqupment />} />
-                <Route path="/Equpment/manage_suppliers" element={<ManageSuppliers />} />
-                <Route path="/Equpment/manage_branches" element={<ManageBranches />} />
+                <Route path="/managment_orders" element={<ManagmentOrders />} />
+                <Route path="/requres_attention" element={<RequresAttention />} />
+                <Route path="/ship_orders" element={<ShipOrders />} />
+                <Route path="/manage_users" element={<ManageUsers />} />
+                <Route path="/manage_equpment_categories" element={<ManageCats />} />
+                <Route path="/manage_equpment_items" element={<ManageEqupment />} />
+                <Route path="/manage_suppliers" element={<ManageSuppliers />} />
+                <Route path="/manage_branches" element={<ManageBranches />} />
               </Routes>
 
               <Footer />
