@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Equpment/static/css/main.3039c0e8.css",
+    "main.js": "/Equpment/static/js/main.0d4f972e.js",
+    "index.html": "/Equpment/index.html",
+    "main.3039c0e8.css.map": "/Equpment/static/css/main.3039c0e8.css.map",
+    "main.0d4f972e.js.map": "/Equpment/static/js/main.0d4f972e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3039c0e8.css",
+    "static/js/main.0d4f972e.js"
+  ]
+}
