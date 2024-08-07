@@ -19,12 +19,12 @@ class UserViews(AnonViews):
     def __init__(self) -> None:
         super().__init__()
     
-    @api_view(['GET'])
+    @api_view(['POST'])
     @permission_classes([IsAuthenticated])
     def get_all_branches(request):
         """
         12.06.24
-        Args: GET
+        Args: POST
         Returns: list of branches as jsons + 200/ not found str + 404 / err str + 500
         """
         try:
@@ -45,12 +45,12 @@ class UserViews(AnonViews):
             logger.log('UserViews','get_all_branches',None,output)
             
     
-    @api_view(['GET'])
+    @api_view(['POST'])
     @permission_classes([IsAuthenticated])
     def get_active_branches(request):
         """
         12.06.24
-        Args: GET
+        Args: POST
         Returns: list of branches as jsons + 200/ not found str + 404 / err str + 500
         """
         try:
@@ -71,12 +71,12 @@ class UserViews(AnonViews):
             logger.log('UserViews','get_active_branches',None,output)
     
     
-    @api_view(['GET'])
+    @api_view(['POST'])
     @permission_classes([IsAuthenticated])
     def get_branch(request, branch_id):
         """
         12.06.24
-        Args: GET, branch_id(int)
+        Args: POST, branch_id(int)
         Returns: branch json + 200/ not found str + 404 / err str + 500
         """
         try:
@@ -97,12 +97,12 @@ class UserViews(AnonViews):
             logger.log('UserViews','get_branch',branch_id,output)
             
     
-    @api_view(['GET'])
+    @api_view(['POST'])
     @permission_classes([IsAuthenticated])
     def get_equpment_categories(request):
         """
         12.06.24
-        Args: GET
+        Args: POST
         Returns: list of categories as jsons + 200/ not found str + 404 / err str + 500
         """
         try:
@@ -127,12 +127,12 @@ class UserViews(AnonViews):
             logger.log('UserViews','get_equpment_categories',None,output)    
     
     
-    @api_view(['GET'])
+    @api_view(['POST'])
     @permission_classes([IsAuthenticated])
     def get_equpment_by_category(request, cat_id):
         """
         12.06.24
-        Args: GET
+        Args: POST
         Returns: list of equpments as jsons + 200/ not found str + 404 / err str + 500
         """
         try:
@@ -153,12 +153,12 @@ class UserViews(AnonViews):
             logger.log('UserViews','get_equpment_by_category',cat_id,output)
     
     
-    @api_view(['GET'])
+    @api_view(['POST'])
     @permission_classes([IsAuthenticated])
     def view_order_by_id(request, order_id):
         """
         12.06.24
-        Args: GET, order_id(int)
+        Args: POST, order_id(int)
         Returns: tupple order and list json order details + 200/ not found str + 404 / err str + 500
         """
         try:
@@ -179,7 +179,7 @@ class UserViews(AnonViews):
             logger.log('UserViews','view_order_by_id',order_id,output)    
     
     
-    @api_view(['GET'])
+    @api_view(['POST'])
     @permission_classes([IsAuthenticated])
     def view_orders_by_branch(request, branch_id):
         try:
@@ -300,7 +300,7 @@ class UserViews(AnonViews):
             logger.log('UserViews','approve_delivery', order_detail_id, output)
     
     
-    @api_view(['GET'])
+    @api_view(['POST'])
     @permission_classes([IsAuthenticated])
     def get_self(request):
         """

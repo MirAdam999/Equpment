@@ -26,7 +26,7 @@ const Header = () => {
                 });
 
             if (result.status === 204) {
-                handleNavigation('/');
+                handleNavigation('/Equpment');
                 setToken(null);
             } else {
                 const data = await result.json();

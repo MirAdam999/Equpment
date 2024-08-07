@@ -17,7 +17,7 @@ const RequresAttention = () => {
             try {
                 const result = await fetch(`${storedURL}/get_requres_attention_orders/`,
                     {
-                        method: 'GET',
+                        method: 'POST',
                         headers: {
                             "Authorization": `Token ${storedToken}`
                         },

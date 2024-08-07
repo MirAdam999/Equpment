@@ -17,7 +17,7 @@ const ChooseBranch = () => {
             try {
                 const result = await fetch(`${storedURL}/get_active_branches/`,
                     {
-                        method: 'GET',
+                        method: 'POST',
                         headers: {
                             "Authorization": `Token ${storedToken}`
                         },

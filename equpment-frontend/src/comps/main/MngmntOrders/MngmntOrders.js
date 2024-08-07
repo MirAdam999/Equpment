@@ -31,7 +31,7 @@ const ManagmentOrders = () => {
             try {
                 const result = await fetch(`${storedURL}/get_all_areas/`,
                     {
-                        method: 'GET',
+                        method: 'POST',
                         headers: {
                             "Authorization": `Token ${storedToken}`
                         },
@@ -56,7 +56,7 @@ const ManagmentOrders = () => {
             try {
                 const result = await fetch(`${storedURL}/get_all_branches/`,
                     {
-                        method: 'GET',
+                        method: 'POST',
                         headers: {
                             "Authorization": `Token ${storedToken}`
                         },
@@ -80,7 +80,7 @@ const ManagmentOrders = () => {
         const fetchSuppliers = async () => {
             try {
                 const result = await fetch(`${storedURL}/get_all_suppliers/`, {
-                    method: 'GET',
+                    method: 'POST',
                     headers: {
                         "Authorization": `Token ${storedToken}`,
                         "Content-Type": "application/json"
@@ -123,7 +123,7 @@ const ManagmentOrders = () => {
             console.log(searchParams)
             const result = await fetch(`${storedURL}/get_filtered_orders/?id=${searchParams.id ? searchParams.id : 'all'}&branch=${searchParams.branch ? searchParams.branch : 'all'}&area=${searchParams.area ? searchParams.area : 'all'}&start_date=${searchParams.start_date ? searchParams.start_date : ''}&end_date=${searchParams.end_date ? searchParams.end_date : ''}&sent_to_supplier=${searchParams.sent_to_supplier ? searchParams.sent_to_supplier : 'all'}&received=${searchParams.received ? searchParams.received : 'all'}&approved_to_ship=${searchParams.approved_to_ship ? searchParams.approved_to_ship : 'all'}&supplier=${searchParams.supplier ? searchParams.supplier : 'all'}`,
                 {
-                    method: 'GET',
+                    method: 'POST',
                     headers: {
                         "Authorization": `Token ${storedToken}`,
                         "Content-Type": "application/json"

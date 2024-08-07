@@ -18,7 +18,7 @@ const MyProfile = () => {
             try {
                 const result = await fetch(`${storedURL}/get_active_branches/`,
                     {
-                        method: 'GET',
+                        method: 'POST',
                         headers: {
                             "Authorization": `Token ${storedToken}`
                         },
@@ -44,7 +44,7 @@ const MyProfile = () => {
             try {
                 const result = await fetch(`${storedURL}/get_self/`,
                     {
-                        method: 'GET',
+                        method: 'POST',
                         headers: {
                             "Authorization": `Token ${storedToken}`
                         },

@@ -25,7 +25,7 @@ const ManageSuppliers = () => {
             try {
                 const result = await fetch(`${storedURL}/get_all_suppliers/`,
                     {
-                        method: 'GET',
+                        method: 'POST',
                         headers: {
                             "Authorization": `Token ${storedToken}`,
                             "Content-Type": "application/json"

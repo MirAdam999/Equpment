@@ -55,7 +55,7 @@ const OrderForSuppliers = (props) => {
         }
     }
 
-    const convertHtmlToWord = (content, fileName = 'document.docx') => {
+    const convertHtmlToWord = (content, fileName = `order_for_${supplier.name}_${branch.name}_${dateString}.docx`) => {
 
         const htmlContent = `
         <!DOCTYPE html>

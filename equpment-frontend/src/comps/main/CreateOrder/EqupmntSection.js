@@ -17,7 +17,7 @@ const EqupmentSection = (props) => {
             try {
                 const result = await fetch(`${storedURL}/get_equpment_by_category/${parseInt(cat.id)}/`,
                     {
-                        method: 'GET',
+                        method: 'POST',
                         headers: {
                             "Authorization": `Token ${storedToken}`
                         },

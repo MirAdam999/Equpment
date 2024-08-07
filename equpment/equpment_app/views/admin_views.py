@@ -51,7 +51,7 @@ class AdminViews(UserViews):
             logger.log('AdminViews','add_user', request.data, output)
             
             
-    @api_view(['GET'])
+    @api_view(['POST'])
     @permission_classes([IsAuthenticated,IsAdminUser])
     def get_user_by_id(request, user_id):
         try:
@@ -72,7 +72,7 @@ class AdminViews(UserViews):
             logger.log('UserViews','get_user_by_id',user_id,output)
             
     
-    @api_view(['GET'])
+    @api_view(['POST'])
     @permission_classes([IsAuthenticated,IsAdminUser])   
     def get_all_users(request):
         try:
@@ -93,7 +93,7 @@ class AdminViews(UserViews):
             logger.log('AdminViews','get_all_users',None,output)    
     
     
-    @api_view(['GET'])
+    @api_view(['POST'])
     @permission_classes([IsAuthenticated, IsAdminUser])
     def get_filtered_users(request):
         try:
@@ -229,7 +229,7 @@ class AdminViews(UserViews):
             logger.log('AdminViews','revoke_admin',user_id,output)       
        
        
-    @api_view(['GET'])
+    @api_view(['POST'])
     @permission_classes([IsAuthenticated,IsAdminUser])    
     def get_orders_by_branch(request, branch_id):
         try:
@@ -258,7 +258,7 @@ class AdminViews(UserViews):
             logger.log('AdminViews','get_orders_by_branch',branch_id,output)   
     
     
-    @api_view(['GET'])
+    @api_view(['POST'])
     @permission_classes([IsAuthenticated,IsAdminUser]) 
     def get_all_orders(request):
         try:
@@ -283,7 +283,7 @@ class AdminViews(UserViews):
             logger.log('AdminViews','get_all_orders',None,output)   
     
   
-    @api_view(['GET'])
+    @api_view(['POST'])
     @permission_classes([IsAuthenticated,IsAdminUser]) 
     def get_requres_attention_orders(request):
         try:
@@ -313,7 +313,7 @@ class AdminViews(UserViews):
             logger.log('AdminViews','get_requres_attention_orders',None,output)   
             
               
-    @api_view(['GET'])
+    @api_view(['POST'])
     @permission_classes([IsAuthenticated, IsAdminUser])
     def get_filtered_orders(request):
         try:
@@ -358,7 +358,7 @@ class AdminViews(UserViews):
 
                 recived_match = True
                 if received != 'all':
-                    all_received = all(detail.recived == 'true' for detail in order_details) 
+                    all_received = all(detail.recived == 1 for detail in order_details) 
                     if all_received:
                         recived_match = True if received == '1' else False
                     else:
@@ -399,7 +399,7 @@ class AdminViews(UserViews):
             logger.log('AdminViews','get_filtered_orders', filters, output)
     
     
-    @api_view(['GET'])
+    @api_view(['POST'])
     @permission_classes([IsAuthenticated,IsAdminUser]) 
     def get_unshipped(request):
         try:
@@ -537,7 +537,7 @@ class AdminViews(UserViews):
             logger.log('AdminViews','delete_equipment_category', (request.data, equpment_cat_id), output)  
                 
     
-    @api_view(['GET'])
+    @api_view(['POST'])
     @permission_classes([IsAuthenticated, IsAdminUser])
     def get_filtered_equpment(request):
         try:
@@ -800,13 +800,13 @@ class AdminViews(UserViews):
             logger.log('AdminViews','deactivate_branch', (branch_id), output)    
     
     
-    @api_view(['GET'])
+    @api_view(['POST'])
     @permission_classes([IsAuthenticated,IsAdminUser])
     def get_all_areas(request):
         """
         12.06.24
         Args: GET
-        Returns: list of areas as jsons + 200/ not found str + 404 / err str + 500
+        POST: list of areas as jsons + 200/ not found str + 404 / err str + 500
         """
         try:
             area = Area.objects.all()
@@ -883,12 +883,12 @@ class AdminViews(UserViews):
             logger.log('AdminViews','update_area', (request.data, area_id), output) 
     
     
-    @api_view(['GET'])
+    @api_view(['POST'])
     @permission_classes([IsAuthenticated,IsAdminUser])
     def get_all_suppliers(request):
         """
         12.06.24
-        Args: GET
+        Args: POST
         Returns: list of suppliers as jsons + 200/ not found str + 404 / err str + 500
         """
         try:
@@ -913,12 +913,12 @@ class AdminViews(UserViews):
             logger.log('AdminViews','get_all_suppliers',None,output)
             
             
-    @api_view(['GET'])
+    @api_view(['POST'])
     @permission_classes([IsAuthenticated,IsAdminUser])
     def get_active_suppliers(request):
         """
         12.06.24
-        Args: GET
+        Args: POST
         Returns: list of active suppliers as jsons + 200/ not found str + 404 / err str + 500
         """
         try:

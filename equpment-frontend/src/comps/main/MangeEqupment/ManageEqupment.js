@@ -44,7 +44,7 @@ const ManageEqupment = () => {
         const fetchCats = async () => {
             try {
                 const result = await fetch(`${storedURL}/get_equpment_categories/`, {
-                    method: 'GET',
+                    method: 'POST',
                     headers: {
                         "Authorization": `Token ${storedToken}`,
                         "Content-Type": "application/json"
@@ -67,7 +67,7 @@ const ManageEqupment = () => {
         const fetchSuppliers = async () => {
             try {
                 const result = await fetch(`${storedURL}/get_active_suppliers/`, {
-                    method: 'GET',
+                    method: 'POST',
                     headers: {
                         "Authorization": `Token ${storedToken}`,
                         "Content-Type": "application/json"
@@ -101,7 +101,7 @@ const ManageEqupment = () => {
         try {
             const result = await fetch(`${storedURL}/get_filtered_equpment/?equpment_cat=${wantedCategory}&equpment_supplier=${wantedSupplier}&equpment_status=${activityStatus}`,
                 {
-                    method: 'GET',
+                    method: 'POST',
                     headers: {
                         "Authorization": `Token ${storedToken}`,
                         "Content-Type": "application/json"

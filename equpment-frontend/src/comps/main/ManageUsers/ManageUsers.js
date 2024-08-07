@@ -43,7 +43,7 @@ const ManageUsers = () => {
         try {
             const result = await fetch(`${storedURL}/get_filtered_users/?user_type=${userType}&user_status=${userStatus}`,
                 {
-                    method: 'GET',
+                    method: 'POST',
                     headers: {
                         "Authorization": `Token ${storedToken}`,
                         "Content-Type": "application/json"

@@ -30,7 +30,7 @@ const ShipOrders = () => {
             setLoading(true);
             try {
                 const result = await fetch(`${storedURL}/get_active_suppliers/`, {
-                    method: 'GET',
+                    method: 'POST',
                     headers: {
                         "Authorization": `Token ${storedToken}`,
                         "Content-Type": "application/json"
@@ -52,7 +52,7 @@ const ShipOrders = () => {
         const fetchBranches = async () => {
             try {
                 const result = await fetch(`${storedURL}/get_active_branches/`, {
-                    method: 'GET',
+                    method: 'POST',
                     headers: {
                         "Authorization": `Token ${storedToken}`,
                         "Content-Type": "application/json"
@@ -74,7 +74,7 @@ const ShipOrders = () => {
         const fetchAreas = async () => {
             try {
                 const result = await fetch(`${storedURL}/get_all_areas/`, {
-                    method: 'GET',
+                    method: 'POST',
                     headers: {
                         "Authorization": `Token ${storedToken}`,
                         "Content-Type": "application/json"
@@ -97,7 +97,7 @@ const ShipOrders = () => {
             setLoading(true);
             try {
                 const result = await fetch(`${storedURL}/get_unshipped/`, {
-                    method: 'GET',
+                    method: 'POST',
                     headers: {
                         "Authorization": `Token ${storedToken}`,
                         "Content-Type": "application/json"

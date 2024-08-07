@@ -22,7 +22,7 @@ const BranchOrders = () => {
             try {
                 const result = await fetch(`${storedURL}/view_orders_by_branch/${branchID}/`,
                     {
-                        method: 'GET',
+                        method: 'POST',
                         headers: {
                             "Authorization": `Token ${storedToken}`
                         },

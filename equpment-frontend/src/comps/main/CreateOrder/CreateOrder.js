@@ -17,7 +17,7 @@ const CreateOrder = () => {
             try {
                 const result = await fetch(`${storedURL}/get_equpment_categories/`,
                     {
-                        method: 'GET',
+                        method: 'POST',
                         headers: {
                             "Authorization": `Token ${storedToken}`
                         },

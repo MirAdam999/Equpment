@@ -26,7 +26,7 @@ const ManageBranches = () => {
             try {
                 const result = await fetch(`${storedURL}/get_all_branches/`,
                     {
-                        method: 'GET',
+                        method: 'POST',
                         headers: {
                             "Authorization": `Token ${storedToken}`,
                             "Content-Type": "application/json"
@@ -52,7 +52,7 @@ const ManageBranches = () => {
             try {
                 const result = await fetch(`${storedURL}/get_all_areas/`,
                     {
-                        method: 'GET',
+                        method: 'POST',
                         headers: {
                             "Authorization": `Token ${storedToken}`,
                             "Content-Type": "application/json"

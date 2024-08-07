@@ -98,7 +98,7 @@ const OrderView = (props) => {
         try {
             const result = await fetch(`${storedURL}/view_order_by_id/${order.id}/`,
                 {
-                    method: 'GET',
+                    method: 'POST',
                     headers: {
                         "Authorization": `Token ${storedToken}`,
                         "Content-Type": "application/json"

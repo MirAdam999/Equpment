@@ -23,7 +23,7 @@ const AddUser = (props) => {
             try {
                 const result = await fetch(`${storedURL}/get_all_branches/`,
                     {
-                        method: 'GET',
+                        method: 'POST',
                         headers: {
                             "Authorization": `Token ${storedToken}`
                         },
