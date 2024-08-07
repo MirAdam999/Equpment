@@ -40,9 +40,9 @@ const Equpment = (props) => {
                                 <td>
                                     <input
                                         type="number"
-                                        min="0"
+                                        min="1"
                                         max="100"
-                                        value={quantities[item.id] || ""}
+                                        value={quantities[item.id] || "1"}
                                         onChange={(e) => handleQuantityChange(item.id, e.target.value)}
                                     />
                                 </td>
