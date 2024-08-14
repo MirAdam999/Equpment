@@ -52,7 +52,9 @@ Frontend: React
 
 <h2>Live Demo</h2>
 
-The live demo of the system showcases a fictional multi-branch clinic inspired by the original project concept. **Please note that the demo is intended for desktop use only at this time.**
+The live demo of the system showcases a fictional multi-branch clinic inspired by the original project concept. **Please note that the demo is intended for desktop use only at this time.** For your convenience, demo user data is available on the login page.
+
+https://mirshukhman.github.io/Equpment/
 
 <h2>Screenshots:</h2>
 
