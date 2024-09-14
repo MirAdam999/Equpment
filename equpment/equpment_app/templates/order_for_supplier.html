@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang='he' dir='rtl'>
+    <head>
+        <meta charset='UTF-8'>
+        <title>הזמנה{{order.supplier}}{{order.branch}}{{order.date}}</title>
+        <style>
+            * {
+                font-family: 'Arial', san-serif;
+                direction: rtl;
+                text-align: right;
+            }
+            #supplier-details-table {
+                width: 100%;
+                font-size: 1.2rem;
+                margin-bottom: 2rem;
+            }
+            .data-span {
+                text-align: left;
+            }   
+            #supplier-name {
+                font-size: 1.4rem;
+                font-weight: 600;
+            }
+            #supplier-name-name {
+                color: #1679AB;
+            }
+            .order-details-table {
+                width: 100%;
+                border: solid 1px #074173;
+                border-collapse: collapse;
+                font-size: 1.1rem;
+            }
+            .order-details-table tr,
+            .order-details-table td,
+            .order-details-table th {
+                border: solid 1px #074173;
+            }
+            .order-details-table td,
+            .order-details-table th {
+                padding-right: 0.3rem;
+                padding-left: 0.3rem;
+                padding-top: 0.2rem;
+                padding-bottom: 0.2rem;
+            }
+            .order-details-table th {
+                background-color: rgb(176, 212, 236);
+            }
+            #detail_price_for_order{
+                font-weight: 600;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                border:none;
+
+            }
+            #total-price-sum{
+                font-weight: 600;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                border:none;
+                font-size: 1.1rem;
+                color: #074173;
+
+            }
+        </style>
+    </head>
+    <body>
+        <div class="order-for-supplier">
+            <div class="order-for-supplier-top">
+                <table id='supplier-details-table'>
+                    <tr id='supplier-name'><td class="right">עבור ספק:</td>
+                        <td class="data-span" id='supplier-name-name'>{{order.supplier}}</td>
+                    </tr>
+                    <tr> <td class="right">תאריך:</td>
+                        <td class="data-span">{{order.date}}</td>
+                    </tr>
+
+                    <tr> <td class="right">מחוז:</td>
+                        <td class="data-span">{{order.area}}</td>
+                    </tr>
+                    <tr> <td class="right">סניף:</td>
+                        <td class="data-span">{{order.branch}}</td>
+                    </tr>
+                    <tr> <td class="right">כתובת:</td>
+                        <td class="data-span">{{order.address}}</td>
+                    </tr>
+
+                </table>
+            </div>
+            <div class="order-for-supplier-btm">
+                <table class="order-details-table">
+                    <thead>
+                        <tr>
+                        <th id='order-for-supplier-btm-th'>שם פריט</th>
+                        <th id='order-for-supplier-btm-th'>מחיר יחידה בש"ח</th>
+                        <th id='order-for-supplier-btm-th'>כמות</th>
+                        <th id='order-for-supplier-btm-th'>מחיר סה"כ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in order.items %}
+                            <tr >
+                                <td>{{item.detail_name}}</td>
+                                <td>{{item.detail_price}}</td>
+                                <td>{{item.quantity}}</td>
+                                <td id='detail_price_for_order'>
+                                    {{item.detail_price_for_order}}
+                                     ש"ח </td>
+                            </tr>
+                        {% endfor %}
+                        <tr class="total-price">
+                            <td colSpan="3">סה"כ</td>
+                            <td id='total-price-sum'>
+                                {{order.total_price}}
+                                ש"ח</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div >
+    </body>
+</html>

@@ -12,6 +12,9 @@ python-dotenv = "*"
 pyjwt = "*"
 bcrypt = "*"
 schedule = "*"
+weasyprint = "*"
+cairocffi = "*"
+cffi = "*"
 
 [dev-packages]
 

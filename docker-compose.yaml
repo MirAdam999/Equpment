@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: ./equpment
+      dockerfile: Dockerfile-django
+    command: python manage.py runserver 0.0.0.0:5000
+    volumes:
+      - ./equpment:/usr/src/app
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./equpment/.env
+    depends_on:
+      - db
+
+  db:
+    build:
+      context: ./equpment-db
+      dockerfile: Dockerfile-db
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: mySqlPass111!
+      MYSQL_DATABASE: equpment
+    ports:
+      - "3308:3306"
+
+  frontend:
+    build:
+      context: ./equpment-frontend
+      dockerfile: Dockerfile-react
+    volumes:
+      - ./equpment-frontend/build:/usr/share/nginx/html
+    ports:
+      - "3000:80"
+
+volumes:
+  mysql_data:

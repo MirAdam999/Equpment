@@ -10,6 +10,11 @@ from ..serializers.serializer import *
 from ..log.logger import Logger
 from ..serializers.data_manipulation import DataConstructor
 from datetime import datetime
+from django.http import HttpResponse
+from django.http import FileResponse
+from django.template.loader import render_to_string
+from weasyprint import HTML
+from io import BytesIO
 
 logger = Logger()
 data_constructor = DataConstructor()
@@ -415,6 +420,42 @@ class AdminViews(UserViews):
             
         finally:
             logger.log('AdminViews','get_unshipped',None,output) 
+            
+    
+    @api_view(['POST'])
+    @permission_classes([IsAuthenticated, IsAdminUser])
+    def get_pdf_for_supplier(request):
+        try:
+            details_to_include = request.data.get('details',[])
+            if not details_to_include:
+                output = 'details_to_include err'
+                return Response({"err":output}, status=status.HTTP_400_BAD_REQUEST)
+            
+            details = []
+            for detail in details_to_include:
+                detail_data = OrderDetails.objects.get(pk=detail)
+                details.append(detail_data)
+            
+            parced_details = data_constructor.parce_data_for_pdf_for_supplier(details)
+            
+            header = parced_details['header']
+            context = {'order': parced_details}
+            html_str = render_to_string('order_for_supplier.html',context)
+            pdf = HTML(string=html_str).write_pdf()
+            pdf_buffer = BytesIO(pdf)
+            
+            response = FileResponse(pdf_buffer, content_type='application/pdf')  
+            response['Content-Disposition'] = f'attachment; filename="{header}.pdf"'
+            response['Content-Type'] = 'application/pdf'
+            output = (response.headers, response.streaming_content)
+            return response
+                            
+        except Exception as e:
+            output = str(e)
+            return Response({"err":str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+        finally:
+            logger.log('AdminViews','get_pdf_for_supplier',details_to_include if details_to_include else None,output)  
     
     
     @api_view(['POST'])

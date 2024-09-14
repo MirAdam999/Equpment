@@ -156,3 +156,59 @@ class DataConstructor:
         
         return by_supplier_dict
             
+
+    def parce_data_for_pdf_for_supplier(self, details):
+        order_details_seri = OrderDetailSerializer(details, many=True)
+        order_details_data = order_details_seri.data
+        
+        parced_data = {}
+        
+        first_detail = order_details_data[0]
+        equipment = Equpment.objects.get(pk=first_detail['item'])
+        equipment_seri = EqupmentSerializer(equipment)
+        supplier = Supplier.objects.get(pk=equipment_seri.data['supplier'])
+        supplier_seri = SupplierSerializer(supplier)
+        supplier = supplier_seri.data['name']
+        parced_data['supplier'] = supplier
+        
+        order = Order.objects.get(pk=first_detail['order'])
+        order_seri = OrderSerializer(order)
+        order_data = order_seri.data
+        branch = Branch.objects.get(pk=order_data['branch'])
+        branch_seri = BranchSerializer(branch)
+        branch_name = branch_seri.data['name']
+        parced_data['branch'] = branch_name
+        parced_data['address'] = branch_seri.data['address']
+        
+        area = Area.objects.get(pk=branch_seri.data['area'])
+        area_seri = AreaSerializer(area)
+        parced_data['area'] = area_seri.data['name']
+        
+        now = datetime.now()
+        today = now.date()
+        today_str = today.strftime('%Y-%m-%d')
+        parced_data['date'] = today_str
+        
+        parced_data['header'] = f'order_for_{supplier}_to_branch{branch}_{today_str}'
+        
+        items = []
+        order_total=0
+        
+        for detail in order_details_data:
+            equipment = Equpment.objects.get(pk=detail['item'])
+            equipment_seri = EqupmentSerializer(equipment)
+            detail['detail_name'] = f"{equipment_seri.data['name']}, {equipment_seri.data['unit_measure']}"
+            detail['detail_price'] = equipment_seri.data['price']
+            detail_price_for_order = float(float(equipment_seri.data['price']) * float(detail['quantity']))
+            detail['detail_price_for_order'] = "{:,.2f}".format(detail_price_for_order)
+            order_total += detail_price_for_order
+            
+            items.append(detail)
+            
+        parced_data['items'] = items
+        parced_data['total_price'] = "{:,.2f}".format(order_total)
+                
+        return parced_data
+        
+        
+        
