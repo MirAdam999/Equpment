@@ -614,5 +614,381 @@
     "func_name": "get_pdf_for_supplier",
     "func_input": "[103, 104]",
     "func_output": "({'Content-Type': 'application/pdf', 'Content-Length': '10976', 'Content-Disposition': '=?utf-8?b?YXR0YWNobWVudDsgZmlsZW5hbWU9Im9yZGVyX2Zvcl9MYWIgTWF0ZXJpYWxzX3RvX2JyYW5jaNeR15DXqCDXqdeR16JfMjAyNC0wOS0xNC5wZGYi?='}, <map object at 0x00000206955792A0>)"
+  },
+  {
+    "id": 78,
+    "datetime": "2024-09-14 22:41:21.130037",
+    "class_name": "AdminViews",
+    "func_name": "get_pdf_for_supplier",
+    "func_input": "[103, 104]",
+    "func_output": "({'Content-Type': 'application/pdf', 'Content-Length': '11033', 'Content-Disposition': '=?utf-8?b?YXR0YWNobWVudDsgZmlsZW5hbWU9Im9yZGVyX2Zvcl9MYWIgTWF0ZXJpYWxzX3RvX2JyYW5jaNeR15DXqCDXqdeR16JfMjAyNC0wOS0xNC5wZGYi?='}, <map object at 0x0000020692B27160>)"
+  },
+  {
+    "id": 79,
+    "datetime": "2024-09-14 22:42:08.549417",
+    "class_name": "AdminViews",
+    "func_name": "get_pdf_for_supplier",
+    "func_input": "[103, 104]",
+    "func_output": "({'Content-Type': 'application/pdf', 'Content-Length': '11035', 'Content-Disposition': '=?utf-8?b?YXR0YWNobWVudDsgZmlsZW5hbWU9Im9yZGVyX2Zvcl9MYWIgTWF0ZXJpYWxzX3RvX2JyYW5jaNeR15DXqCDXqdeR16JfMjAyNC0wOS0xNC5wZGYi?='}, <map object at 0x000002069332AFB0>)"
+  },
+  {
+    "id": 80,
+    "datetime": "2024-09-14 22:42:32.951040",
+    "class_name": "AdminViews",
+    "func_name": "get_pdf_for_supplier",
+    "func_input": "[103, 104]",
+    "func_output": "({'Content-Type': 'application/pdf', 'Content-Length': '11029', 'Content-Disposition': '=?utf-8?b?YXR0YWNobWVudDsgZmlsZW5hbWU9Im9yZGVyX2Zvcl9MYWIgTWF0ZXJpYWxzX3RvX2JyYW5jaNeR15DXqCDXqdeR16JfMjAyNC0wOS0xNC5wZGYi?='}, <map object at 0x000002069457CB80>)"
+  },
+  {
+    "id": 81,
+    "datetime": "2024-09-16 21:41:33.642088",
+    "class_name": "Celery Tasks",
+    "func_name": "reset_next_order_date",
+    "func_input": "2024-09-16",
+    "func_output": "good run"
+  },
+  {
+    "id": 82,
+    "datetime": "2024-09-17 00:15:11.534211",
+    "class_name": "Celery Tasks",
+    "func_name": "reset_next_order_date",
+    "func_input": "2024-09-17",
+    "func_output": "good run"
+  },
+  {
+    "id": 83,
+    "datetime": "2024-09-18 17:50:59.204857",
+    "class_name": "Celery Tasks",
+    "func_name": "reset_next_order_date",
+    "func_input": "2024-09-18",
+    "func_output": "good run"
+  },
+  {
+    "id": 84,
+    "datetime": "2024-09-18 18:36:44.738728",
+    "class_name": "AdminViews",
+    "func_name": "get_supplier_by_id",
+    "func_input": "2",
+    "func_output": "Got AttributeError when attempting to get a value for field `name` on serializer `SupplierSerializer`.\nThe serializer field might be named incorrectly and not match any attribute or key on the `QuerySet` instance.\nOriginal exception text was: 'QuerySet' object has no attribute 'name'."
+  },
+  {
+    "id": 85,
+    "datetime": "2024-09-18 18:39:08.324820",
+    "class_name": "AdminViews",
+    "func_name": "get_supplier_by_id",
+    "func_input": "2",
+    "func_output": "Got AttributeError when attempting to get a value for field `name` on serializer `SupplierSerializer`.\nThe serializer field might be named incorrectly and not match any attribute or key on the `QuerySet` instance.\nOriginal exception text was: 'QuerySet' object has no attribute 'name'."
+  },
+  {
+    "id": 86,
+    "datetime": "2024-09-18 18:40:14.447560",
+    "class_name": "AdminViews",
+    "func_name": "get_supplier_by_id",
+    "func_input": "2",
+    "func_output": "Got AttributeError when attempting to get a value for field `name` on serializer `SupplierSerializer`.\nThe serializer field might be named incorrectly and not match any attribute or key on the `QuerySet` instance.\nOriginal exception text was: 'QuerySet' object has no attribute 'name'."
+  },
+  {
+    "id": 87,
+    "datetime": "2024-09-18 18:41:27.912944",
+    "class_name": "AdminViews",
+    "func_name": "get_supplier_by_id",
+    "func_input": "2",
+    "func_output": "{'supplier': {'id': 2, 'name': 'Lab Materials', 'contact_name': None, 'phone': None, 'email': None, 'active': True}}"
+  },
+  {
+    "id": 88,
+    "datetime": "2024-09-18 18:41:49.272050",
+    "class_name": "AdminViews",
+    "func_name": "get_supplier_by_id",
+    "func_input": "2",
+    "func_output": "{'supplier': {'id': 2, 'name': 'Lab Materials', 'contact_name': None, 'phone': None, 'email': None, 'active': True}}"
+  },
+  {
+    "id": 89,
+    "datetime": "2024-09-18 18:45:18.209864",
+    "class_name": "AdminViews",
+    "func_name": "update_supplier",
+    "func_input": "({'name': 'Lab Materials', 'contact_name': 'Sarah Thompson', 'phone': '0501234568', 'email': 'miriamsh888@gmail.com', 'active': True}, 2)",
+    "func_output": "{'id': 2, 'name': 'Lab Materials', 'contact_name': 'Sarah Thompson', 'phone': '0501234568', 'email': 'miriamsh888@gmail.com', 'active': True}"
+  },
+  {
+    "id": 90,
+    "datetime": "2024-09-18 18:45:44.646972",
+    "class_name": "AdminViews",
+    "func_name": "update_supplier",
+    "func_input": "({'name': 'Meditecnica', 'contact_name': 'Michael Grant', 'phone': '0501234568', 'email': 'miriamsh888@gmail.com', 'active': True}, 1)",
+    "func_output": "{'id': 1, 'name': 'Meditecnica', 'contact_name': 'Michael Grant', 'phone': '0501234568', 'email': 'miriamsh888@gmail.com', 'active': True}"
+  },
+  {
+    "id": 91,
+    "datetime": "2024-09-18 18:46:02.008978",
+    "class_name": "AdminViews",
+    "func_name": "update_supplier",
+    "func_input": "({'name': 'Whelech Alyn', 'contact_name': 'Emily Rodriguez', 'phone': '0501234568', 'email': 'miriamsh888@gmail.com', 'active': True}, 3)",
+    "func_output": "{'id': 3, 'name': 'Whelech Alyn', 'contact_name': 'Emily Rodriguez', 'phone': '0501234568', 'email': 'miriamsh888@gmail.com', 'active': True}"
+  },
+  {
+    "id": 92,
+    "datetime": "2024-09-18 18:46:40.096672",
+    "class_name": "AdminViews",
+    "func_name": "update_supplier",
+    "func_input": "({'name': 'Braun', 'contact_name': 'James Anderson', 'phone': '0501234568', 'email': 'miriamsh888@gmail.com', 'active': True}, 3)",
+    "func_output": "{'err': {'name': [ErrorDetail(string='supplier with this name already exists.', code='unique')]}}"
+  },
+  {
+    "id": 93,
+    "datetime": "2024-09-18 18:46:52.343853",
+    "class_name": "AdminViews",
+    "func_name": "update_supplier",
+    "func_input": "({'name': 'Braun', 'contact_name': 'James Anderson', 'phone': '0501234568', 'email': 'miriamsh888@gmail.com', 'active': True}, 4)",
+    "func_output": "{'id': 4, 'name': 'Braun', 'contact_name': 'James Anderson', 'phone': '0501234568', 'email': 'miriamsh888@gmail.com', 'active': True}"
+  },
+  {
+    "id": 94,
+    "datetime": "2024-09-18 18:47:07.344178",
+    "class_name": "AdminViews",
+    "func_name": "update_supplier",
+    "func_input": "({'name': 'Phillips', 'contact_name': 'Olivia Bennett', 'phone': '0501234568', 'email': 'miriamsh888@gmail.com', 'active': True}, 5)",
+    "func_output": "{'id': 5, 'name': 'Phillips', 'contact_name': 'Olivia Bennett', 'phone': '0501234568', 'email': 'miriamsh888@gmail.com', 'active': True}"
+  },
+  {
+    "id": 95,
+    "datetime": "2024-09-18 18:47:23.362265",
+    "class_name": "AdminViews",
+    "func_name": "update_supplier",
+    "func_input": "({'name': 'LifeLine', 'contact_name': 'Holly Molly', 'phone': '0501234568', 'email': 'miriamsh888@gmail.com', 'active': True}, 6)",
+    "func_output": "{'id': 6, 'name': 'LifeLine', 'contact_name': 'Holly Molly', 'phone': '0501234568', 'email': 'miriamsh888@gmail.com', 'active': True}"
+  },
+  {
+    "id": 96,
+    "datetime": "2024-09-18 19:40:14.359820",
+    "class_name": "EmailHandler",
+    "func_name": "send_email",
+    "func_input": "('Give yur credit card num and I will DOUBLE YOUR MONEYYYY', ['miriamsh888@gmail.com', 'artyom1100@gmail.com '], 'THIS IS NOT A SCAM')",
+    "func_output": "True"
+  },
+  {
+    "id": 97,
+    "datetime": "2024-09-18 19:41:30.889770",
+    "class_name": "EmailHandler",
+    "func_name": "send_email",
+    "func_input": "('Give yur credit card num and I will DOUBLE YOUR MONEYYYY', ['miriamsh888@gmail.com', 'artyom1100@gmail.com '], 'THIS IS NOT A SCAM')",
+    "func_output": "True"
+  },
+  {
+    "id": 98,
+    "datetime": "2024-09-18 19:41:30.920983",
+    "class_name": "AdminViews",
+    "func_name": "send_email",
+    "func_input": "(['miriamsh888@gmail.com', 'artyom1100@gmail.com '], 'Give yur credit card num and I will DOUBLE YOUR MONEYYYY', 'THIS IS NOT A SCAM')",
+    "func_output": "True"
+  },
+  {
+    "id": 99,
+    "datetime": "2024-09-18 19:42:29.026606",
+    "class_name": "EmailHandler",
+    "func_name": "send_email",
+    "func_input": "('Give yur credit card num and I will DOUBLE YOUR MONEYYYY', ['miriamsh888@gmail.com', 'artyom1100@gmail.com ', 'yoass@jdffj.com'], 'THIS IS NOT A SCAM')",
+    "func_output": "True"
+  },
+  {
+    "id": 100,
+    "datetime": "2024-09-18 19:42:29.057634",
+    "class_name": "AdminViews",
+    "func_name": "send_email",
+    "func_input": "(['miriamsh888@gmail.com', 'artyom1100@gmail.com ', 'yoass@jdffj.com'], 'Give yur credit card num and I will DOUBLE YOUR MONEYYYY', 'THIS IS NOT A SCAM')",
+    "func_output": "{'sent_sucsessfuly': True}"
+  },
+  {
+    "id": 101,
+    "datetime": "2024-09-18 19:43:52.447971",
+    "class_name": "EmailHandler",
+    "func_name": "send_email",
+    "func_input": "('Give yur credit card num and I will DOUBLE YOUR MONEYYYY', ['miriamsh888@gmail.com', 'artyom1100@gmail.com ', 'yoassjcom'], 'THIS IS NOT A SCAM')",
+    "func_output": "{'yoassjcom': \"{'yoassjcom': (553, b'5.1.3 The recipient address <yoassjcom> is not a valid RFC 5321 address. For\\\\n5.1.3 more information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. 5b1f17b1804b1-42e70537c5bsm21155885e9.35 - gsmtp')}\"}"
+  },
+  {
+    "id": 102,
+    "datetime": "2024-09-18 19:43:52.506859",
+    "class_name": "AdminViews",
+    "func_name": "send_email",
+    "func_input": "(['miriamsh888@gmail.com', 'artyom1100@gmail.com ', 'yoassjcom'], 'Give yur credit card num and I will DOUBLE YOUR MONEYYYY', 'THIS IS NOT A SCAM')",
+    "func_output": "{'failed_to_send': dict_keys(['yoassjcom'])}"
+  },
+  {
+    "id": 103,
+    "datetime": "2024-09-18 19:56:17.419278",
+    "class_name": "EmailHandler",
+    "func_name": "send_email",
+    "func_input": "('Give yur credit card num and I will DOUBLE YOUR MONEYYYY', '[\"miriamsh888@gmail.com\",\"artyom1100@gmail.com \",\"yoassjcom\"]', 'THIS IS NOT A SCAM')",
+    "func_output": "{'[': \"{'': (555, b'5.5.2 Syntax error, cannot decode response. For more information, go to\\\\n5.5.2  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.5.2 specifications. ffacd0b85a97d-378e78051c1sm12984412f8f.99 - gsmtp')}\", '\"': \"{'': (555, b'5.5.2 Syntax error, cannot decode response. For more information, go to\\\\n5.5.2  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.5.2 specifications. 5b1f17b1804b1-42e704f262asm21567325e9.25 - gsmtp')}\", 'm': \"{'m': (553, b'5.1.3 The recipient address <m> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. 5b1f17b1804b1-42e705090bcsm21606815e9.26 - gsmtp')}\", 'i': \"{'i': (553, b'5.1.3 The recipient address <i> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. 5b1f17b1804b1-42e704cea4bsm21596125e9.7 - gsmtp')}\", 'r': \"{'r': (553, b'5.1.3 The recipient address <r> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. 5b1f17b1804b1-42e705162b0sm21328875e9.34 - gsmtp')}\", 'a': \"{'a': (553, b'5.1.3 The recipient address <a> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. 5b1f17b1804b1-42e704d8329sm21903585e9.6 - gsmtp')}\", 's': \"{'s': (553, b'5.1.3 The recipient address <s> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. ffacd0b85a97d-378e71f0699sm12725003f8f.15 - gsmtp')}\", 'h': \"{'h': (553, b'5.1.3 The recipient address <h> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. 5b1f17b1804b1-42e704ec8a1sm21315175e9.14 - gsmtp')}\", '8': \"{'8': (553, b'5.1.3 The recipient address <8> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. ffacd0b85a97d-378e72e49bfsm12771974f8f.21 - gsmtp')}\", '@': \"{'': (555, b'5.5.2 Syntax error, cannot decode response. For more information, go to\\\\n5.5.2  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.5.2 specifications. ffacd0b85a97d-378e73e862esm12952473f8f.45 - gsmtp')}\", 'g': \"{'g': (553, b'5.1.3 The recipient address <g> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. ffacd0b85a97d-378e780455csm12686019f8f.93 - gsmtp')}\", 'l': \"{'l': (553, b'5.1.3 The recipient address <l> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. ffacd0b85a97d-378e73e80dbsm12839716f8f.33 - gsmtp')}\", '.': \"{'.': (553, b'5.1.3 The recipient address <.> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. 5b1f17b1804b1-42e6bc2c7c2sm39022915e9.0 - gsmtp')}\", 'c': \"{'c': (553, b'5.1.3 The recipient address <c> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. 5b1f17b1804b1-42e704ed7f1sm21447625e9.20 - gsmtp')}\", 'o': \"{'o': (553, b'5.1.3 The recipient address <o> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. 5b1f17b1804b1-42e70537c71sm21471025e9.31 - gsmtp')}\", ',': \"{'': (555, b'5.5.2 Syntax error, cannot decode response. For more information, go to\\\\n5.5.2  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.5.2 specifications. 5b1f17b1804b1-42e704f262asm21565095e9.25 - gsmtp')}\", 't': \"{'t': (553, b'5.1.3 The recipient address <t> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. ffacd0b85a97d-378e73e837csm12885744f8f.27 - gsmtp')}\", 'y': \"{'y': (553, b'5.1.3 The recipient address <y> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. ffacd0b85a97d-378e73e80eesm12713678f8f.30 - gsmtp')}\", '1': \"{'1': (553, b'5.1.3 The recipient address <1> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. ffacd0b85a97d-378e78002afsm12797429f8f.75 - gsmtp')}\", '0': \"{'0': (553, b'5.1.3 The recipient address <0> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. 5b1f17b1804b1-42e70526939sm21343065e9.43 - gsmtp')}\", ' ': \"{'': (555, b'5.5.2 Syntax error, cannot decode response. For more information, go to\\\\n5.5.2  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.5.2 specifications. 5b1f17b1804b1-42e7050743bsm21424435e9.21 - gsmtp')}\", 'j': \"{'j': (553, b'5.1.3 The recipient address <j> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. ffacd0b85a97d-378e72e49casm12797131f8f.20 - gsmtp')}\", ']': \"{'': (555, b'5.5.2 Syntax error, cannot decode response. For more information, go to\\\\n5.5.2  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.5.2 specifications. 5b1f17b1804b1-42e70536c8dsm21310445e9.47 - gsmtp')}\"}"
+  },
+  {
+    "id": 104,
+    "datetime": "2024-09-18 19:56:17.479576",
+    "class_name": "AdminViews",
+    "func_name": "send_email",
+    "func_input": "('[\"miriamsh888@gmail.com\",\"artyom1100@gmail.com \",\"yoassjcom\"]', 'Give yur credit card num and I will DOUBLE YOUR MONEYYYY', 'THIS IS NOT A SCAM')",
+    "func_output": "{'failed_to_send': dict_keys(['[', '\"', 'm', 'i', 'r', 'a', 's', 'h', '8', '@', 'g', 'l', '.', 'c', 'o', ',', 't', 'y', '1', '0', ' ', 'j', ']'])}"
+  },
+  {
+    "id": 105,
+    "datetime": "2024-09-18 19:57:55.356960",
+    "class_name": "EmailHandler",
+    "func_name": "send_email",
+    "func_input": "('Give yur credit card num and I will DOUBLE YOUR MONEYYYY', [], 'THIS IS NOT A SCAM')",
+    "func_output": "True"
+  },
+  {
+    "id": 106,
+    "datetime": "2024-09-18 19:57:55.389402",
+    "class_name": "AdminViews",
+    "func_name": "send_email",
+    "func_input": "(None, 'Give yur credit card num and I will DOUBLE YOUR MONEYYYY', 'THIS IS NOT A SCAM')",
+    "func_output": "{'sent_sucsessfuly': True}"
+  },
+  {
+    "id": 107,
+    "datetime": "2024-09-18 20:02:37.641387",
+    "class_name": "EmailHandler",
+    "func_name": "send_email",
+    "func_input": "('Give yur credit card num and I will DOUBLE YOUR MONEYYYY', '[miriamsh888@gmail.com]', 'THIS IS NOT A SCAM')",
+    "func_output": "{'[': \"{'': (555, b'5.5.2 Syntax error, cannot decode response. For more information, go to\\\\n5.5.2  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.5.2 specifications. 5b1f17b1804b1-42e704cea56sm21968145e9.8 - gsmtp')}\", 'm': \"{'m': (553, b'5.1.3 The recipient address <m> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. ffacd0b85a97d-378e73e8388sm12804710f8f.32 - gsmtp')}\", 'i': \"{'i': (553, b'5.1.3 The recipient address <i> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. 5b1f17b1804b1-42e704ee0d0sm21549445e9.19 - gsmtp')}\", 'r': \"{'r': (553, b'5.1.3 The recipient address <r> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. ffacd0b85a97d-378e73e846asm12791483f8f.41 - gsmtp')}\", 'a': \"{'a': (553, b'5.1.3 The recipient address <a> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. 5b1f17b1804b1-42e704e1990sm21490765e9.15 - gsmtp')}\", 's': \"{'s': (553, b'5.1.3 The recipient address <s> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. ffacd0b85a97d-378e73e81e2sm12758281f8f.37 - gsmtp')}\", 'h': \"{'h': (553, b'5.1.3 The recipient address <h> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. 5b1f17b1804b1-42e704e0a0bsm21848755e9.12 - gsmtp')}\", '8': \"{'8': (553, b'5.1.3 The recipient address <8> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. ffacd0b85a97d-378e780da68sm12795029f8f.111 - gsmtp')}\", '@': \"{'': (555, b'5.5.2 Syntax error, cannot decode response. For more information, go to\\\\n5.5.2  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.5.2 specifications. ffacd0b85a97d-378e73f99b0sm12812366f8f.60 - gsmtp')}\", 'g': \"{'g': (553, b'5.1.3 The recipient address <g> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. 5b1f17b1804b1-42e704f31f2sm21553045e9.27 - gsmtp')}\", 'l': \"{'l': (553, b'5.1.3 The recipient address <l> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. ffacd0b85a97d-378e73f99a4sm12734385f8f.57 - gsmtp')}\", '.': \"{'.': (553, b'5.1.3 The recipient address <.> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. ffacd0b85a97d-378e780dcf1sm12715583f8f.114 - gsmtp')}\", 'c': \"{'c': (553, b'5.1.3 The recipient address <c> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. ffacd0b85a97d-378e7805185sm12735979f8f.96 - gsmtp')}\", 'o': \"{'o': (553, b'5.1.3 The recipient address <o> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. 5b1f17b1804b1-42e704d83e4sm21838975e9.2 - gsmtp')}\", ']': \"{'': (555, b'5.5.2 Syntax error, cannot decode response. For more information, go to\\\\n5.5.2  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.5.2 specifications. ffacd0b85a97d-378e73e8475sm12753814f8f.35 - gsmtp')}\"}"
+  },
+  {
+    "id": 108,
+    "datetime": "2024-09-18 20:02:37.689894",
+    "class_name": "AdminViews",
+    "func_name": "send_email",
+    "func_input": "('[miriamsh888@gmail.com]', 'Give yur credit card num and I will DOUBLE YOUR MONEYYYY', 'THIS IS NOT A SCAM')",
+    "func_output": "{'failed_to_send': dict_keys(['[', 'm', 'i', 'r', 'a', 's', 'h', '8', '@', 'g', 'l', '.', 'c', 'o', ']'])}"
+  },
+  {
+    "id": 109,
+    "datetime": "2024-09-18 20:03:07.567999",
+    "class_name": "EmailHandler",
+    "func_name": "send_email",
+    "func_input": "('Give yur credit card num and I will DOUBLE YOUR MONEYYYY', 'miriamsh888@gmail.com', 'THIS IS NOT A SCAM')",
+    "func_output": "{'m': \"{'m': (553, b'5.1.3 The recipient address <m> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. ffacd0b85a97d-378e780028esm12733814f8f.71 - gsmtp')}\", 'i': \"{'i': (553, b'5.1.3 The recipient address <i> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. ffacd0b85a97d-378e73f649dsm12799793f8f.53 - gsmtp')}\", 'r': \"{'r': (553, b'5.1.3 The recipient address <r> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. ffacd0b85a97d-378e78001c5sm12801696f8f.89 - gsmtp')}\", 'a': \"{'a': (553, b'5.1.3 The recipient address <a> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. ffacd0b85a97d-378e73e85ccsm12749765f8f.42 - gsmtp')}\", 's': \"{'s': (553, b'5.1.3 The recipient address <s> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. 5b1f17b1804b1-42e7051747asm21490945e9.36 - gsmtp')}\", 'h': \"{'h': (553, b'5.1.3 The recipient address <h> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. ffacd0b85a97d-378e73f9999sm12735760f8f.58 - gsmtp')}\", '8': \"{'8': (553, b'5.1.3 The recipient address <8> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. ffacd0b85a97d-378e71f0529sm13024373f8f.6 - gsmtp')}\", '@': \"{'': (555, b'5.5.2 Syntax error, cannot decode response. For more information, go to\\\\n5.5.2  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.5.2 specifications. ffacd0b85a97d-378e7800243sm12813977f8f.86 - gsmtp')}\", 'g': \"{'g': (553, b'5.1.3 The recipient address <g> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. 5b1f17b1804b1-42e704ec983sm21502225e9.12 - gsmtp')}\", 'l': \"{'l': (553, b'5.1.3 The recipient address <l> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. ffacd0b85a97d-378e72e49d5sm12978018f8f.17 - gsmtp')}\", '.': \"{'.': (553, b'5.1.3 The recipient address <.> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. ffacd0b85a97d-378e73f62dasm12763120f8f.49 - gsmtp')}\", 'c': \"{'c': (553, b'5.1.3 The recipient address <c> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. ffacd0b85a97d-378e71f051esm12899691f8f.12 - gsmtp')}\", 'o': \"{'o': (553, b'5.1.3 The recipient address <o> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. 5b1f17b1804b1-42e705381f5sm21446555e9.32 - gsmtp')}\"}"
+  },
+  {
+    "id": 110,
+    "datetime": "2024-09-18 20:03:07.606064",
+    "class_name": "AdminViews",
+    "func_name": "send_email",
+    "func_input": "('miriamsh888@gmail.com', 'Give yur credit card num and I will DOUBLE YOUR MONEYYYY', 'THIS IS NOT A SCAM')",
+    "func_output": "{'failed_to_send': dict_keys(['m', 'i', 'r', 'a', 's', 'h', '8', '@', 'g', 'l', '.', 'c', 'o'])}"
+  },
+  {
+    "id": 111,
+    "datetime": "2024-09-18 20:03:27.651325",
+    "class_name": "EmailHandler",
+    "func_name": "send_email",
+    "func_input": "('Give yur credit card num and I will DOUBLE YOUR MONEYYYY', [], 'THIS IS NOT A SCAM')",
+    "func_output": "True"
+  },
+  {
+    "id": 112,
+    "datetime": "2024-09-18 20:03:27.691479",
+    "class_name": "AdminViews",
+    "func_name": "send_email",
+    "func_input": "(None, 'Give yur credit card num and I will DOUBLE YOUR MONEYYYY', 'THIS IS NOT A SCAM')",
+    "func_output": "{'sent_sucsessfuly': True}"
+  },
+  {
+    "id": 113,
+    "datetime": "2024-09-18 20:04:10.841234",
+    "class_name": "EmailHandler",
+    "func_name": "send_email",
+    "func_input": "('Give yur credit card num and I will DOUBLE YOUR MONEYYYY', 'miriamsh888@gmail.com', 'THIS IS NOT A SCAM')",
+    "func_output": "{'m': \"{'m': (553, b'5.1.3 The recipient address <m> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. 5b1f17b1804b1-42e7052536csm21497685e9.42 - gsmtp')}\", 'i': \"{'i': (553, b'5.1.3 The recipient address <i> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. 5b1f17b1804b1-42e704ecbd9sm21495695e9.15 - gsmtp')}\", 'r': \"{'r': (553, b'5.1.3 The recipient address <r> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. ffacd0b85a97d-378e72e49d5sm12979716f8f.17 - gsmtp')}\", 'a': \"{'a': (553, b'5.1.3 The recipient address <a> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. 5b1f17b1804b1-42e704ed065sm21422515e9.16 - gsmtp')}\", 's': \"{'s': (553, b'5.1.3 The recipient address <s> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. ffacd0b85a97d-378e7805193sm12704409f8f.98 - gsmtp')}\", 'h': \"{'h': (553, b'5.1.3 The recipient address <h> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. 5b1f17b1804b1-42e704ce9b7sm21860845e9.10 - gsmtp')}\", '8': \"{'8': (553, b'5.1.3 The recipient address <8> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. ffacd0b85a97d-378e72e4a30sm13075126f8f.8 - gsmtp')}\", '@': \"{'': (555, b'5.5.2 Syntax error, cannot decode response. For more information, go to\\\\n5.5.2  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.5.2 specifications. 5b1f17b1804b1-42e6c71c72fsm35658835e9.1 - gsmtp')}\", 'g': \"{'g': (553, b'5.1.3 The recipient address <g> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. ffacd0b85a97d-378e7800243sm12816046f8f.86 - gsmtp')}\", 'l': \"{'l': (553, b'5.1.3 The recipient address <l> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. 5b1f17b1804b1-42e70459328sm21936905e9.0 - gsmtp')}\", '.': \"{'.': (553, b'5.1.3 The recipient address <.> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. ffacd0b85a97d-378e7804476sm12850713f8f.90 - gsmtp')}\", 'c': \"{'c': (553, b'5.1.3 The recipient address <c> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. ffacd0b85a97d-378e7805337sm12748182f8f.104 - gsmtp')}\", 'o': \"{'o': (553, b'5.1.3 The recipient address <o> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. 5b1f17b1804b1-42e704ec8bfsm21614445e9.17 - gsmtp')}\"}"
+  },
+  {
+    "id": 114,
+    "datetime": "2024-09-18 20:04:10.880662",
+    "class_name": "AdminViews",
+    "func_name": "send_email",
+    "func_input": "('miriamsh888@gmail.com', 'Give yur credit card num and I will DOUBLE YOUR MONEYYYY', 'THIS IS NOT A SCAM')",
+    "func_output": "{'failed_to_send': dict_keys(['m', 'i', 'r', 'a', 's', 'h', '8', '@', 'g', 'l', '.', 'c', 'o'])}"
+  },
+  {
+    "id": 115,
+    "datetime": "2024-09-18 20:04:39.478013",
+    "class_name": "EmailHandler",
+    "func_name": "send_email",
+    "func_input": "('Give yur credit card num and I will DOUBLE YOUR MONEYYYY', 'miriamsh888@gmail.com', 'THIS IS NOT A SCAM')",
+    "func_output": "{'m': 'Connection unexpectedly closed', 'i': 'Connection unexpectedly closed', 'r': \"{'r': (553, b'5.1.3 The recipient address <r> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. 5b1f17b1804b1-42e704ec8b2sm21474065e9.13 - gsmtp')}\", 'a': 'Connection unexpectedly closed', 's': \"{'s': (553, b'5.1.3 The recipient address <s> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. ffacd0b85a97d-378e73f649dsm12802535f8f.53 - gsmtp')}\", 'h': \"{'h': (553, b'5.1.3 The recipient address <h> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. 5b1f17b1804b1-42e704cea4bsm21749615e9.7 - gsmtp')}\", '8': \"{'8': (553, b'5.1.3 The recipient address <8> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. 5b1f17b1804b1-42e704d83e4sm21875215e9.2 - gsmtp')}\", '@': \"{'': (555, b'5.5.2 Syntax error, cannot decode response. For more information, go to\\\\n5.5.2  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.5.2 specifications. 5b1f17b1804b1-42e7054c6fcsm21504705e9.46 - gsmtp')}\", 'g': \"{'g': (553, b'5.1.3 The recipient address <g> is not a valid RFC 5321 address. For more\\\\n5.1.3 information, go to\\\\n5.1.3  https://support.google.com/a/answer/3221692 and review RFC 5321\\\\n5.1.3 specifications. 5b1f17b1804b1-42e704f262asm21719675e9.25 - gsmtp')}\", 'l': 'Connection unexpectedly closed', '.': 'Connection unexpectedly closed', 'c': 'Connection unexpectedly closed', 'o': 'Connection unexpectedly closed'}"
+  },
+  {
+    "id": 116,
+    "datetime": "2024-09-18 20:04:39.528947",
+    "class_name": "AdminViews",
+    "func_name": "send_email",
+    "func_input": "('miriamsh888@gmail.com', 'Give yur credit card num and I will DOUBLE YOUR MONEYYYY', 'THIS IS NOT A SCAM')",
+    "func_output": "{'failed_to_send': dict_keys(['m', 'i', 'r', 'a', 's', 'h', '8', '@', 'g', 'l', '.', 'c', 'o'])}"
+  },
+  {
+    "id": 117,
+    "datetime": "2024-09-18 20:06:02.849299",
+    "class_name": "EmailHandler",
+    "func_name": "send_email",
+    "func_input": "('Give yur credit card num and I will DOUBLE YOUR MONEYYYY', [], 'THIS IS NOT A SCAM')",
+    "func_output": "True"
+  },
+  {
+    "id": 118,
+    "datetime": "2024-09-18 20:06:02.890455",
+    "class_name": "AdminViews",
+    "func_name": "send_email",
+    "func_input": "(None, 'Give yur credit card num and I will DOUBLE YOUR MONEYYYY', 'THIS IS NOT A SCAM')",
+    "func_output": "{'sent_sucsessfuly': True}"
+  },
+  {
+    "id": 119,
+    "datetime": "2024-09-18 20:07:11.509047",
+    "class_name": "EmailHandler",
+    "func_name": "send_email",
+    "func_input": "('Give yur credit card num and I will DOUBLE YOUR MONEYYYY', ['miriamsh888@gmail.com'], 'THIS IS NOT A SCAM')",
+    "func_output": "True"
+  },
+  {
+    "id": 120,
+    "datetime": "2024-09-18 20:07:11.558542",
+    "class_name": "AdminViews",
+    "func_name": "send_email",
+    "func_input": "(['miriamsh888@gmail.com'], 'Give yur credit card num and I will DOUBLE YOUR MONEYYYY', 'THIS IS NOT A SCAM')",
+    "func_output": "{'sent_sucsessfuly': True}"
+  },
+  {
+    "id": 121,
+    "datetime": "2024-09-18 20:09:20.458241",
+    "class_name": "EmailHandler",
+    "func_name": "send_email",
+    "func_input": "('Give yur credit card num and I will DOUBLE YOUR MONEYYYY', ['miriamsh888@gmail.com'], 'THIS IS NOT A SCAM')",
+    "func_output": "True"
+  },
+  {
+    "id": 122,
+    "datetime": "2024-09-18 20:09:20.499128",
+    "class_name": "AdminViews",
+    "func_name": "send_email",
+    "func_input": "(['miriamsh888@gmail.com'], 'Give yur credit card num and I will DOUBLE YOUR MONEYYYY', 'THIS IS NOT A SCAM')",
+    "func_output": "{'sent_sucsessfuly': True}"
+  },
+  {
+    "id": 123,
+    "datetime": "2024-09-18 20:09:50.590471",
+    "class_name": "EmailHandler",
+    "func_name": "send_email",
+    "func_input": "('Give yur credit card num and I will DOUBLE YOUR MONEYYYY', ['miriamsh888@gmail.com'], 'THIS IS NOT A SCAM')",
+    "func_output": "True"
+  },
+  {
+    "id": 124,
+    "datetime": "2024-09-18 20:09:50.631027",
+    "class_name": "AdminViews",
+    "func_name": "send_email",
+    "func_input": "(['miriamsh888@gmail.com'], 'Give yur credit card num and I will DOUBLE YOUR MONEYYYY', 'THIS IS NOT A SCAM')",
+    "func_output": "{'sent_sucsessfuly': True}"
   }
 ]

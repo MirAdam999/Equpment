@@ -9,6 +9,7 @@ from ..models import *
 from ..serializers.serializer import *
 from ..log.logger import Logger
 from ..serializers.data_manipulation import DataConstructor
+from ..serializers.email_handler import EmailHandler
 from datetime import datetime
 from django.http import HttpResponse
 from django.http import FileResponse
@@ -18,6 +19,7 @@ from io import BytesIO
 
 logger = Logger()
 data_constructor = DataConstructor()
+email_handler = EmailHandler()
 
 class AdminViews(UserViews):
     def __init__(self):
@@ -60,12 +62,12 @@ class AdminViews(UserViews):
     @permission_classes([IsAuthenticated,IsAdminUser])
     def get_user_by_id(request, user_id):
         try:
-            user = User.objects.filter(pk = user_id)
-            seri = UserSerializer(user, many = True)
+            user = User.objects.get(pk = user_id)
+            seri = UserSerializer(user)
             output = {"user":seri.data}
             return Response(output, status=status.HTTP_200_OK)
         
-        except Equpment.DoesNotExist:
+        except User.DoesNotExist:
             output = f"No user with id {user_id}."
             return Response({"not found": output}, status=status.HTTP_404_NOT_FOUND)
         
@@ -74,7 +76,7 @@ class AdminViews(UserViews):
             return Response({"err":str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
             
         finally:
-            logger.log('UserViews','get_user_by_id',user_id,output)
+            logger.log('AdminViews','get_user_by_id',user_id,output)
             
     
     @api_view(['GET'])
@@ -419,43 +421,7 @@ class AdminViews(UserViews):
             return Response({"err":str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
             
         finally:
-            logger.log('AdminViews','get_unshipped',None,output) 
-            
-    
-    @api_view(['POST'])
-    @permission_classes([IsAuthenticated, IsAdminUser])
-    def get_pdf_for_supplier(request):
-        try:
-            details_to_include = request.data.get('details',[])
-            if not details_to_include:
-                output = 'details_to_include err'
-                return Response({"err":output}, status=status.HTTP_400_BAD_REQUEST)
-            
-            details = []
-            for detail in details_to_include:
-                detail_data = OrderDetails.objects.get(pk=detail)
-                details.append(detail_data)
-            
-            parced_details = data_constructor.parce_data_for_pdf_for_supplier(details)
-            
-            header = parced_details['header']
-            context = {'order': parced_details}
-            html_str = render_to_string('order_for_supplier.html',context)
-            pdf = HTML(string=html_str).write_pdf()
-            pdf_buffer = BytesIO(pdf)
-            
-            response = FileResponse(pdf_buffer, content_type='application/pdf')  
-            response['Content-Disposition'] = f'attachment; filename="{header}.pdf"'
-            response['Content-Type'] = 'application/pdf'
-            output = (response.headers, response.streaming_content)
-            return response
-                            
-        except Exception as e:
-            output = str(e)
-            return Response({"err":str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        
-        finally:
-            logger.log('AdminViews','get_pdf_for_supplier',details_to_include if details_to_include else None,output)  
+            logger.log('AdminViews','get_unshipped',None,output)  
     
     
     @api_view(['POST'])
@@ -923,8 +889,29 @@ class AdminViews(UserViews):
         finally:
             logger.log('AdminViews','update_area', (request.data, area_id), output) 
     
-    
-    @api_view(['GET'])
+
+    @api_view(['POST'])
+    @permission_classes([IsAuthenticated,IsAdminUser])
+    def get_supplier_by_id(request, supplier_id):
+        try:
+            supplier = Supplier.objects.get(pk = supplier_id)
+            seri = SupplierSerializer(supplier)
+            output = {"supplier":seri.data}
+            return Response(output, status=status.HTTP_200_OK)
+        
+        except Supplier.DoesNotExist:
+            output = f"No supplier with id {supplier_id}."
+            return Response({"not found": output}, status=status.HTTP_404_NOT_FOUND)
+        
+        except Exception as e:
+            output = str(e)
+            return Response({"err":str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            
+        finally:
+            logger.log('AdminViews','get_supplier_by_id',supplier_id,output)
+            
+              
+    @api_view(['POST'])
     @permission_classes([IsAuthenticated,IsAdminUser])
     def get_all_suppliers(request):
         """
@@ -954,7 +941,7 @@ class AdminViews(UserViews):
             logger.log('AdminViews','get_all_suppliers',None,output)
             
             
-    @api_view(['GET'])
+    @api_view(['POST'])
     @permission_classes([IsAuthenticated,IsAdminUser])
     def get_active_suppliers(request):
         """
@@ -989,7 +976,7 @@ class AdminViews(UserViews):
     def add_supplier(request):
         """
         15.06.24
-        Args: POST, (body json data 'name','contact')
+        Args: POST, (body json data 'name','contact_name','phone','email','active')
         Returns: new supplier + 201/ err + 400/500
         """
         try:
@@ -1015,7 +1002,7 @@ class AdminViews(UserViews):
     def update_supplier(request, sup_id):
         """
         19.06.24
-        Args: PUT, sup_id (int), (body json data 'name','contact')
+        Args: PUT, sup_id (int), (body json data 'name','contact_name','phone','email','active')
         Returns: updated + 201/ not_found + 404 / err + 500
         """
         try:
@@ -1174,3 +1161,69 @@ class AdminViews(UserViews):
         finally:
             logger.log('AdminViews','send_order_to_supplier',details if details else None,output)     
     
+    
+    @api_view(['POST'])
+    @permission_classes([IsAuthenticated, IsAdminUser])
+    def get_pdf_for_supplier(request):
+        try:
+            details_to_include = request.data.get('details',[])
+            if not details_to_include:
+                output = 'details_to_include err'
+                return Response({"err":output}, status=status.HTTP_400_BAD_REQUEST)
+            
+            details = []
+            for detail in details_to_include:
+                detail_data = OrderDetails.objects.get(pk=detail)
+                details.append(detail_data)
+            
+            parced_details = data_constructor.parce_data_for_pdf_for_supplier(details)
+            header = parced_details['header']
+            context = {'order': parced_details}
+            html_str = render_to_string('order_for_supplier.html',context)
+            pdf = HTML(string=html_str).write_pdf()
+            pdf_buffer = BytesIO(pdf)
+            
+            response = FileResponse(pdf_buffer, content_type='application/pdf')  
+            response['Content-Disposition'] = f'attachment; filename="{header}.pdf"'
+            response['Content-Type'] = 'application/pdf'
+            output = (response.headers, response.streaming_content)
+            return response
+                            
+        except Exception as e:
+            output = str(e)
+            return Response({"err":str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+        finally:
+            logger.log('AdminViews','get_pdf_for_supplier',details_to_include if details_to_include else None,output) 
+            
+            
+    @api_view(['POST'])
+    @permission_classes([IsAuthenticated,IsAdminUser])
+    def send_email(request):
+        try:
+            recipients = request.POST.getlist('recipients[]')
+            message = request.data.get('message')
+            headline = request.data.get('headline')
+            pdf = request.FILES.get('pdf', None)
+            
+            pdf_file = BytesIO(pdf.read())
+            pdf_filename = pdf.name
+            
+            sent , failed_recipients = email_handler.send_email(message, recipients, headline, pdf_file, pdf_filename)
+            if failed_recipients:
+                output = {'failed_to_send': failed_recipients.keys()}
+            else:
+                output = {'sent_sucsessfuly': True}
+            
+            return Response(output, status=status.HTTP_200_OK)
+            
+        except Exception as e:
+            output = str(e)
+            return Response({"err":str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+        finally:
+            logger.log('AdminViews','send_email',
+                       (recipients if recipients else None,
+                        message if message else None,
+                        headline if headline else None)
+                       ,output) 

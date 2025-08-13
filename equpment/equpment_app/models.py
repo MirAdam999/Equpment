@@ -68,7 +68,9 @@ class EqupmentCategory(models.Model):
     
 class Supplier(models.Model):
     name = models.CharField(max_length=200, unique=True)
-    contact = models.CharField(max_length=500)
+    contact_name = models.CharField(max_length=500,null=True)
+    phone = models.CharField(max_length=100,null=True)
+    email = models.CharField(max_length=500,null=True)
     active = models.BooleanField(default=True)
     
     def __str__(self):

@@ -65,7 +65,7 @@ class EqupmentCategorySerializer(serializers.ModelSerializer):
 class SupplierSerializer(serializers.ModelSerializer):
     class Meta:
         model = Supplier
-        fields = ['id', 'name','contact','active']
+        fields = ['id','name','contact_name','phone','email','active']
         
         
 class EqupmentSerializer(serializers.ModelSerializer):

@@ -62,4 +62,6 @@ urlpatterns = [
     path('get_unshipped/',AdminViews.get_unshipped), # tested
     path('send_order_to_supplier/',AdminViews.send_order_to_supplier),  # tested
     path('get_pdf_for_supplier/',AdminViews.get_pdf_for_supplier),  # tested
+    path('get_supplier_by_id/<int:supplier_id>/',AdminViews.get_supplier_by_id), # tested
+    path('send_email/',AdminViews.send_email)
 ]

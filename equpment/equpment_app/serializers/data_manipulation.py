@@ -3,8 +3,8 @@ from ..models import *
 from ..serializers.serializer import *
 
 class DataConstructor:
-    def __init__(self):
-        None
+    def __init__(self) -> None:
+        pass
         
     def parse_order(self, order):
         order_seri = OrderSerializer(order)
