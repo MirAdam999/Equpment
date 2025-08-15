@@ -85,7 +85,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'equpment',
-        'HOST':'host.docker.internal',
+        'HOST':'db',
         'PORT':'3306',
         'USER':os.getenv('DB_USER'),
         "PASSWORD":os.getenv('DB_PASSWORD'),

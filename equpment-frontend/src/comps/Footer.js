@@ -3,7 +3,7 @@ const Footer = () => {
 
     return (
         <footer>
-            &copy;Created By Mir Shukhman 2024
+            &copy; Miriam Adam 2024
         </footer>
     )
 }

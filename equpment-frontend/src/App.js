@@ -31,7 +31,7 @@ function App() {
               <Main className='main' />
 
               <Routes>
-                <Route path="/Equpment" element={<LogIn />} />
+                <Route path="/" element={<LogIn />} />
                 <Route path="/my_profile" element={<MyProfile />} />
 
                 <Route path="/choose_branch" element={<ChooseBranch />} />

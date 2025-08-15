@@ -3,8 +3,8 @@ import React, { createContext, useContext } from 'react';
 const URLContext = createContext();
 
 const URLProvider = ({ children }) => {
-    const storedURL = 'https://418b-2a06-c701-440d-db00-b9b1-b5fd-bee7-134.ngrok-free.app';
-
+    // Detect if running inside Docker (we can use an env variable for this)
+    const storedURL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
     return (
         <URLContext.Provider
             value={{
