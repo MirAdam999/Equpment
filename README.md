@@ -6,7 +6,7 @@
       consolidates orders, and coordinates with suppliers.
       In addition, the Global Manager controls user access, manages equipment availability, and flags certain items for approval
       before external export of orders to suppliers.
-      *The System is designed primarily in Hebrew. This is an early version of a later system that was developed for a multi-branch clinic.
+      * <em>Note:</em>  The System is designed primarily in Hebrew. This is an early version of a later system that was developed for a multi-branch clinic.
   </p>
   <h2>Features</h2>
   <h4>Branch Admin Interface:</h4>
@@ -30,6 +30,12 @@
   <p>
       The system uses Django's Token Authentication for user identification and stores passwords hashed in the database.
   </p>
+
+<h2>Tech Stack</h2>
+
+* **Database:** MySQL – reliable and efficient data management  
+* **Backend:** Django REST Framework – robust API layer  
+* **Frontend:** React.js – dynamic and responsive UI
 
 <h2>Video Demo</h2>
 <h4>Avilable on my portfolio website:</h4>
