@@ -33,7 +33,7 @@
 
 <h2>Video Demo</h2>
 <h4>Avilable on my portfolio website:</h4>
-![Equipment_Project](https://resume-omega-pied.vercel.app/projects?project=0)
+[Click here to view it](https://resume-omega-pied.vercel.app/projects?project=0)
 
 <h2>Screenshots</h2>
 
