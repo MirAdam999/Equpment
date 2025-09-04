@@ -31,11 +31,11 @@
       The system uses Django's Token Authentication for user identification and stores passwords hashed in the database.
   </p>
 
-<h2>Video Demo:</h2>
+<h2>Video Demo</h2>
 <h4>Avilable on my portfolio website:</h4>
 <a>https://resume-omega-pied.vercel.app/projects?project=0</a>
 
-<h2>Screenshots:</h2>
+<h2>Screenshots</h2>
 
 <h3>Branch Manager Interface:</h3>
 
