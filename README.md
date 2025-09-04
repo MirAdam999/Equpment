@@ -8,7 +8,7 @@
       before external export of orders to suppliers.
       *The System is designed primarily in Hebrew. This is an early version of a later system that was developed for a multi-branch clinic.
   </p>
-  <h3>Features</h3>
+  <h2>Features</h2>
   <h4>Branch Admin Interface:</h4>
   <ul>
       <li>Easy Order Creation: Allows branch admins to create orders with a categorized view of available equipment.</li>
@@ -33,7 +33,7 @@
 
 <h2>Video Demo</h2>
 <h4>Avilable on my portfolio website:</h4>
-<a>https://resume-omega-pied.vercel.app/projects?project=0</a>
+[Equipment Project: on Miriam Adam's Personal Website]([https://example.com](https://resume-omega-pied.vercel.app/projects?project=0))
 
 <h2>Screenshots</h2>
 
